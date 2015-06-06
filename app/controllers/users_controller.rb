@@ -1,5 +1,7 @@
 class UsersController < ApplicationController
 
+  include SessionsHelper
+
   def index
     #pagination
   end
@@ -25,12 +27,16 @@ class UsersController < ApplicationController
 
     @user = User.new(user_fields)
 
-    if user_exists?
+    if @user.save
 
-    elsif @user.save
+      flash[:message] = "Booya! Account Created!"
+      log_in @user
+      redirect_to @user
 
     else
-      
+
+      flash[:alert] = "Sorry, that email's been taken"
+      render :new
     end
   end
 
@@ -55,10 +61,8 @@ class UsersController < ApplicationController
 
   private
 
-  def signed_in?
-  end
-
   def user_fields
+    params.require(:user).permit(:username, :email, :password, :password_confirmation)
   end
 
 end
