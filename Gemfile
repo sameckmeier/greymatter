@@ -9,6 +9,7 @@ gem 'bcrypt'
 gem 'faker'
 gem 'will_paginate'
 gem 'bootstrap-will_paginate'
+gem 'httparty'
 
 group :development, :test do
   gem 'rspec-rails'
