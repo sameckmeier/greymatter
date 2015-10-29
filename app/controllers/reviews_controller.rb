@@ -3,12 +3,13 @@ class ReviewsController < ApplicationController
 	before_action :correct_user, only: [:destroy]
 
 	def create
-		@review = current_user.reviews.build(review_params)
-		if @review.save
+		@review = Review.build(params)
+
+		if @review
 			flash[:success] = "Review created!"
 			redirect_to root_url
 		else
-			@feed_items = []
+			flash[:failure] = "Something Went Wrong! We're looking into it"
 			render 'static_pages/home'
 		end
 	end
@@ -20,12 +21,8 @@ class ReviewsController < ApplicationController
 
 	private
 
-		def review_params
-			params.require(:review).permit(:content)
-		end
-
-		def correct_user
-			@review = current_user.reviews.find_by(id: params[:id])
-			redirect_to root_url if @micropost.nil?
-		end
+	def correct_user
+		@review = current_user.reviews.find_by(id: params[:review_id]) #does find work?
+		redirect_to root_url if @review.nil?
+	end
 end
