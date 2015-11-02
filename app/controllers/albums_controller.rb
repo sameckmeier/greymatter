@@ -1,7 +1,7 @@
 class AlbumsController < ActionController::Base
 
   def show
-    cache_key = Album.cache_key(params)
+    cache_key = Api::Spotify.cache_key(params[:spotify_id], "album")
     @album_spotify = Rails.cache.fetch(cache_key)
     @album = Album.where(spotify_id: params[:spotify_id])
 

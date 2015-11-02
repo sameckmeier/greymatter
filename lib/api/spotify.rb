@@ -48,6 +48,10 @@ module Api
         res
       end
 
+      def cache_key(spotify_id, spotify_type)
+        "/#{spotify_type}/#{spotify_id}"
+      end
+
       def translate_search_json(json)
         res = { name: json[:name], id: json[:id], source: :spotify }
 

@@ -4,7 +4,8 @@ class ArtistRelationshipsController < ApplicationController
 	def create
 			@artist = Artist.find(params[:followed_artist_id])
 			unless @artist
-        artist_spotify = Rails.cache.fetch(Artist.cache_key(params[:followed_artist_spotify_id]))
+				cache_key = Api::Spotify.cache_key(params[:followed_artist_spotify_id], "artist")
+        artist_spotify = Rails.cache.fetch(cache_key)
 				@artist = Artist.build(artist_spotify)
 			end
 		end

@@ -3,7 +3,8 @@ class ReviewsController < ApplicationController
 	before_action :correct_user, only: [:destroy]
 
 	def create
-		@review = Review.build(params)
+		album = Album.where(spotify_id: params[:spotify_id]) || Album.build(params[:album])
+		@review = Review.build(current_user, album, params[:content])
 
 		if @review
 			flash[:success] = "Review created!"
