@@ -1,7 +1,7 @@
 class ArtistsController < ActionController::Base
 
   def show
-    artist_cache_key = Artist.cache_key(params)
+    artist_cache_key = Artist.cache_key(params[:spotify_id], "artist")
     @artist_spotify = Rails.cache.fetch(cache_key)
     @artist = Artist.where(spotify_id: params[:spotify_id])
 

@@ -9,6 +9,12 @@ Rails.application.routes.draw do
   #SEARCHES
   get "/:q" , to: "searches#show", constraints: {q: /[.]+/}
 
+  #ARTISTS
+  get "/artist/:name" , to: "artists#show", constraints: {name: /[.]+/}
+
+  #ALBUMS
+  get "/artist/:artist_name/album/:album_name" , to: "albums#show", constraints: {artist_name: /[.]+/, album_name: /[.]+/}
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

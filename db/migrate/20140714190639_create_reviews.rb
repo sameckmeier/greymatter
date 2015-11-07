@@ -1,8 +1,10 @@
-class CreateMicroposts < ActiveRecord::Migration
+class CreateReviews < ActiveRecord::Migration
   def change
-    create_table :microposts do |t|
+    create_table :reviews do |t|
+
       t.string :content
       t.integer :user_id
+      t.integer :album_id
 
       t.timestamps
     end
