@@ -1,5 +1,3 @@
-require 'rails_helper'
-
 RSpec.describe SearchesController, type: :controller do
 
   describe "GET #show" do
