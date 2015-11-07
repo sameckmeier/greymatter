@@ -7,8 +7,8 @@ class CreateArtistRelationships < ActiveRecord::Migration
 
       t.timestamps
     end
-    add_index :artist_relationships, :follower_id
-    add_index :artist_relationships, :followed_id
-    add_index :artist_relationships, [:follower_id, :followed_id], unique: true
+    add_index :artist_relationships, :user_id
+    add_index :artist_relationships, :artist_id
+    add_index :artist_relationships, [:user_id, :artist_id], unique: true
   end
 end
