@@ -1,6 +1,6 @@
 class Review < ActiveRecord::Base
 	belongs_to :user
-	belongs_to :artist
+	belongs_to :album
 	default_scope -> { order('created_at DESC') }
 	validates :content, presence: true
 	validates :user_id, presence: true
