@@ -1,5 +1,8 @@
 class Artist < ActiveRecord::Base
 
+  has_many :artist_relationships, dependent: :destroy
+  has_many :followers, through: :artist_relationships, source: :user
+
   def self.build(spotify_json)
     res = Artist.new
 

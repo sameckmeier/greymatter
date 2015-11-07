@@ -1,5 +1,7 @@
 class Album < ActiveRecord::Base
 
+  has_many :reviews
+
   def self.build(spotify_json)
     res = Album.new
 
