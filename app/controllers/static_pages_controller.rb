@@ -1,5 +1,5 @@
 class StaticPagesController < ApplicationController
-  def old_home
+  def home
   	if signed_in?
   		@reviews = current_user.reviews
   		@feed_items = current_user.feed.paginate(page: params[:page])
