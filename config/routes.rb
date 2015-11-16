@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
 
+  #DEFAULT
+  root 'static_pages#home'
+
   #SESSIONS
   get "login" => "sessions#new"
   post "login" => "sessions#create"
