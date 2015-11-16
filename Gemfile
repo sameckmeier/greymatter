@@ -34,6 +34,8 @@ gem 'coffee-rails'
 gem 'jquery-rails'
 gem 'turbolinks'
 gem 'jbuilder'
+gem 'haml-rails'
+gem 'foundation-rails'
 
 group :doc do
   gem 'sdoc', require: false
