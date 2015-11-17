@@ -1,8 +1,15 @@
 %header.main
   %div.row
     %div.small-12.medium-4.columns
-      logo
+      %div#logo
     %div.small-12.medium-4.columns
-      search box
+      %form
+        %label
+          %input{:placeholder => 'Search Grey Matter', :type => 'text'}
     %div.small-12.medium-4.columns
-      nav
+      %nav
+        %ul.inline-list.right
+          %li
+            %a{ href: '#', title: 'Login/Register' }
+              Login/Register
+
