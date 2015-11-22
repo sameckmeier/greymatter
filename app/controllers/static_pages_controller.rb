@@ -8,6 +8,8 @@ class StaticPagesController < ApplicationController
     @popular_albums = []
     @album_feeds = []
     @top_writers = []
+    bool_vals = [true, false]
+
     for n in 0...9
       #popular albums dummy content
       @popular_albums.push(
@@ -24,7 +26,8 @@ class StaticPagesController < ApplicationController
               album: Faker::Lorem.words(2).join(' '),
               artist: Faker::Name.name,
               rating: Faker::Number.decimal(1),
-              content: Faker::Lorem.paragraph
+              content: Faker::Lorem.paragraph,
+              has_comment: bool_vals.sample
           }
       )
     end

@@ -34,3 +34,8 @@
               = feed[:artist]
           %p
             = feed[:content]
+
+- if feed[:has_comment]
+  = render 'shared/album_feed_item_inner', feed: feed
+
+
