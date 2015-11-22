@@ -1,15 +1,18 @@
-%header.main
+%header.header
   %div.row
     %div.small-12.medium-4.columns
-      %div#logo
-    %div.small-12.medium-4.columns
-      %form
-        %label
-          %input{:placeholder => 'Search Grey Matter', :type => 'text'}
-    %div.small-12.medium-4.columns
-      %nav
-        %ul.inline-list.right
-          %li
-            %a{ href: '#', title: 'Login/Register' }
-              Login/Register
-
+      = link_to root_path do
+        = image_tag 'gm_logo.png'
+    %div.small-12.medium-4.columns.text-center
+      %div.search
+        %div.search__input_group.search__input_group--light-grey
+          %div.row.collapse
+            %div.small-11.columns
+              %input{ type: :text, class: 'search__input_group--small', placeholder: 'SEARCH GREY MATTER'}
+            %div.small-1.column
+              %button.btn--neutral
+                %i.icon.search
+    %div.small-12.medium-4.columns.text-right
+      = link_to 'Login', '#', class: 'bold'
+      = '/'
+      = link_to 'Register', '#', class: 'bold'

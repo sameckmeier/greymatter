@@ -1,0 +1,91 @@
+%section.hero.hero--grey
+  %div.row
+    %div.small-12.medium-4.columns.medium-centered.end
+      %div.hero__content.text-center
+        %h1
+          What is Grey Matter
+        %p
+          Grey Matter is this sick site that does the most awesome stuff ever.
+          %div
+            = link_to '#', {class: 'btn btn--rounded btn__outline btn__outline--white'} do
+              Learn Yourself Up
+%div.row
+  %div.small-12.medium-3.columns
+    %div.block
+      %div.block__header
+        %div.block__header__tabs.tabs
+          %ul.split
+            %li.active{'data-content': 'popular-albums'}
+              %h3
+                Popular
+                %sup *
+            %li{'data-content': 'niche-albums'}
+              %h3
+                Niche
+                %sup *
+      %div.block__content
+        %ol.block__content__albums
+          - @popular_albums.each do |album|
+            %li
+              = render 'shared/album_list_item', album: album
+
+
+  %div.small-12.medium-6.columns
+    %div.block
+      %div.block__header.block__header--dark-border
+        %h2
+          Trending Reviews
+    %div.albums__feed
+      - @album_feeds.each do |feed|
+        = render 'shared/album_feed_item', feed: feed
+  %div.small-12.medium-3.columns
+    %div.block
+      %div.block__header.block__header--dark-border
+        %h2
+          Featured Tags
+      %div.block__content
+        %div.tags
+          %ul
+            - @tags.each do |tag|
+              %li
+                = link_to '#' do
+                  = tag
+    %div.block
+      %div.block__header.block__header--dark-border
+        %h2
+          Top Writers
+      %div.block__content
+        %div.users
+          - @top_writers.each do |top_writer|
+            %div.users__item
+              %div.row.collapse
+                %div.small-3.columns
+                  = image_tag 'http://lorempixel.com/people/90/90/'
+                %div.small-8.columns
+                  %div.users__item__info
+                    %h3
+                      = top_writer[:name]
+                    = link_to 'follow', '#', class: 'btn btn--rounded btn__outline btn__outline--grey'
+                %div.small-1.column
+                  = link_to '#' do
+                    %i.icon.tall-close
+
+    %div.block
+      %div.block__header.block__header--dark-border
+      %div.block__content
+        %footer.footer
+          %ul
+            %li
+              = link_to 'About', '#'
+            %li
+              = link_to 'Help', '#'
+            %li
+              = link_to 'Advertise', '#'
+            %li
+              = link_to 'Terms', '#'
+            %li
+              = link_to 'Privacy', '#'
+            %li
+              = link_to 'Careers', '#'
+            %li
+              = link_to 'Presss', '#'

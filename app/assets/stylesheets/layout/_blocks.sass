@@ -1,0 +1,65 @@
+@mixin block-header-common()
+  padding: 2rem 1rem
+
+.block
+  &::after
+    display: table
+    content: ''
+    width: 100%
+    clear: left
+  &__header
+    border-bottom: 3px solid #E0E0E0
+    margin-bottom: 1.25rem
+    &--dark-border
+      border-color: #000000
+    h1,h2,h3,h4,h5,h6
+      margin: 0
+      padding: 0
+    h3,h2
+      font-size: 0.85rem
+      text-transform: uppercase
+    h2
+      @include block-header-common
+      padding-left: 0
+      font-weight: normal
+
+    &__tabs
+      &.tabs
+        li
+          cursor: pointer
+      ul
+        margin: 0
+        padding: 0
+        li
+          @include block-header-common
+          list-style: none
+          display: inline-block
+          text-align: center
+          margin-bottom: -3px
+          &.active
+            border-bottom: 3px solid #000000
+            margin-bottom: -3px
+            padding-bottom: 1.8rem
+            h2,h3
+              font-weight: bold
+        &.split
+          li
+            width: 49%
+  &__content
+    &__albums
+      li
+        margin: 1rem 0 1rem 0
+        &::before
+          float: left
+          padding-top: 11px
+          font-size: 0.85rem
+      &__item
+        padding-left: 1rem
+        line-height: 10px
+        font-size: 0.85rem
+        color: #797979
+        font-style: italic
+        h4
+          font-weight: bold
+          font-size: 0.85rem
+          margin-top: 0
