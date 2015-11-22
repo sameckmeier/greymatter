@@ -1,12 +1,6 @@
 @mixin block-header-common()
   padding: 2rem 1rem
 
-@mixin block-header-border($is_active)
-  $border-color: #E0E0E0
-  @if $is_active
-    $border-color: #000000
-  border-bottom: 3px solid $border-color
-
 .block
   &::after
     display: table
@@ -14,6 +8,9 @@
     width: 100%
     clear: left
   &__header
+    border-bottom: 3px solid #E0E0E0
+    &--dark-border
+      border-color: #000000
     h1,h2,h3,h4,h5,h6
       margin: 0
       padding: 0
@@ -23,7 +20,7 @@
     h2
       @include block-header-common
       padding-left: 0
-      @include block-header-border(true)
+      font-weight: normal
 
     &__tabs
       &.tabs
@@ -32,7 +29,6 @@
       ul
         margin: 0
         padding: 0
-        @include block-header-border(false)
         li
           @include block-header-common
           list-style: none
@@ -40,7 +36,9 @@
           text-align: center
           margin-bottom: -3px
           &.active
-            @include block-header-border(true)
+            border-bottom: 3px solid #000000
+            margin-bottom: -3px
+            padding-bottom: 1.8rem
             h2,h3
               font-weight: bold
         &.split

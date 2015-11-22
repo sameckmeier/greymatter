@@ -32,7 +32,7 @@
 
   %div.small-12.medium-6.columns
     %div.block
-      %div.block__header
+      %div.block__header.block__header--dark-border
         %h2
           Trending Reviews
     %div.albums__feed
@@ -40,7 +40,7 @@
         = render 'shared/album_feed_item', feed: feed
   %div.small-12.medium-3.columns
     %div.block
-      %div.block__header
+      %div.block__header.block__header--dark-border
         %h2
           Featured Tags
       %div.block__content
@@ -51,7 +51,7 @@
                 = link_to '#' do
                   = tag
     %div.block
-      %div.block__header
+      %div.block__header.block__header--dark-border
         %h2
           Top Writers
       %div.block__content
@@ -69,3 +69,8 @@
                 %div.small-1.column
                   = link_to '#' do
                     %i.icon.tall-close
+
+    %div.block
+      %div.block__header.block__header--dark-border
+      %div.block__content
+        footer
