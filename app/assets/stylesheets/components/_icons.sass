@@ -1,0 +1,19 @@
+@mixin icon-sprite($w, $h, $x, $y)
+  background-image: url(sprite.png)
+  background-repeat: no-repeat
+  background-position: $x $y
+  width: $w
+  height: $h
+  display: inline-block
+
+.icon
+  &.search
+    @include icon-sprite(16px, 16px,-23px, -376px)
+  &.heart
+    @include icon-sprite(18px, 16px,-203px, -116px)
+  &.play
+    @include icon-sprite(18px, 16px,-203px, -150px)
+  &.ellipsis
+    @include icon-sprite(25px, 13px,-203px, -183px)
+  &.tall-close
+    @include icon-sprite(16px, 16px,-203px, -48px)

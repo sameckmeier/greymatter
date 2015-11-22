@@ -1,0 +1,36 @@
+%div.albums__feed__item
+  %div.albums__feed__item__content__meta
+    %div.row.collapse
+      %div.small-12.medium-1.columns
+        %div.albums__feed__item__user-image-holder
+          = image_tag 'http://lorempixel.com/people/45/45'
+      %div.small-12.medium-8.columns
+        %div.albums__feed__item__content__inner
+          %h4
+            = feed[:user]
+            %span (Guru)
+          %div
+            = "#{time_ago_in_words(feed[:time_ago])} ago"
+      %div.small-12.medium-3.columns
+        = link_to '#' do
+          %i.icon.heart
+        = link_to '#' do
+          %i.icon.play
+        = link_to '#' do
+          %i.icon.ellipsis
+  %div.albums__feed__item__content__main
+    %div.row.collapse
+      %div.small-12.medium-1.columns
+        %div.albums__feed__item__album-cover
+          = image_tag 'http://lorempixel.com/45/45'
+        %div.rating
+          %div.rating__item
+            = number_with_precision(feed[:rating], precision: 1)
+      %div.small-12.medium-11.columns
+        %div.albums__feed__item__content__inner
+          %h2.upcase
+            = feed[:album]
+            %span
+              = feed[:artist]
+          %p
+            = feed[:content]
