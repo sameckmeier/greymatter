@@ -1,3 +1,4 @@
+@import "../base/colors"
 .search
   &__input
     &_group
@@ -5,14 +6,27 @@
         background: none
         border: none
         box-shadow: none
+        padding-top: 0.4rem !important
         -moz-box-shadow: none
         -webkit-box-shadow: none
+      ::-webkit-input-placeholder
+        color: $very-light-grey
+      ::-webkit-input-placeholder
+        color: $very-light-grey
+      :-moz-placeholder
+        color: $very-light-grey
+      ::-moz-placeholder
+        color: $very-light-grey
+      :-ms-input-placeholder
+        color: red
+
       button
         margin-top: 0.45rem
         padding: 0
         margin-bottom: 0
       &--light-grey
         background-color: #EFEFEF
+        margin-top: 0.3rem
       &--small
         margin: 0 !important
         padding: 0 0 0 1rem !important
