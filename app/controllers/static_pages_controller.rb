@@ -34,7 +34,7 @@ class StaticPagesController < ApplicationController
       @top_writers.push({name: Faker::Name.name})
     end
 
-    @tags = ['Taylor Swift', 'Apple Music', 'Drake', 'Spotify', 'Diplo']
+    @tags = ['Taylor Swift', 'Apple Music', 'Drake', 'Spotify', 'Diplo', 'Apple Music', 'Drake', 'Spotify', 'Diplo']
 
   end
 
