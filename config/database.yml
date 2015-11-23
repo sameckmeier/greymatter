@@ -11,16 +11,17 @@ default: &default
 
 development:
   <<: *default
-  database: greymatter
-  username: dev
-  password: dbdevpass
+  database: dnre8fpc2o095
+  host: ec2-54-227-248-123.compute-1.amazonaws.com
+  username: wxkbtpzdvetnfn
+  password: TVc2ljIGQeuPAD8rzqFJDqewLl
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
 # Do not set this db to the same as development or production.
 test:
   <<: *default
-  database: greymatter_test
+  database: dnre8fpc2o095
 
 # production:
 #   <<: *default
