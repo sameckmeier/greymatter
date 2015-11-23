@@ -1,17 +1,15 @@
-%header.header
+%header.header.header--invert
   %div.row
     %div.small-12.medium-4.columns
       = link_to root_path do
         = image_tag 'gm_logo.png'
     %div.small-12.medium-4.columns.text-center
       %div.search
-        %div.search__input_group.search__input_group--light-grey
-          %div.row.collapse
-            %div.small-11.columns
-              %input{ type: :text, class: 'search__input_group--small', placeholder: 'SEARCH GREY MATTER'}
-            %div.small-1.column
-              %button.btn--neutral
-                %i.icon.search
+        %div.search__input_group
+          %input{ type: :text, class: 'search__input_group--small', placeholder: 'SEARCH GREY MATTER'}
+          %button.btn--neutral
+            %i.icon.search
+          %div.clearfix
     %div.small-12.medium-4.columns.text-right.login_register
       = link_to 'Login', '#', class: 'bold'
       = '/'
