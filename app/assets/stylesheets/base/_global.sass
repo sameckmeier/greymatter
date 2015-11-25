@@ -1,5 +1,33 @@
 @import "colors"
 
+@font-face
+  font-family: "Avenir Next"
+  src: url(AvenirNext-Regular.ttf) format("truetype"), url(AvenirNext-Italic.ttf) format("truetype")
+  font-weight: normal
+
+@font-face
+  font-family: "Avenir Next"
+  src: url(AvenirNext-Bold.ttf) format("truetype"), url(AvenirNext-BoldItalic.ttf) format("truetype")
+  font-weight: bold
+
+@font-face
+  font-family: "Avenir Next"
+  src: url(AvenirNext-UltraLight.ttf) format("truetype"), url(AvenirNext-UltraLightItalic.ttf) format("truetype")
+  font-weight: 300
+
+@font-face
+  font-family: "Adobe Caslon Pro"
+  src: url(ACaslonPro-Regular.otf) format("truetype"), url(ACaslonPro-Italic.otf) format("truetype")
+  font-weight: normal
+
+@font-face
+  font-family: "Adobe Caslon Pro"
+  src: url(ACaslonPro-Bold.otf) format("truetype"), url(ACaslonPro-BoldItalic.otf) format("truetype")
+  font-weight: bold
+
+
+
+
 @function calc_rem($size-in-px)
   $px_to_rem: $size-in-px / 16px
   @return $px_to_rem+rem
@@ -7,6 +35,10 @@
 html, body
   font-size: calc_rem($default-font-size)
   color: $default-font-color
+  font-family: "Avenir Next"
+
+h1,h2,h3,h4,h5,h6,p
+  font-family: "Avenir Next"
 
 h1,h2
   font-size: calc_rem(24px)
