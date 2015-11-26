@@ -1,0 +1,85 @@
+%section.hero.hero--dark-grey.hero--artist
+  %div.row
+    %div.small-12.medium-8.columns.medium-centered.end
+      %div.artist__header
+        %div.row{'data-equalizer': true}
+          %div.small-12.medium-3.columns{'data-equalizer-watch': true}
+            = image_tag 'sample_artist_img_xl.jpg'
+          %div.small-12.medium-9.columns{'data-equalizer-watch': true}
+            %div.block{'data-equalizer-watch': true}
+              %div.block__footer
+                %h1
+                  Run the jewels
+                %div.row
+                  %div.small-8.columns
+                    %div.row
+                      %div.small-12.medium-4.columns
+                        %div.artist__header__meta
+                          %label
+                            Reviews
+                          %span
+                            24
+                      %div.small-12.medium-4.columns
+                        %div.artist__header__meta
+                          %label
+                            Following
+                          %span
+                            124
+                      %div.small-12.medium-4.columns
+                        %div.artist__header__meta
+                          %label
+                            Rating
+                          %span
+                            7.6
+%div.content.content--light-grey
+  %div.row
+    %div.small-12.medium-8.columns.end.medium-centered
+      %div.row
+        %div.small-12.medium-4.columns
+          %div.block
+            %div.block__header
+              %h2
+                Artist's Top Albums
+            %div.block__content
+              %ol.block__content__albums
+                - @popular_albums.each do |album|
+                  %li
+                    = render 'shared/album_list_item', album: album
+          %div.block
+            %div.block__header.block__header--dark-border
+              %h2
+                Similar Artists
+            %div.block__content
+              %div.users
+                - @top_writers.each do |top_writer|
+                  %div.users__item
+                    %div.row.collapse
+                      %div.small-3.columns
+                        = image_tag 'http://lorempixel.com/people/90/90/'
+                      %div.small-8.columns
+                        %div.users__item__info
+                          %h3
+                            = top_writer[:name]
+                          = link_to 'follow', '#', class: 'btn btn--rounded btn__outline btn__outline--grey'
+                      %div.small-1.column
+                        = link_to '#' do
+                          %i.icon.tall-close
+
+            = render 'layouts/footer'
+        %div.small-12.medium-8.columns
+          %div.block
+            %div.block__header
+              %div.block__header__tabs.tabs
+                %ul.split.three
+                  %li.active{'data-content': 'trending-reviews'}
+                    %h3
+                      Trending Reviews
+                  %li{'data-content': 'biography'}
+                    %h3
+                      Biography
+                  %li{'data-content': 'ymal-map'}
+                    %h3
+                      YMAL Map
+          %div.albums__feed
+            - @album_feeds.each do |feed|
+              = render 'shared/album_feed_item', feed: feed

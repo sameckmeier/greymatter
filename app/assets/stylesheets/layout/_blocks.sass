@@ -1,7 +1,11 @@
 @mixin block-header-common()
-  padding: calc_rem(45px) 1rem
+  padding: 36px 1rem
 
 .block
+  position: relative
+  &__footer
+    position: absolute
+    bottom: 0
   &::after
     display: table
     content: ''
@@ -39,12 +43,15 @@
           &.active
             border-bottom: 3px solid #000000
             margin-bottom: -3px
-            padding-bottom: 2.575rem
+            padding-bottom: 36px
             h2,h3
               font-weight: bold
         &.split
           li
             width: 49%
+          &.three
+            li
+              width: 32%
   &__content
     &__albums
       li

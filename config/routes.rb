@@ -13,7 +13,8 @@ Rails.application.routes.draw do
   get "/:q" , to: "searches#show", constraints: {q: /[.]+/}
 
   #ARTISTS
-  get "/artist/:name" , to: "artists#show", constraints: {name: /[.]+/}
+  #get "/artist/:name" , to: "artists#show", constraints: {name: /[.]+/}
+  get 'artist/:name' => 'artists#show'
 
   #ALBUMS
   get "/artist/:artist_name/album/:album_name" , to: "albums#show", constraints: {artist_name: /[.]+/, album_name: /[.]+/}
