@@ -1,9 +1,11 @@
 @import "../base/colors"
 header
   &.header
-    padding: 1.75rem 0
+    padding: 1.5rem 0
     border-bottom: 1px solid $global-grey-bg
     border-top: 1px solid $global-grey-bg
+    .logo
+      margin-top: -10px
     .search
       border: 1px solid #dddddd
       &::after
@@ -20,6 +22,8 @@ header
         float: left
     &--inverted
       background-color: $global-grey-bg
+      .logo
+        margin-top: 0
       .search
         input[type=text]
           float: left
