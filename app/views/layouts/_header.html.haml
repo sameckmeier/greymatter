@@ -11,7 +11,17 @@
           %button.btn--neutral
             %i.icon.search
           %div.clearfix
-    %div.small-12.medium-4.columns.text-right.login_register
-      = link_to 'Login', '#', class: 'bold'
-      = '/'
-      = link_to 'Register', '#', class: 'bold'
+    %div.small-12.medium-4.columns.text-right
+      %div.header__menu
+        - if @is_user_logged_in
+          %ul.right
+            %li
+              = link_to 'Compose Review', '#'
+            %li
+              = link_to 'User name', '#'
+            %li.has-notifications
+              3
+        - else
+          = link_to 'Login', '#'
+          = '/'
+          = link_to 'Register', '#'

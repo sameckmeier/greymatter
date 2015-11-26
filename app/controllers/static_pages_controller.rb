@@ -1,5 +1,6 @@
 class StaticPagesController < ApplicationController
   def landing
+    @is_user_logged_in = false
   	if signed_in?
   		@reviews = current_user.reviews
   		@feed_items = current_user.feed.paginate(page: params[:page])
