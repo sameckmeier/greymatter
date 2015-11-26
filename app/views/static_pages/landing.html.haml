@@ -1,0 +1,130 @@
+%section.hero.hero--grey
+  %div.row
+    %div.small-12.medium-4.columns.medium-centered.end
+      %div.hero__content.text-center
+        %h1
+          What is Grey Matter
+        %p
+          Grey Matter is this sick site that does the most awesome stuff ever.
+          %div
+            = link_to '#', {class: 'btn btn--rounded btn__outline btn__outline--white'} do
+              Learn Yourself Up
+%div.content.content--light-grey
+  %div.row
+    %div.small-12.medium-3.columns
+      %div.block
+        %div.block__header
+          %div.block__header__tabs.tabs
+            %ul.split
+              %li.active{'data-content': 'popular-albums'}
+                %h3
+                  Popular
+                  %sup *
+              %li{'data-content': 'niche-albums'}
+                %h3
+                  Niche
+                  %sup *
+        %div.block__content
+          %div.filters
+            %div.row
+              %div.small-4.columns
+                = link_to 'javascript:;',
+                          class: 'filters__selection',
+                          'data-dropdown': 'scope-filter-opts',
+                          'data-options': 'align:bottom' do
+                  %span
+                    Scope
+                %label
+                  Month
+                %ul#scope-filter-opts.f-dropdown{'aria-hidden': 'true', 'data-dropdown-content': '', tabindex: '-1'}
+                  %li
+                    = link_to 'Day', 'javascript:;'
+                  %li
+                    = link_to 'Week', 'javascript:;'
+                  %li
+                    = link_to 'Month', 'javascript:;'
+                  %li
+                    = link_to 'Year', 'javascript:;'
+              %div.small-4.columns
+                = link_to 'javascript:;',
+                          class: 'filters__selection',
+                          'data-dropdown': 'genre-filter-opts',
+                          'data-options': 'align:bottom' do
+                  %span
+                    Genre
+                %label
+                  Any
+                  %ul#genre-filter-opts.f-dropdown{'aria-hidden': 'true', 'data-dropdown-content': '', tabindex: '-1'}
+                    %li
+                      = link_to 'Any', 'javascript:;'
+                    %li
+                      = link_to 'Male', 'javascript:;'
+                    %li
+                      = link_to 'Female', 'javascript:;'
+                    %li
+                      = link_to 'Non Binary', 'javascript:;'
+              %div.small-4.columns
+                = link_to 'javascript:;',
+                          class: 'filters__selection',
+                          'data-dropdown': 'location-filter-opts',
+                          'data-options': 'align:bottom' do
+                  %span
+                    Location
+                %label
+                  Europe
+                  %ul#location-filter-opts.f-dropdown{'aria-hidden': 'true', 'data-dropdown-content': '', tabindex: '-1'}
+                    %li
+                      = link_to 'Any', 'javascript:;'
+                    %li
+                      = link_to 'Europe', 'javascript:;'
+                    %li
+                      = link_to 'USA', 'javascript:;'
+                    %li
+                      = link_to 'Jamaica', 'javascript:;'
+          %ol.block__content__albums
+            - @popular_albums.each do |album|
+              %li
+                = render 'shared/album_list_item', album: album
+
+
+    %div.small-12.medium-6.columns
+      %div.block
+        %div.block__header.block__header--dark-border
+          %h2
+            Trending Reviews
+      %div.albums__feed
+        - @album_feeds.each do |feed|
+          = render 'shared/album_feed_item', feed: feed
+    %div.small-12.medium-3.columns
+      %div.block
+        %div.block__header.block__header--dark-border
+          %h2
+            Featured Tags
+        %div.block__content
+          %div.tags
+            %ul
+              - @tags.each do |tag|
+                %li
+                  = link_to '#' do
+                    = tag
+      %div.block
+        %div.block__header.block__header--dark-border
+          %h2
+            Top Writers
+        %div.block__content
+          %div.users
+            - @top_writers.each do |top_writer|
+              %div.users__item
+                %div.row.collapse
+                  %div.small-3.columns
+                    = image_tag 'http://lorempixel.com/people/90/90/'
+                  %div.small-8.columns
+                    %div.users__item__info
+                      %h3
+                        = top_writer[:name]
+                      = link_to 'follow', '#', class: 'btn btn--rounded btn__outline btn__outline--grey'
+                  %div.small-1.column
+                    = link_to '#' do
+                      %i.icon.tall-close
+
+        = render 'layouts/footer'

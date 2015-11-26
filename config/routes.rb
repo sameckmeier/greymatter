@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
 
   #DEFAULT
-  root 'static_pages#home'
+  root 'static_pages#landing'
 
   #SESSIONS
   get "login" => "sessions#new"
@@ -18,6 +18,9 @@ Rails.application.routes.draw do
   #ALBUMS
   get "/artist/:artist_name/album/:album_name" , to: "albums#show", constraints: {artist_name: /[.]+/, album_name: /[.]+/}
 
+
+  #HOME PAGE
+  get '/home' => 'static_pages#home'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
