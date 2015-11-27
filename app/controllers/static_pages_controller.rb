@@ -14,6 +14,8 @@ class StaticPagesController < ApplicationController
   end
 
   def home
+    @invert_header = true
+    @is_user_logged_in = true
     @popular_albums = StaticPagesHelper::SAMPLE_DATA.popular_albums
     @album_feeds = StaticPagesHelper::SAMPLE_DATA.album_feeds
     @top_writers = StaticPagesHelper::SAMPLE_DATA.top_writers
