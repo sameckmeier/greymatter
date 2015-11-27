@@ -40,6 +40,21 @@ module StaticPagesHelper
       return top_writers
     end
 
+    def self.songs
+      songs = []
+      for n in 0...5
+        #top writers dummy content
+        songs.push(
+            {
+                name: Faker::Lorem.words(2).join(' '),
+                downloads: Faker::Number.number(10)
+            }
+        )
+      end
+      return songs
+    end
+
+
     def self.tags
       return ['Taylor Swift', 'Apple Music', 'Drake', 'Spotify', 'Diplo', 'Apple Music', 'Drake', 'Spotify', 'Diplo']
     end

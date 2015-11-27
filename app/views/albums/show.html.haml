@@ -35,9 +35,18 @@
           %div.block
             %div.block__header
               %h2
+                Top Songs
+            %div.block__content
+              %ol.block__content__lists.block__content__lists--songs
+                - @songs.each do |song|
+                  %li
+                    = render 'shared/song_list_item', song: song
+          %div.block
+            %div.block__header
+              %h2
                 Artist's Top Albums
             %div.block__content
-              %ol.block__content__albums
+              %ol.block__content__lists
                 - @popular_albums.each do |album|
                   %li
                     = render 'shared/album_list_item', album: album
