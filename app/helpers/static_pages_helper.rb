@@ -58,5 +58,19 @@ module StaticPagesHelper
     def self.tags
       return ['Taylor Swift', 'Apple Music', 'Drake', 'Spotify', 'Diplo', 'Apple Music', 'Drake', 'Spotify', 'Diplo']
     end
+
+    def self.questions_and_answer
+      qas = []
+      for n in 0...5
+        #top writers dummy content
+        qas.push(
+            {
+                question: Faker::Lorem.sentence(2, true),
+                answer: Faker::Lorem.paragraph
+            }
+        )
+      end
+      return qas
+    end
   end
 end

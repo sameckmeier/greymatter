@@ -22,11 +22,9 @@ class StaticPagesController < ApplicationController
 
   def help
     @invert_header = true
-    @popular_albums = StaticPagesHelper::SAMPLE_DATA.popular_albums
-    @album_feeds = StaticPagesHelper::SAMPLE_DATA.album_feeds
-    @top_writers = StaticPagesHelper::SAMPLE_DATA.top_writers
+    @is_user_logged_in = true
+    @qas = StaticPagesHelper::SAMPLE_DATA.questions_and_answer
     @tags = StaticPagesHelper::SAMPLE_DATA.tags
-    @songs = []
   end
 
   def about

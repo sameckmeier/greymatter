@@ -1,12 +1,25 @@
 @import "../base/colors"
 .search
+  &::after
+  content: ''
+  display: table
+  width: 100%
+  clear: both
+  &--white-bg
+    background-color: #ffffff
+  &--bordered
+    border: 1px solid #dddddd
   &__input
     &_group
+      padding: 0.75rem 0.5rem
+      height: 42px
       input[type=text]
+        width: 94%
+        float: left
+        padding: 0 0 0 0.25rem !important
         background: none
         border: none
         box-shadow: none
-        padding-top: 0.4rem !important
         -moz-box-shadow: none
         -webkit-box-shadow: none
       ::-webkit-input-placeholder
@@ -18,12 +31,17 @@
       ::-moz-placeholder
         color: $very-light-grey
       :-ms-input-placeholder
-        color: red
-
+        color: $very-light-grey
+      &--right
+        input[type=text]
+          float: right
+        button
+          float: left
       button
-        margin-top: 0.45rem
+        margin-top: 0.25rem
         padding: 0
         margin-bottom: 0
+        float: left
       &--light-grey
         background-color: #EFEFEF
         margin-top: 0.3rem

@@ -1,67 +1,43 @@
-%section.hero.hero--dark-grey.hero--album
+%section.hero.hero--dark-grey.hero--help
   %div.row
-    %div.small-12.medium-8.columns.medium-centered.end
-      %div.album__header
-        %div.row{'data-equalizer': true}
-          %div.small-12.medium-3.columns{'data-equalizer-watch': true}
-            = image_tag 'http://lorempixel.com/abstract/200/200'
-          %div.small-12.medium-9.columns{'data-equalizer-watch': true}
-            %div.block{'data-equalizer-watch': true}
-              %div.block__footer
-                %h1
-                  Run the jewels 2
-                  %p
-                    Run the jewels
-                %div.row
-                  %div.small-8.columns
-                    %div.row
-                      %div.small-12.medium-4.columns
-                        %div.album__header__meta
-                          %label
-                            Reviews
-                          %span
-                            24
-                      %div.small-12.medium-6.columns.end
-                        %div.album__header__meta
-                          %label
-                            Average rating
-                          %span
-                            8.6
+    %div.small-12.medium-6.columns.medium-centered.end
+      %div.text-center
+        %h1
+          Fresh Pressed Answers Coming in Hot
+        %div.row
+          %div.small-12.medium-6.columns.end.medium-centered
+            %div.search.search--white-bg
+              %div.search__input_group.search__input_group--right
+                %input{ type: :text, class: 'search__input_group--small', placeholder: 'SEARCH FAQ'}
+                %button.btn--neutral
+                  %i.icon.search
+              %div.clearfix
+
 %div.content.content--light-grey
   %div.row
     %div.small-12.medium-8.columns.end.medium-centered
       %div.row
         %div.small-12.medium-4.columns
           %div.block
-            %div.block__header
+            %div.block__header.block__header--dark-border
               %h2
-                Top Songs
+                Help Topics
             %div.block__content
-              %ol.block__content__lists.block__content__lists--songs
-                - @songs.each do |song|
-                  %li
-                    = render 'shared/song_list_item', song: song
-          %div.block
-            %div.block__header
-              %h2
-                Artist's Top Albums
-            %div.block__content
-              %ol.block__content__lists
-                - @popular_albums.each do |album|
-                  %li
-                    = render 'shared/album_list_item', album: album
-            = render 'layouts/footer'
+              %div.tags
+                %ul
+                  - @tags.each do |tag|
+                    %li
+                      = link_to '#' do
+                        = tag
+          = render 'layouts/footer'
         %div.small-12.medium-8.columns
           %div.block
-            %div.block__header
-              %div.block__header__tabs.tabs
-                %ul.split
-                  %li.active{'data-content': 'trending-reviews'}
-                    %h3
-                      Trending Reviews
-                  %li{'data-content': 'ymal-map'}
-                    %h3
-                      YMAL Map
-          %div.albums__feed
-            - @album_feeds.each do |feed|
-              = render 'shared/album_feed_item', feed: feed
+            %div.block__header.block__header--dark-border
+              %h2
+                Faq
+          %div.help__qa
+            - @qas.each do |qa|
+              %h2
+                = "#{qa[:question]}?"
+              %p
+                = qa[:answer]
