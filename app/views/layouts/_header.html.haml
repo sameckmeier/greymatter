@@ -22,6 +22,8 @@
             %li.has-notifications
               3
         - else
-          = link_to 'Login', '#'
+          = link_to 'Login', 'javascript:;', {'data-reveal-id': 'login_register_modal'}
           = '/'
-          = link_to 'Register', '#'
+          = link_to 'Register', 'javascript:;', {'data-reveal-id': 'login_register_modal'}
+
+= render 'shared/modals/login_register'

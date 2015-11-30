@@ -1,5 +1,3 @@
-@import "colors"
-
 @font-face
   font-family: "Avenir Next"
   src: url(AvenirNext-Regular.ttf) format("truetype"), url(AvenirNext-Italic.ttf) format("truetype")
@@ -50,6 +48,17 @@
       font-size: 36px !important
       font-weight: bold
 
+@mixin box-shadow($value)
+  box-shadow: $value
+  -moz-box-shadow: $value
+  -webkit-box-shadow: $value
+  -o-box-shadow: $value
+
+@mixin border-radius($value)
+  border-radius: $value
+  -moz-border-radius: $value
+  -webkit-border-radius: $value
+
 html, body
   font-size: $default-font-size
   color: $default-font-color
@@ -84,6 +93,12 @@ ol
       font-weight: bold
       padding: 3px 8px 3px 0
       border-radius: 3px
+.row
+  max-width: 90rem
+
+.content
+  &--light-grey
+    background-color: #f4f4f4
 
 .upcase
   text-transform: uppercase

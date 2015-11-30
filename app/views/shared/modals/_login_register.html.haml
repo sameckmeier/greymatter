@@ -1,0 +1,17 @@
+%div.reveal-modal.modal__login-reg#login_register_modal{'data-reveal': true}
+  %div.block
+    %div.block__header
+      %div.block__header__tabs.tabs
+        %ul.split
+          %li.active{'data-content': 'login-form'}
+            %h3
+              Login
+          %li{'data-content': 'registration-form'}
+            %h3
+              Register
+    %div.block__content
+      %form
+        %input{type: 'text', class: 'form__input--transparent', placeholder: 'Username'}
+        %input{type: 'password', class: 'form__input--transparent', placeholder: 'Password'}
+        %button.btn.btn--dark
+          Login
