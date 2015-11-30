@@ -1,8 +1,8 @@
 %div.reveal-modal.modal__login-reg#login_register_modal{'data-reveal': true}
-  %div.block
+  %div.block#login-reg-block
     %div.block__header
       %div.block__header__tabs.tabs
-        %ul.split
+        %ul.split.tab-opts
           %li.active{'data-content': 'login-form'}
             %h3
               Login
@@ -10,8 +10,28 @@
             %h3
               Register
     %div.block__content
-      %form
-        %input{type: 'text', class: 'form__input--transparent', placeholder: 'Username'}
-        %input{type: 'password', class: 'form__input--transparent', placeholder: 'Password'}
-        %button.btn.btn--dark
-          Login
+      %div.tab__content.active#login-form
+        %form
+          %input{type: 'text', class: 'form__input--transparent', placeholder: 'Username'}
+          %input{type: 'password', class: 'form__input--transparent', placeholder: 'Password'}
+          %button.btn.btn--dark
+            Login
+      %div.tab__content#registration-form
+        %form
+          %input{type: 'text', name: 'full_name', class: 'form__input--transparent', placeholder: 'Full Name'}
+          %input{type: 'password', name: 'password', class: 'form__input--transparent', placeholder: 'Password'}
+          %input{type: 'password', name: 'confirm_password', class: 'form__input--transparent', placeholder: 'Retype Password'}
+          %input{type: 'email', name: 'email', class: 'form__input--transparent', placeholder: 'Email'}
+          %input{type: 'text', name: 'location', class: 'form__input--transparent', placeholder: 'Location'}
+          %select{name: 'location', class: 'form__input__select'}
+            %option{val: ''}
+              BIRTH YEAR
+            - for n in (1900...Time.now.year+1 - 13).reverse_each do #13yo as temporary age limit
+              %option{val: n}
+                = n
+          %hr
+          %h3
+            %div.text-center
+              Register With
+          %button.btn.btn--dark
+            register
