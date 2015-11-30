@@ -51,11 +51,11 @@
         %div.block__header
           %div.block__header__tabs.tabs
             %ul.split
-              %li.active{'data-content': 'popular-albums'}
+              %li.active{'data-content'=> 'popular-albums'}
                 %h3
                   Popular
                   %sup *
-              %li{'data-content': 'niche-albums'}
+              %li{'data-content'=> 'niche-albums'}
                 %h3
                   Niche
                   %sup *
@@ -65,13 +65,13 @@
               %div.small-4.columns
                 = link_to 'javascript:;',
                           class: 'filters__selection',
-                          'data-dropdown': 'scope-filter-opts',
-                          'data-options': 'align:bottom' do
+                          'data-dropdown'=> 'scope-filter-opts',
+                          'data-options'=> 'align:bottom' do
                   %span
                     Scope
                 %label
                   Month
-                %ul#scope-filter-opts.f-dropdown{'aria-hidden': 'true', 'data-dropdown-content': '', tabindex: '-1'}
+                %ul#scope-filter-opts.f-dropdown{'aria-hidden'=> 'true', 'data-dropdown-content'=> '', tabindex: '-1'}
                   %li
                     = link_to 'Day', 'javascript:;'
                   %li
@@ -83,13 +83,13 @@
               %div.small-4.columns
                 = link_to 'javascript:;',
                           class: 'filters__selection',
-                          'data-dropdown': 'genre-filter-opts',
-                          'data-options': 'align:bottom' do
+                          'data-dropdown'=> 'genre-filter-opts',
+                          'data-options'=> 'align:bottom' do
                   %span
                     Genre
                 %label
                   Any
-                  %ul#genre-filter-opts.f-dropdown{'aria-hidden': 'true', 'data-dropdown-content': '', tabindex: '-1'}
+                  %ul#genre-filter-opts.f-dropdown{'aria-hidden'=> 'true', 'data-dropdown-content'=> '', tabindex: '-1'}
                     %li
                       = link_to 'Any', 'javascript:;'
                     %li
@@ -101,13 +101,13 @@
               %div.small-4.columns
                 = link_to 'javascript:;',
                           class: 'filters__selection',
-                          'data-dropdown': 'location-filter-opts',
-                          'data-options': 'align:bottom' do
+                          'data-dropdown'=> 'location-filter-opts',
+                          'data-options'=> 'align:bottom' do
                   %span
                     Location
                 %label
                   Europe
-                  %ul#location-filter-opts.f-dropdown{'aria-hidden': 'true', 'data-dropdown-content': '', tabindex: '-1'}
+                  %ul#location-filter-opts.f-dropdown{'aria-hidden'=> 'true', 'data-dropdown-content'=> '', tabindex: '-1'}
                     %li
                       = link_to 'Any', 'javascript:;'
                     %li
