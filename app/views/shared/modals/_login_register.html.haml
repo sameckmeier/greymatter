@@ -1,12 +1,12 @@
-%div.reveal-modal.modal__login-reg#login_register_modal{'data-reveal': true}
+%div.reveal-modal.modal__login-reg#login_register_modal{'data-reveal'=> true}
   %div.block#login-reg-block
     %div.block__header
       %div.block__header__tabs.tabs
         %ul.split.tab-opts
-          %li.active{'data-content': 'login-form'}
+          %li.active{'data-content'=> 'login-form'}
             %h3
               Login
-          %li{'data-content': 'registration-form'}
+          %li{'data-content'=> 'registration-form'}
             %h3
               Register
     %div.block__content
@@ -29,9 +29,13 @@
             - for n in (1900...Time.now.year+1 - 13).reverse_each do #13yo as temporary age limit
               %option{val: n}
                 = n
+          %button.btn.btn--dark
+            register
           %hr
           %h3
             %div.text-center
               Register With
-          %button.btn.btn--dark
-            register
+              %button.btn.btn--fb
+                Facebook
+              %button.btn.btn--gplus
+                Google
