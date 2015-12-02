@@ -33,7 +33,7 @@ $(function(){
         }else{ //else chars >= 3
             //make ajax requests and display results
             $.ajax({
-                url: 'typeahead-search/'+entered_val,
+                url: '/typeahead-search/'+entered_val,
                 method: 'get'
             }).done(function(data) {
                 if(data.status == 'OK'){
