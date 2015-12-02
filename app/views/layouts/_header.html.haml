@@ -7,10 +7,12 @@
     %div.small-12.medium-4.columns.text-center
       %div.search.search--bordered
         %div.search__input_group
-          %input{ type: :text, class: 'search__input_group--small', placeholder: 'SEARCH GREY MATTER'}
+          %input{type: :text, name:'search', class: 'search__typeahead search__input_group--small typeahead', placeholder: 'SEARCH GREY MATTER'}
           %button.btn--neutral
             %i.icon.search
           %div.clearfix
+        %div.search__typeahead__results#search__typeahead__results
+          fd
     %div.small-12.medium-4.columns.text-right
       %div.header__menu
         - if @is_user_logged_in

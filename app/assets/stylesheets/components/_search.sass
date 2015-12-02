@@ -1,9 +1,22 @@
 .search
+  position: relative
   &::after
   content: ''
   display: table
   width: 100%
   clear: both
+  &__typeahead
+    &__results
+      position: absolute
+      top: 52px
+      background-color: #ffffff
+      padding: 1.25rem
+      width: 40rem
+      max-width: 40rem
+      left: -6rem
+      display: none
+      text-align: left
+      z-index: 1
   &--white-bg
     background-color: #ffffff
   &--bordered

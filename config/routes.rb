@@ -26,6 +26,9 @@ Rails.application.routes.draw do
   #HELP PAGE
   get '/help' => 'static_pages#help'
 
+  #ASYNC REQUESTS
+  get '/typeahead-search/:q' => 'async#typeahead_search'
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

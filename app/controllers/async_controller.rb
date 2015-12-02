@@ -1,0 +1,17 @@
+class AsyncController < ApplicationController
+  def typeahead_search
+    @writers = AsyncHelper::SAMPLE_DATA.writers
+    @artists = AsyncHelper::SAMPLE_DATA.artists
+    @albums = AsyncHelper::SAMPLE_DATA.albums
+    @results = {
+        writers: @writers,
+        artists: @artists,
+        albums: @albums
+    }
+    @rendered_results = view_context.render 'async/search_results',
+                                   locals: {
+                                       results: @results
+                                   }
+    render json: {results: @rendered_results, status: 'OK'}
+  end
+end
