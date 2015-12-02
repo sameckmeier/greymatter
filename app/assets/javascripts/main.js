@@ -28,7 +28,9 @@ $(function(){
         typeahead_elem.slideDown();
         //check amount of chars entered
         //if chars entered is < 3
-        if(entered_val.length < 3){
+        if(entered_val.length == 0){
+            typeahead_elem.slideUp();
+        }else if(entered_val.length > 0 && entered_val.length < 3){
             typeahead_elem.html('keep typing to search...')
         }else{ //else chars >= 3
             //make ajax requests and display results
@@ -44,5 +46,10 @@ $(function(){
             });
         }
 
+    });
+
+    //close any typeahead open
+    $('body').on('click', function(){
+        $('#search__typeahead__results').slideUp();
     });
 });
