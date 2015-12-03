@@ -23,7 +23,8 @@
               = link_to 'User name', 'javascript:;',{class: 'trigger-modal-bg', id: 'current-user-dropdown'}
             %div.users__dropdown
             %li.has-notifications
-              3
+              = link_to '3', 'javascript:;',{class: 'trigger-modal-bg', id: 'current-user-notifications'}
+            %div.users__notification
         - else
           = link_to 'Login / Register', 'javascript:;', {'data-reveal-id'=> 'login_register_modal'}
 

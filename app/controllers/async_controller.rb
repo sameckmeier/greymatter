@@ -19,4 +19,18 @@ class AsyncController < ApplicationController
     @rendered_content = view_context.render 'async/user_drop_down'
     render json: {content: @rendered_content, status: 'OK'}
   end
+
+  def current_user_notifications
+    @notifications = [
+        'People you follow wrote some reviews',
+        'Your friend likes an album',
+        'People you follow wrote some reviews',
+        'Your friend likes an album'
+    ]
+    @rendered_content = view_context.render 'async/user_notifications',
+                                            locals: {
+                                                notifications: @notifications
+                                            }
+    render json: {content: @rendered_content, status: 'OK'}
+  end
 end

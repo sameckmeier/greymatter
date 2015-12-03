@@ -62,6 +62,20 @@ $(function(){
         });
     });
 
+    /**** user dropdown ****/
+    $('#current-user-notifications').on('touchstart click', function(){
+        var dropdown_elem = $('.users__notification');
+        $.ajax({
+            url: '/current-user-notifications',
+            method: 'get'
+        }).done(function(data) {
+            if(data.status == 'OK'){
+                dropdown_elem.html(data.content);
+                dropdown_elem.slideDown();
+            }
+        });
+    });
+
     //close any typeahead open
     $('body').on('touchstart click', function(){
         $('#search__typeahead__results').slideUp();
@@ -76,6 +90,7 @@ $(function(){
     $('body').on("touchstart click",".reveal-modal-bg", function(){
         remove_dim();
         $('.users__dropdown').slideUp();
+        $('.users__notification').slideUp();
     });
 
     function remove_dim(){
