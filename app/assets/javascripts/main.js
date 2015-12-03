@@ -2,7 +2,7 @@ $(function(){
     $(document).foundation();
 
     /**** tabs *****/
-    $('.tabs li').on('click', function(){
+    $('.tabs li').on('touchstart click', function(){
         var content_to_show = $(this).data('content');
 
         //get ID from wrapping block
@@ -49,7 +49,7 @@ $(function(){
     });
 
     /**** user dropdown ****/
-    $('#current-user-dropdown').on('click', function(){
+    $('#current-user-dropdown').on('touchstart click', function(){
         var dropdown_elem = $('.users__dropdown');
         $.ajax({
             url: '/current-user-dropdown',
@@ -63,17 +63,17 @@ $(function(){
     });
 
     //close any typeahead open
-    $('body').on('click', function(){
+    $('body').on('touchstart click', function(){
         $('#search__typeahead__results').slideUp();
     });
 
     //dim background
-    $('.trigger-modal-bg').on('click', function(){
+    $('.trigger-modal-bg').on('touchstart click', function(){
         $('body').append('<div class="reveal-modal-bg" style="display: block;"></div>');
     });
 
     //remove dim
-    $('body').on("click",".reveal-modal-bg", function(){
+    $('body').on("touchstart click",".reveal-modal-bg", function(){
         remove_dim();
         $('.users__dropdown').slideUp();
     });
