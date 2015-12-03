@@ -1,0 +1,23 @@
+%div.row
+  %div.block.text-left
+    %div.block__header.block__header--none
+      %div.row.collapse
+        %div.small-12.medium-4.columns
+          = image_tag 'sample_artist_img_med.jpg'
+        %div.small-12.medium-8.columns
+          %div
+            %h2
+              Jess Smith
+            %div.users__block__info
+              %div.users__block__info__title
+                jess@gmail.com
+            %div
+              = link_to 'View Profile', '#',{class: 'btn btn--dark_red'}
+        %div.clearfix
+        %hr
+          %div.users__dropdown__profile__stats
+            Profile Stats
+            %span.dotter
+            %span.dark-red-texts
+              Coming Soon
+          = link_to 'Logout', '#'

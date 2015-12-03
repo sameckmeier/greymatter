@@ -28,6 +28,8 @@ Rails.application.routes.draw do
 
   #ASYNC REQUESTS
   get '/typeahead-search/:q' => 'async#typeahead_search'
+  get '/current-user-dropdown' => 'async#current_user_menu'
+
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

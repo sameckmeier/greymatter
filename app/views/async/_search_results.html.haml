@@ -18,7 +18,7 @@
                 = writer[:handler]
                 %span.dotter
                 = writer[:location]
-            %div.small-12.medium-3.columns
+            %div.small-12.medium-3.columns.text-right
               = link_to 'follow', 'javascript:;', class: 'btn btn--rounded btn__outline btn__outline--grey'
 - if @artists
   %div.block
@@ -38,7 +38,7 @@
                 = artist[:handler]
                 %span.dotter
                 = artist[:location]
-            %div.small-12.medium-3.columns
+            %div.small-12.medium-3.columns.text-right
               = link_to 'follow', 'javascript:;', class: 'btn btn--rounded btn__outline btn__outline--grey'
 
 - if @albums
@@ -63,5 +63,5 @@
                 = "#{album[:songs]} songs"
                 %span.dotter
                 = "#{Time.at(album[:duration]).strftime('%M')} min"
-            %div.small-12.medium-3.columns
+            %div.small-12.medium-3.columns.text-right
               = link_to 'Listen', 'javascript:;', class: 'btn btn--rounded btn__outline btn__outline--grey'

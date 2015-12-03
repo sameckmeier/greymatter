@@ -48,8 +48,37 @@ $(function(){
 
     });
 
+    /**** user dropdown ****/
+    $('#current-user-dropdown').on('click', function(){
+        var dropdown_elem = $('.users__dropdown');
+        $.ajax({
+            url: '/current-user-dropdown',
+            method: 'get'
+        }).done(function(data) {
+            if(data.status == 'OK'){
+                dropdown_elem.html(data.content);
+                dropdown_elem.slideDown();
+            }
+        });
+    });
+
     //close any typeahead open
     $('body').on('click', function(){
         $('#search__typeahead__results').slideUp();
     });
+
+    //dim background
+    $('.trigger-modal-bg').on('click', function(){
+        $('body').append('<div class="reveal-modal-bg" style="display: block;"></div>');
+    });
+
+    //remove dim
+    $('body').on("click",".reveal-modal-bg", function(){
+        remove_dim();
+        $('.users__dropdown').slideUp();
+    });
+
+    function remove_dim(){
+        return $('.reveal-modal-bg').hide();
+    }
 });

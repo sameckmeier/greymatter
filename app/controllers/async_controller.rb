@@ -14,4 +14,9 @@ class AsyncController < ApplicationController
                                    }
     render json: {results: @rendered_results, status: 'OK'}
   end
+
+  def current_user_menu
+    @rendered_content = view_context.render 'async/user_drop_down'
+    render json: {content: @rendered_content, status: 'OK'}
+  end
 end

@@ -20,7 +20,8 @@
             %li
               = link_to 'Compose Review', '#'
             %li
-              = link_to 'User name', '#'
+              = link_to 'User name', 'javascript:;',{class: 'trigger-modal-bg', id: 'current-user-dropdown'}
+            %div.users__dropdown
             %li.has-notifications
               3
         - else
