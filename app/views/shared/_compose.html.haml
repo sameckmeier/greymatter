@@ -1,0 +1,36 @@
+%div.reveal-modal#compose_modal{'data-reveal'=> true}
+  %div.compose__modal
+    %div.row.collapse
+      %div.small-1.columns
+        = image_tag 'http://lorempixel.com/abstract/90/90'
+      %div.small-11.columns
+        %div.apply-padding-left
+          album name
+    %div.row.collapse
+      %div.small-1.columns
+        = image_tag 'http://lorempixel.com/abstract/90/90'
+      %div.small-11.columns
+        %div.apply-padding-left
+          lorem ipsum....
+    %div.row.collapse
+      %div.small-1.columns
+        %div.genbox
+          %div.genbox__item
+            YMAL
+      %div.small-11.columns
+        %div.apply-padding-left
+          add tags
+    %div.row.collapse
+      %div.small-1.columns
+        %div.rating
+          %div.rating__item
+            8.0
+      %div.small-11.columns
+        %div.apply-padding-left
+          %div.rating__lists
+            %ul
+              - for n in 1...11
+                %li
+                  %div.rating
+                    %div.rating__item.can-rate{'data-rating': n}
+                      = n < 10 ? number_with_precision(n, precision: 1) : n
