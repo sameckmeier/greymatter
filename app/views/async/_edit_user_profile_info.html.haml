@@ -29,3 +29,10 @@
 %div.users__profile__info__linked_accounts
   %label
     Link your accounts
+  %ul.small-block-grid-2
+    %li
+      = link_to 'Unlink Facebook', 'javascript:;',{class: 'btn btn--fb btn__outline btn--rounded link-unlink', 'data-social-link': 'facebook'}
+    %li
+      = link_to 'Tumblr', 'javascript:;',{class: 'btn btn--tumblr btn--rounded link-unlink', 'data-social-link': 'tumblr'}
+    %li
+      = link_to 'Twitter', 'javascript:;',{class: 'btn btn--twitter btn--rounded link-unlink', 'data-social-link': 'twitter'}

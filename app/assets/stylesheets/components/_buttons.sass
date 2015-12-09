@@ -4,8 +4,25 @@
   text-transform: uppercase
   font-weight: 200
   font-size: 12px
+  display: inline-block
+  text-align: center
   &:focus
     outline: none
+  &--fb
+    background: #3B5998
+    @include border-radius(3px)
+    color: #ffffff
+  &--gplus
+    background: #D50F25
+    @include border-radius(3px)
+  &--tumblr
+    background: #35465D
+    @include border-radius(3px)
+    color: #ffffff
+  &--twitter
+    background: #55ACEE
+    @include border-radius(3px)
+    color: #ffffff
   h3
     font-size: 12px
     text-transform: uppercase
@@ -20,7 +37,9 @@
     &:hover
       background-color: transparent
   &__outline
-    background-color: transparent
+    background-color: transparent !important
+    border: 1px solid #E0E0E0
+    color: #222222 !important
     &--white
       border: 1px solid #E0E0E0
     &--grey
@@ -37,11 +56,3 @@
     background-color: #676767
     color: #ffffff
     @include border-radius(3px)
-
-  &--fb
-    background: #3B5998 !important
-    @include border-radius(3px)
-  &--gplus
-    background: #D50F25 !important
-    @include border-radius(3px)
-
