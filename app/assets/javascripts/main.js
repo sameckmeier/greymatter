@@ -117,6 +117,13 @@ $(function(){
         }
     });
 
+    /*** tags input ***/
+    $('.tags__input').tagEditor({placeholder: 'Separate each tags by a comma'});
+
+    $('.add_tags').on('touchstart click', function(){
+        $('.tag-editor').slideToggle();
+    });
+
     //close any typeahead open
     $('body').on('touchstart click', function(){
         $('#search__typeahead__results').slideUp();

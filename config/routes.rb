@@ -3,6 +3,9 @@ Rails.application.routes.draw do
   #DEFAULT
   root 'static_pages#home'
 
+  #landing page
+  get 'landing' => 'static_pages#landing'
+
   #SESSIONS
   get "login" => "sessions#new"
   post "login" => "sessions#create"

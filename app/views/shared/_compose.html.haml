@@ -19,7 +19,9 @@
             YMAL
       %div.small-11.columns
         %div.apply-padding-left
-          add tags
+          = link_to 'add tags', 'javascript:;',{class: 'btn btn--add-tags btn--rounded add_tags'}
+          %div
+            %input.tags__input{type: 'text'}
     %div.row.collapse
       %div.small-1.columns
         %div.rating

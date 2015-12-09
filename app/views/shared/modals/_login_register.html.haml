@@ -14,7 +14,7 @@
         %form
           %input{type: 'text', class: 'form__input form__input--transparent', placeholder: 'Username'}
           %input{type: 'password', class: 'form__input form__input--transparent', placeholder: 'Password'}
-          %button.btn.btn--dark
+          %button.btn.btn--dark.btn--rounded
             Login
       %div.tab__content#registration-form
         %form
@@ -29,12 +29,12 @@
             - for n in (1900...Time.now.year+1 - 13).reverse_each do #13yo as temporary age limit
               %option{val: n}
                 = n
-          %button.btn.btn--dark_red
+          %button.btn.btn--dark_red.btn--rounded
             register
           %hr
           %h3.text-center.upcase
             Register With
-          %button.btn.btn--fb
+          %button.btn.btn--fb.btn--rounded
             Facebook
-          %button.btn.btn--gplus
+          %button.btn.btn--gplus.btn--rounded
             Google

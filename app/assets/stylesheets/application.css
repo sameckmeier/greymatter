@@ -10,5 +10,6 @@
  *
  *= require foundation
  *= require main
+ *= require jquery.tag-editor
  * require_self
  */
