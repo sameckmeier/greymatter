@@ -7,7 +7,7 @@
       %div.small-12.medium-8.columns
         %div.albums__feed__item__content__inner
           %h4
-            = feed[:user]
+            = link_to feed[:user], user_profile_path(profile_id: feed[:user])
             %span (Guru)
           %div.albums__feed__item__content__inner__time_ago
             = "#{time_ago_in_words(feed[:time_ago])} ago"
@@ -29,10 +29,9 @@
       %div.small-12.medium-11.columns
         %div.albums__feed__item__content__inner
           %h2.upcase
-            = link_to album_path(artist_name: feed[:artist], album_name: feed[:album]) do
-              = feed[:album]
-              %span
-                = feed[:artist]
+            = link_to feed[:album], album_path(artist_name: feed[:artist], album_name: feed[:album])
+            %span
+              = link_to feed[:artist], artist_path(name: feed[:artist])
           %p
             = feed[:content]
 

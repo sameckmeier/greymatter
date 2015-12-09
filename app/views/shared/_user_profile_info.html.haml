@@ -6,7 +6,7 @@
       %div.small-12.medium-8.columns
         %div.apply-padding-left
           %h2
-            Jess Smith
+            = params[:profile_id] ? params[:profile_id] : 'Jess Smith'
           %div.users__block__info
             %div.users__block__info__title.bold
               Guru

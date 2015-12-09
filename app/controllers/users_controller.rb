@@ -9,8 +9,15 @@ class UsersController < ApplicationController
   end
 
   def show
-  	@user = User.find(params[:id])
-    @microposts = @user.microposts.paginate(page: params[:params])
+  	#@user = User.find(params[:id])
+    #@microposts = @user.microposts.paginate(page: params[:params])
+    @invert_header = true
+    @is_user_logged_in = true
+    @popular_albums = StaticPagesHelper::SAMPLE_DATA.popular_albums
+    @album_feeds = StaticPagesHelper::SAMPLE_DATA.album_feeds
+    @top_writers = StaticPagesHelper::SAMPLE_DATA.top_writers
+    @tags = StaticPagesHelper::SAMPLE_DATA.tags
+    @viewing_own_profile = [true,false].sample
   end
 
   def new

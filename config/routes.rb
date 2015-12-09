@@ -14,7 +14,10 @@ Rails.application.routes.draw do
 
   #ARTISTS
   #get "/artist/:name" , to: "artists#show", constraints: {name: /[.]+/}
-  get 'artist/:name' => 'artists#show'
+  get 'artist/:name' => 'artists#show', as: :artist
+
+  #User profile
+  get 'u/:profile_id' => 'users#show', as: :user_profile
 
   #ALBUMS
   #get "/artist/:artist_name/album/:album_name" , to: "albums#show", constraints: {artist_name: /[.]+/, album_name: /[.]+/}

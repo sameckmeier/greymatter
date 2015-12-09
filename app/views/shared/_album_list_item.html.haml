@@ -6,4 +6,4 @@
       %h4
         = link_to album[:name], album_path(artist_name: album[:artist], album_name: album[:name])
       %div.italize
-        = album[:artist]
+        = link_to album[:artist], artist_path(name: album[:artist])
