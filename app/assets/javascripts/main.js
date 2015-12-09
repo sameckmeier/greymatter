@@ -76,6 +76,47 @@ $(function(){
         });
     });
 
+    /*** edit user profile ***/
+    $('#edit-user-profile').on('click', function(){
+        var elem_to_mod = $('.users__profile__info__wrapper');
+        $(this).removeClass('trigger-modal-bg');
+
+        if($(this).hasClass('save-current-profile-changes')){
+            $(this).removeClass('save-current-profile-changes');
+            $(this).closest('.users__profile__edit').css({'z-index': '1'});
+            $('.users__profile__info__wrapper').css({'z-index': '1', 'padding': '0', 'width': 'auto'});
+            $(this).text('Edit Profile');
+
+            //make ajax save changes and load up to read only content
+            $.ajax({
+                url: '/save-current-user-profile-info',
+                method: 'post'
+            }).done(function(data) {
+                if(data.status == 'OK'){
+                    elem_to_mod.html(data.content);
+                }
+            });
+
+            remove_dim();
+        }else{
+            //Add class and toggle button texts
+            $(this).toggleClass('save-current-profile-changes','');
+            $(this).closest('.users__profile__edit').css({'z-index': '99999'});
+            $('.users__profile__info__wrapper').css({'z-index': '99999', 'padding': '0.75rem', 'width': '115%'});
+            $(this).text('Save Changes');
+
+            //make ajax call to load up to date edits
+            $.ajax({
+                url: '/edit-current-user-profile-info',
+                method: 'get'
+            }).done(function(data) {
+                if(data.status == 'OK'){
+                    elem_to_mod.html(data.content);
+                }
+            });
+        }
+    });
+
     //close any typeahead open
     $('body').on('touchstart click', function(){
         $('#search__typeahead__results').slideUp();
@@ -83,7 +124,7 @@ $(function(){
 
     //dim background
     $('.trigger-modal-bg').on('touchstart click', function(){
-        $('body').append('<div class="reveal-modal-bg" style="display: block;"></div>');
+        $('.reveal-modal-bg').show();
     });
 
     //remove dim
@@ -94,6 +135,6 @@ $(function(){
     });
 
     function remove_dim(){
-        return $('.reveal-modal-bg').hide();
+        return $('.reveal-modal-bg').fadeOut();
     }
 });

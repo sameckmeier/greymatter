@@ -18,7 +18,7 @@
         - if @is_user_logged_in
           %ul.right
             %li
-              = link_to 'Compose Review', 'javascript:;', {'data-reveal-id'=> 'compose_modal'}
+              = link_to 'Compose Review', 'javascript:;', {class: 'trigger-modal-bg', 'data-reveal-id'=> 'compose_modal'}
             %li
               = link_to 'User name', 'javascript:;',{class: 'trigger-modal-bg', id: 'current-user-dropdown'}
             %div.users__dropdown
@@ -26,7 +26,7 @@
               = link_to '3', 'javascript:;',{class: 'trigger-modal-bg', id: 'current-user-notifications'}
             %div.users__notification
         - else
-          = link_to 'Login / Register', 'javascript:;', {'data-reveal-id'=> 'login_register_modal'}
+          = link_to 'Login / Register', 'javascript:;', {class: 'trigger-modal-bg', 'data-reveal-id'=> 'login_register_modal'}
 
 = render 'shared/modals/login_register'
 = render 'shared/compose'

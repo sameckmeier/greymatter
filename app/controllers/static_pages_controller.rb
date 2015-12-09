@@ -20,6 +20,7 @@ class StaticPagesController < ApplicationController
     @album_feeds = StaticPagesHelper::SAMPLE_DATA.album_feeds
     @top_writers = StaticPagesHelper::SAMPLE_DATA.top_writers
     @tags = StaticPagesHelper::SAMPLE_DATA.tags
+    @viewing_own_profile = [true,false].sample
   end
 
   def help

@@ -30,6 +30,8 @@ Rails.application.routes.draw do
   get '/typeahead-search/:q' => 'async#typeahead_search'
   get '/current-user-dropdown' => 'async#current_user_menu'
   get '/current-user-notifications' => 'async#current_user_notifications'
+  get '/edit-current-user-profile-info' => 'async#edit_current_user_info'
+  post '/save-current-user-profile-info' => 'async#save_current_user_info'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

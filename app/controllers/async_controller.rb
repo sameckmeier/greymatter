@@ -33,4 +33,14 @@ class AsyncController < ApplicationController
                                             }
     render json: {content: @rendered_content, status: 'OK'}
   end
+
+  def edit_current_user_info
+    @rendered_content = view_context.render 'async/edit_user_profile_info'
+    render json: {content: @rendered_content, status: 'OK'}
+  end
+
+  def save_current_user_info
+    @rendered_content = view_context.render 'shared/user_profile_info'
+    render json: {content: @rendered_content, status: 'OK'}
+  end
 end
