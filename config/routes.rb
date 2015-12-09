@@ -18,7 +18,7 @@ Rails.application.routes.draw do
 
   #ALBUMS
   #get "/artist/:artist_name/album/:album_name" , to: "albums#show", constraints: {artist_name: /[.]+/, album_name: /[.]+/}
-  get 'artist/:artist_name/album/:album_name' => 'albums#show'
+  get 'artist/:artist_name/album/:album_name' => 'albums#show', as: :album
 
   #HOME PAGE
   get '/home' => 'static_pages#home'

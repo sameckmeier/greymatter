@@ -29,9 +29,10 @@
       %div.small-12.medium-11.columns
         %div.albums__feed__item__content__inner
           %h2.upcase
-            = feed[:album]
-            %span
-              = feed[:artist]
+            = link_to album_path(artist_name: feed[:artist], album_name: feed[:album]) do
+              = feed[:album]
+              %span
+                = feed[:artist]
           %p
             = feed[:content]
 

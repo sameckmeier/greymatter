@@ -4,6 +4,6 @@
   %div.small-9.columns
     %div.block__content__lists__item
       %h4
-        = album[:name]
+        = link_to album[:name], album_path(artist_name: album[:artist], album_name: album[:name])
       %div.italize
         = album[:artist]

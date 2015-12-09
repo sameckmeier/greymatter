@@ -54,7 +54,7 @@
               = image_tag 'http://lorempixel.com/abstract/90/90'
             %div.small-12.medium-7.columns
               %h3
-                = album[:name]
+                = link_to album[:name], album_path(artist_name: album[:artist], album_name: album[:name])
               %h4
                 = album[:artist]
               %div.search__results__item__meta
