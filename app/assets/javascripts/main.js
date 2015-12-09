@@ -124,6 +124,32 @@ $(function(){
         $('.tag-editor').slideToggle();
     });
 
+    /*** follow/unfollow user ***/
+    $('.follow-unfollow').on('touchstart click', function(){
+        //get user id
+        var uid = $(this).data('uid');
+        //make ajax call to run checks and update user
+
+        //update button
+        if($(this).hasClass('is_following')){
+            $(this).text('Follow');
+            $(this).removeClass('is_following');
+        }else{
+            $(this).text('Following');
+            $(this).addClass('is_following');
+        }
+    });
+
+    /*** remove user item ***/
+    $('.remove-user-list').on('touchstart click', function(){
+        //get user id
+        var uid = $(this).data('uid');
+        //make ajax call to update DB so as to mark the user do not want to see this feed again
+
+        //remove/hide element
+        $('#'+uid).fadeOut();
+    });
+
     //close any typeahead open
     $('body').on('touchstart click', function(){
         $('#search__typeahead__results').slideUp();

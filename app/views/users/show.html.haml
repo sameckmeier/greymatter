@@ -84,19 +84,8 @@
         %div.block__content
           %div.users
             - @top_writers.each do |top_writer|
-              %div.users__item
-                %div.row.collapse
-                  %div.small-3.columns
-                    = image_tag 'http://lorempixel.com/people/90/90/'
-                  %div.small-8.columns
-                    %div.users__item__info
-                      %h3
-                        = link_to top_writer[:name], user_profile_path(profile_id: top_writer[:name])
-                      = link_to 'follow', '#', class: 'btn btn--rounded btn__outline btn__outline--grey'
-                  %div.small-1.column
-                    = link_to '#' do
-                      %i.icon.tall-close
-
+            - temp_rand = Faker::Number.number(6)
+              = render 'shared/user_list_item', locals:{user: top_writer, temp_rand: temp_rand}
       %div.block
         %div.block__header.block__header--dark-border
           %h2
@@ -106,17 +95,7 @@
         %div.block__content
           %div.users
             - @top_writers.each do |top_writer|
-              %div.users__item
-                %div.row.collapse
-                  %div.small-3.columns
-                    = image_tag 'http://lorempixel.com/people/90/90/'
-                  %div.small-8.columns
-                    %div.users__item__info
-                      %h3
-                        = link_to top_writer[:name], artist_path(name: top_writer[:name])
-                      = link_to 'follow', '#', class: 'btn btn--rounded btn__outline btn__outline--grey'
-                  %div.small-1.column
-                    = link_to '#' do
-                      %i.icon.tall-close
+            - temp_rand = Faker::Number.number(6)
+              = render 'shared/user_list_item', locals:{user: top_writer, temp_rand: temp_rand}
 
         = render 'layouts/footer'
