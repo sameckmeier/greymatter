@@ -97,4 +97,26 @@
                     = link_to '#' do
                       %i.icon.tall-close
 
+      %div.block
+        %div.block__header.block__header--dark-border
+          %h2
+            Artists Followed -
+            %span.bold
+              = rand(0...4999)
+        %div.block__content
+          %div.users
+            - @top_writers.each do |top_writer|
+              %div.users__item
+                %div.row.collapse
+                  %div.small-3.columns
+                    = image_tag 'http://lorempixel.com/people/90/90/'
+                  %div.small-8.columns
+                    %div.users__item__info
+                      %h3
+                        = link_to top_writer[:name], artist_path(name: top_writer[:name])
+                      = link_to 'follow', '#', class: 'btn btn--rounded btn__outline btn__outline--grey'
+                  %div.small-1.column
+                    = link_to '#' do
+                      %i.icon.tall-close
+
         = render 'layouts/footer'
