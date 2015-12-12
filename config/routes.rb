@@ -37,6 +37,7 @@ Rails.application.routes.draw do
   get '/current-user-dropdown' => 'async#current_user_menu'
   get '/current-user-notifications' => 'async#current_user_notifications'
   get '/edit-current-user-profile-info' => 'async#edit_current_user_info'
+  get '/load-content/:content_to_load' => 'async#load_content'
   post '/save-current-user-profile-info' => 'async#save_current_user_info'
 
   # The priority is based upon order of creation: first created -> highest priority.

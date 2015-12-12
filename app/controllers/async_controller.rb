@@ -43,4 +43,19 @@ class AsyncController < ApplicationController
     @rendered_content = view_context.render 'shared/user_profile_info'
     render json: {content: @rendered_content, status: 'OK'}
   end
+
+  def load_content
+    content_to_show = params[:content_to_load]
+    case content_to_show
+      when 'popular-albums'
+        @popular_albums = StaticPagesHelper::SAMPLE_DATA.popular_albums
+        @rendered_content = view_context.render 'shared/popular_albums'
+        dom_to_update = '#pop-niche-content' #use appropriate selectors for jQuery purpose
+      when 'niche-albums'
+        @popular_albums = StaticPagesHelper::SAMPLE_DATA.popular_albums
+        @rendered_content = view_context.render 'shared/niche_albums'
+        dom_to_update = '#pop-niche-content' #use appropriate selectors for jQuery purpose
+    end
+    render json: {content: @rendered_content, dom_to_update: dom_to_update, status: 'OK'}
+  end
 end

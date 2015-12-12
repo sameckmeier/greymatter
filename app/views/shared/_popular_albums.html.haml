@@ -1,0 +1,60 @@
+%div.filters
+  %div.row
+    %div.small-4.columns
+      = link_to 'javascript:;',
+                        class: 'filters__selection',
+                        'data-dropdown'=> 'scope-filter-opts',
+                        'data-options'=> 'align:bottom' do
+        %span
+          Scope
+      %label
+        Month
+      %ul#scope-filter-opts.f-dropdown{'aria-hidden'=> 'true', 'data-dropdown-content'=> '', tabindex: '-1'}
+        %li
+          = link_to 'Day', 'javascript:;'
+        %li
+          = link_to 'Week', 'javascript:;'
+        %li
+          = link_to 'Month', 'javascript:;'
+        %li
+          = link_to 'Year', 'javascript:;'
+    %div.small-4.columns
+      = link_to 'javascript:;',
+                        class: 'filters__selection',
+                        'data-dropdown'=> 'genre-filter-opts',
+                        'data-options'=> 'align:bottom' do
+        %span
+          Genre
+      %label
+        Any
+        %ul#genre-filter-opts.f-dropdown{'aria-hidden'=> 'true', 'data-dropdown-content'=> '', tabindex: '-1'}
+          %li
+            = link_to 'Any', 'javascript:;'
+          %li
+            = link_to 'Male', 'javascript:;'
+          %li
+            = link_to 'Female', 'javascript:;'
+          %li
+            = link_to 'Non Binary', 'javascript:;'
+    %div.small-4.columns
+      = link_to 'javascript:;',
+                        class: 'filters__selection',
+                        'data-dropdown'=> 'location-filter-opts',
+                        'data-options'=> 'align:bottom' do
+        %span
+          Location
+      %label
+        Europe
+        %ul#location-filter-opts.f-dropdown{'aria-hidden'=> 'true', 'data-dropdown-content'=> '', tabindex: '-1'}
+          %li
+            = link_to 'Any', 'javascript:;'
+          %li
+            = link_to 'Europe', 'javascript:;'
+          %li
+            = link_to 'USA', 'javascript:;'
+          %li
+            = link_to 'Jamaica', 'javascript:;'
+  %ol.block__content__lists
+    - @popular_albums.each do |album|
+      %li
+        = render 'shared/album_list_item', album: album

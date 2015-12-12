@@ -3,6 +3,7 @@ $(function(){
 
     /**** tabs *****/
     $('.tabs li').on('touchstart click', function(){
+        var async_load = $(this).data('async-load');
         var content_to_show = $(this).data('content');
 
         //get ID from wrapping block
@@ -14,11 +15,23 @@ $(function(){
         //add active class to current tab
         $(this).addClass('active');
 
-        //hide content
-        $('#'+current_context+' .tab__content').removeClass('active');
+        //if async-load, make ajax call to load content
+        if(async_load == true){
+            $.ajax({
+                url: '/load-content/'+content_to_show,
+                method: 'get'
+            }).done(function(data) {
+                if(data.status == 'OK'){
+                    $(data.dom_to_update).html(data.content);
+                }
+            });
+        }else{
+            //hide content
+            $('#'+current_context+' .tab__content').removeClass('active');
 
-        //show content
-        $('#'+content_to_show).addClass('active');
+            //show content
+            $('#'+content_to_show).addClass('active');
+        }
     });
 
     /**** type ahead ****/
