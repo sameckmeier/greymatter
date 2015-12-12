@@ -52,18 +52,8 @@
             %div.block__content
               %div.users
                 - @top_writers.each do |top_writer|
-                  %div.users__item
-                    %div.row.collapse
-                      %div.small-3.columns
-                        = image_tag 'http://lorempixel.com/people/90/90/'
-                      %div.small-8.columns
-                        %div.users__item__info
-                          %h3
-                            = top_writer[:name]
-                          = link_to 'follow', '#', class: 'btn btn--rounded btn__outline btn__outline--grey'
-                      %div.small-1.column
-                        = link_to '#' do
-                          %i.icon.tall-close
+                - temp_rand = Faker::Number.number(6)
+                  = render 'shared/user_list_item', locals:{user: top_writer, temp_rand: temp_rand}
 
             = render 'layouts/footer'
         %div.small-12.medium-8.columns
@@ -71,15 +61,15 @@
             %div.block__header
               %div.block__header__tabs.tabs
                 %ul.split.three
-                  %li.active{'data-content': 'trending-reviews'}
+                  %li.active{'data-content': 'trending-reviews', 'data-async-load' => 'true', 'data-dom' => 'artist-feed-wrapper'}
                     %h3
                       Trending Reviews
-                  %li{'data-content': 'biography'}
+                  %li{'data-content': 'biography', 'data-async-load' => 'true', 'data-dom' => 'artist-feed-wrapper'}
                     %h3
                       Biography
-                  %li{'data-content': 'ymal-map'}
+                  %li{'data-content': 'ymal-map', 'data-async-load' => 'true', 'data-dom' => 'artist-feed-wrapper'}
                     %h3
                       YMAL Map
-          %div.albums__feed
-            - @album_feeds.each do |feed|
+          %div.albums__feed#artist-feed-wrapper
+            - @reviews.each do |feed|
               = render 'shared/album_feed_item', feed: feed

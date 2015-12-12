@@ -50,12 +50,23 @@ class AsyncController < ApplicationController
       when 'popular-albums'
         @popular_albums = StaticPagesHelper::SAMPLE_DATA.popular_albums
         @rendered_content = view_context.render 'shared/popular_albums'
-        dom_to_update = '#pop-niche-content' #use appropriate selectors for jQuery purpose
       when 'niche-albums'
         @popular_albums = StaticPagesHelper::SAMPLE_DATA.popular_albums
         @rendered_content = view_context.render 'shared/niche_albums'
-        dom_to_update = '#pop-niche-content' #use appropriate selectors for jQuery purpose
+      when 'trending-reviews'
+        @reviews = StaticPagesHelper::SAMPLE_DATA.album_feeds
+        @rendered_content = view_context.render 'shared/artist/trending_reviews'
+      when 'album-trending-reviews'
+        @reviews = StaticPagesHelper::SAMPLE_DATA.album_feeds
+        @rendered_content = view_context.render 'shared/album/trending_reviews'
+      when 'biography'
+        @bio = Faker::Lorem.paragraph(12)
+        @rendered_content = view_context.render 'shared/artist/biography'
+      when 'ymal-map'
+        @rendered_content = view_context.render 'shared/artist/ymal_map'
+      when 'album-ymal-map'
+        @rendered_content = view_context.render 'shared/artist/ymal_map'
     end
-    render json: {content: @rendered_content, dom_to_update: dom_to_update, status: 'OK'}
+    render json: {content: @rendered_content, status: 'OK'}
   end
 end

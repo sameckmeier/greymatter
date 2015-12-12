@@ -5,6 +5,7 @@ $(function(){
     $('.tabs li').on('touchstart click', function(){
         var async_load = $(this).data('async-load');
         var content_to_show = $(this).data('content');
+        var dom_to_update = $(this).data('dom');
 
         //get ID from wrapping block
         var current_context = $(this).closest('.block').attr('id');
@@ -22,7 +23,7 @@ $(function(){
                 method: 'get'
             }).done(function(data) {
                 if(data.status == 'OK'){
-                    $(data.dom_to_update).html(data.content);
+                    $('#'+dom_to_update).html(data.content);
                 }
             });
         }else{

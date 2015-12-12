@@ -56,12 +56,12 @@
             %div.block__header
               %div.block__header__tabs.tabs
                 %ul.split
-                  %li.active{'data-content': 'trending-reviews'}
+                  %li.active{'data-content': 'album-trending-reviews','data-async-load' => 'true', 'data-dom' => 'albums-feed-wrapper'}
                     %h3
                       Trending Reviews
-                  %li{'data-content': 'ymal-map'}
+                  %li{'data-content': 'album-ymal-map', 'data-async-load' => 'true', 'data-dom' => 'albums-feed-wrapper'}
                     %h3
                       YMAL Map
-          %div.albums__feed
-            - @album_feeds.each do |feed|
+          %div.albums__feed#albums-feed-wrapper
+            - @reviews.each do |feed|
               = render 'shared/album_feed_item', feed: feed

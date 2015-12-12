@@ -17,11 +17,11 @@
         %div.block__header
           %div.block__header__tabs.tabs
             %ul.split
-              %li.active{'data-content'=> 'popular-albums', 'data-async-load' => 'true'}
+              %li.active{'data-content'=> 'popular-albums', 'data-async-load' => 'true', 'data-dom' => 'pop-niche-content'}
                 %h3
                   Popular
                   %sup *
-              %li{'data-content'=> 'niche-albums', 'data-async-load' => 'true'}
+              %li{'data-content'=> 'niche-albums', 'data-async-load' => 'true', 'data-dom' => 'pop-niche-content'}
                 %h3
                   Niche
                   %sup *
@@ -34,8 +34,7 @@
           %h2
             Trending Reviews
       %div.albums__feed
-        - @album_feeds.each do |feed|
-          = render 'shared/album_feed_item', feed: feed
+        = render 'shared/artist/trending_reviews'
     %div.small-12.medium-3.columns
       %div.block
         %div.block__header.block__header--dark-border
