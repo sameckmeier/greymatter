@@ -97,8 +97,8 @@ $(function(){
 
         if($(this).hasClass('save-current-profile-changes')){
             $(this).removeClass('save-current-profile-changes');
-            $(this).closest('.users__profile__edit').css({'z-index': '1'});
-            $('.users__profile__info__wrapper').css({'z-index': '1', 'padding': '0', 'width': 'auto'});
+            $(this).closest('.users__profile__edit').css({'z-index': '0'});
+            $('.users__profile__info__wrapper').css({'z-index': '0', 'padding': '0', 'width': 'auto'});
             $(this).text('Edit Profile');
 
             //make ajax save changes and load up to read only content
@@ -171,17 +171,22 @@ $(function(){
 
     //dim background
     $('.trigger-modal-bg').on('touchstart click', function(){
-        $('.reveal-modal-bg').show();
+        $('.modal__custom--reveal-bg').show();
     });
 
     //remove dim
     $('body').on("touchstart click",".reveal-modal-bg", function(){
         remove_dim();
-        $('.users__dropdown').slideUp();
-        $('.users__notification').slideUp();
     });
 
+    $('body').on("touchstart click",".modal__custom--reveal-bg", function(){
+        remove_dim();
+    });
     function remove_dim(){
-        return $('.reveal-modal-bg').fadeOut();
+        $('.users__dropdown').slideUp();
+        $('.users__notification').slideUp();
+        $('.reveal-modal-bg').fadeOut();
+        $('.modal__custom--reveal-bg').fadeOut();
+        return true;
     }
 });
