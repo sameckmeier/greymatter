@@ -26,9 +26,9 @@ module AsyncHelper
       return artists
     end
 
-    def self.albums
+    def self.albums(amt_res=2)
       albums = []
-      for n in 0...2
+      for n in 0...amt_res
         albums.push({
                          name: Faker::Lorem.words(3).join(' '),
                          artist: Faker::Name.name,

@@ -19,4 +19,10 @@ class AlbumsController < ActionController::Base
 
   end
 
+  def search
+    queries_album_name = params[:name]
+    @tags = StaticPagesHelper::SAMPLE_DATA.tags
+    @albums = AsyncHelper::SAMPLE_DATA.albums(5)
+  end
+
 end
