@@ -12,9 +12,9 @@
           %div.albums__feed__item__content__inner__time_ago
             = "#{time_ago_in_words(feed[:time_ago])} ago"
       %div.small-12.medium-3.columns
-        = link_to 'javascript:;' do
+        = link_to 'javascript:;',{'data-reveal-id'=> 'standard_modal'} do
           %i.icon.heart
-        = link_to 'javascript:;' do
+        = link_to 'javascript:;',{'data-reveal-id'=> 'standard_modal'} do
           %i.icon.play
         = link_to 'javascript:;', 'data-dropdown'=> "album__feed__actions-#{feed[:token]}",'data-options'=> 'align:bottom' do
           %i.icon.ellipsis
