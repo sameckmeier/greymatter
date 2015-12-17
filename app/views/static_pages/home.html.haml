@@ -26,14 +26,14 @@
     %div.small-12.medium-6.columns
       %div.block
         %div.block__header.block__header--none
-          %div.compose
+          %div.compose.compose__review--linked-area{'data-reveal-id'=> 'search_albums_modal'}
             %div.row.collapse
               %div.small-12.medium-1.columns
                 = image_tag 'sample_artist_img_sm.jpg'
               %div.small-12.medium-11.columns
                 %div.apply-padding-left
-                  %form
-                    %input{ type: :text, placeholder: 'Compose Review'}
+                  %label.apply-padding-top
+                    Compose Review
       %div.albums__feed.albums__feed--light-bg
         - @album_feeds.each do |feed|
           = render 'shared/album_feed_item', feed: feed
