@@ -5,7 +5,7 @@ class StaticPagesController < ApplicationController
   		@reviews = current_user.reviews
   		@feed_items = current_user.feed.paginate(page: params[:page])
     end
-
+    @album_feeds = StaticPagesHelper::SAMPLE_DATA.album_feeds
     @popular_albums = StaticPagesHelper::SAMPLE_DATA.popular_albums
     @reviews = StaticPagesHelper::SAMPLE_DATA.album_feeds
     @top_writers = StaticPagesHelper::SAMPLE_DATA.top_writers
