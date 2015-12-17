@@ -69,4 +69,17 @@ class AsyncController < ApplicationController
     end
     render json: {content: @rendered_content, status: 'OK'}
   end
+
+  def album_feed_new_comment
+    #validate album token, check if current user exist or has permission etc
+    #log comment
+    #if all is good, render comment and post back to script
+    @rendered_content = view_context.render 'shared/user/comment', locals: {comment: params[:comment]}
+    render json: {
+        content: @rendered_content,
+        album_token: params[:album_token],
+        status: 'OK',
+        request_type: 'post-new-album-comment'
+    }
+  end
 end

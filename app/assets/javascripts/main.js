@@ -164,6 +164,33 @@ $(function(){
         $('#'+uid).fadeOut();
     });
 
+    /*** handle ajax forms ***/
+    $('.async-form-request').submit(function( event ) {
+        var req_action = $(this).attr('action');
+        var req_method = $(this).attr('method');
+        var form_data = $(this).serialize();
+        $.ajax({
+            url: req_action,
+            method: req_method,
+            data: form_data
+        }).done(function(data) {
+            if(data.status == 'OK'){
+                if(data.request_type == 'post-new-album-comment') {
+                    //append new comment
+                    $('#comments-for-album-' + data.album_token).append(data.content);
+                    //clear comment box
+                    $('input[name="comment"]').val('');
+                }
+            }
+        });
+        event.preventDefault();
+    });
+
+    //discard comment
+    $('.discard-comment').on('touchstart click', function(){
+        $('input[name="comment"]').val('');
+    });
+
     //close any typeahead open
     $('body').on('touchstart click', function(){
         $('#search__typeahead__results').slideUp();

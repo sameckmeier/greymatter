@@ -5,14 +5,14 @@
         = image_tag 'http://lorempixel.com/abstract/90/90'
       %div.small-11.columns
         %div.apply-padding-left
-          %input{type: 'text', name: 'name', placeholder: 'Type an album name here'}
+          %input.form__input.form__input--transparent{type: 'text', name: 'name', placeholder: 'Type an album name here'}
 
     %div.row.collapse
       %div.small-12.medium-6.columns.right
         %div.row.collapse
           %div.small-12.medium-6.columns.text-right
             %div.apply-padding-right
-              = link_to 'Discard', 'javascript:;', {class: 'close-modal close-reveal-modal compose__actions--discard'}
+              = link_to 'Discard', 'javascript:;', {class: 'close-modal close-reveal-modal discard--link'}
           %div.small-12.medium-6.columns
             %button.btn.btn--dark_red.btn--rounded
               Search
