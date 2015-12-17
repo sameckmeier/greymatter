@@ -15,9 +15,12 @@ module StaticPagesHelper
       album_feeds = []
       bool_vals = [true, false]
       for n in 0...5
+        #random number to simulate ID/token
+        temp_rand = Faker::Number.number(6)
           #album feeds dummy content
           album_feeds.push(
               {
+                  token: temp_rand,
                   user: Faker::Name.name,
                   time_ago: Faker::Date.between(5.days.ago, Date.today),
                   album: Faker::Lorem.words(2).join(' '),
