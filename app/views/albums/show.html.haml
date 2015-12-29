@@ -11,7 +11,7 @@
                 %h1
                   = params[:album_name] ? params[:album_name] : 'Run the jewels 2'
                   %p
-                    = params[:artist_name] ? params[:artist_name] : 'Run the jewels'
+                    = link_to params[:artist_name], artist_path(name: params[:artist_name])
                 %div.row
                   %div.small-8.columns
                     %div.row
