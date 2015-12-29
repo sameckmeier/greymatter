@@ -18,7 +18,11 @@
         - if @is_user_logged_in
           %ul.right
             %li
-              = link_to 'Compose Review', 'javascript:;', {'data-reveal-id'=> 'search_albums_modal'}
+              - if @is_on_album_page
+                = link_to 'Compose Review', 'javascript:;', {'data-reveal-id'=> 'compose_modal-1234'}
+                = render 'shared/modals/reviews/album', locals: {album_id: 1234, album_name: params[:album_name] }
+              - else
+                = link_to 'Compose Review', 'javascript:;', {'data-reveal-id'=> 'search_albums_modal'}
             %li
               = link_to 'User name', 'javascript:;',{class: 'trigger-modal-bg', id: 'current-user-dropdown'}
             %div.users__dropdown

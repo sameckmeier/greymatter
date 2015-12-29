@@ -16,7 +16,9 @@ class AlbumsController < ActionController::Base
     @top_writers = StaticPagesHelper::SAMPLE_DATA.top_writers
     @tags = StaticPagesHelper::SAMPLE_DATA.tags
     @songs = StaticPagesHelper::SAMPLE_DATA.songs
-
+    @is_on_album_page = true
+    @invert_header = true
+    @is_user_logged_in = true
   end
 
   def search
