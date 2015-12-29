@@ -82,4 +82,17 @@ class AsyncController < ApplicationController
         request_type: 'post-new-album-comment'
     }
   end
+
+  def new_album_review
+    rated_value = params[:rated_val].to_i
+    album_id_token = params[:album_id]
+    #validate album
+    #fetch album info by id/token
+    #save review
+    #post and update user
+    render json: {
+        status: 'OK',
+        request_type: 'post-new-album-review'
+    }
+  end
 end

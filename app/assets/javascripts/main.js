@@ -181,9 +181,29 @@ $(function(){
                     //clear comment box
                     $('input[name="comment"]').val('');
                 }
+
+                if(data.request_type == 'post-new-album-review') {
+                    //discard modal
+                    $('a.close-reveal-modal').trigger('click');
+                    //update user
+                    //or redirect user
+                }
+
             }
         });
         event.preventDefault();
+    });
+
+    /*** rating ***/
+    $('.can-rate').on('touchstart click', function(){
+        //get the rating value
+        var rating_val = $(this).data('rating');
+
+        //clear any other active rating
+        $('.can-rate').removeClass('active');
+
+        //make this active
+        $(this).toggleClass('active', '');
     });
 
     //discard comment

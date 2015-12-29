@@ -42,4 +42,5 @@
                         %span.dotter
                         = "#{Time.at(album[:duration]).strftime('%M')} min"
                     %div.small-12.medium-3.columns.text-right
-                      = link_to 'Review', 'javascript:;', class: 'btn btn--rounded btn__outline btn__outline--grey', 'data-reveal-id'=> 'compose_modal', 'data-albumID' => temp_rand
+                      = link_to 'Review', 'javascript:;', class: 'btn btn--rounded btn__outline btn__outline--grey review-album', 'data-reveal-id'=> "compose_modal-#{temp_rand}"
+                  = render 'shared/modals/compose', locals: {album_id: temp_rand, album_name: album[:name] }

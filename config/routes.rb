@@ -42,6 +42,8 @@ Rails.application.routes.draw do
   get '/load-content/:content_to_load' => 'async#load_content'
   post '/save-current-user-profile-info' => 'async#save_current_user_info'
   post '/albums/feed/comment' => 'async#album_feed_new_comment', as: :post_new_album_comment
+  post '/new-album/review' => 'async#new_album_review', as: :new_album_review
+
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
