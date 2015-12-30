@@ -1,8 +1,8 @@
 %div.users__item{id: locals[:temp_rand]}
   %div.row.collapse
-    %div.small-3.columns
+    %div.small-2.columns
       = image_tag 'http://lorempixel.com/people/90/90/'
-    %div.small-8.columns
+    %div.small-9.columns
       %div.users__item__info
         %h3
           = link_to locals[:user][:name], user_profile_path(profile_id: locals[:user][:name])

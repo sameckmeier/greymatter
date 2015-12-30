@@ -34,9 +34,9 @@ module StaticPagesHelper
       return album_feeds
     end
 
-    def self.top_writers
+    def self.top_writers(amt=3)
       top_writers = []
-        for n in 0...3
+        for n in 0...amt
           #top writers dummy content
           top_writers.push({name: Faker::Name.name})
         end

@@ -20,6 +20,65 @@ class UsersController < ApplicationController
     @viewing_own_profile = [true,false].sample
   end
 
+  def show_reviews
+    @invert_header = true
+    @is_user_logged_in = true
+    @reviews_tab_active = true
+    @popular_albums = StaticPagesHelper::SAMPLE_DATA.popular_albums
+    @album_feeds = StaticPagesHelper::SAMPLE_DATA.album_feeds
+    @top_writers = StaticPagesHelper::SAMPLE_DATA.top_writers
+    @tags = StaticPagesHelper::SAMPLE_DATA.tags
+    @viewing_own_profile = [true,false].sample
+  end
+
+  def show_following
+    @invert_header = true
+    @is_user_logged_in = true
+    @following_tab_active = true
+    @popular_albums = StaticPagesHelper::SAMPLE_DATA.popular_albums
+    @album_feeds = StaticPagesHelper::SAMPLE_DATA.album_feeds
+    @top_writers = StaticPagesHelper::SAMPLE_DATA.top_writers
+    @users = StaticPagesHelper::SAMPLE_DATA.top_writers(10)
+    @tags = StaticPagesHelper::SAMPLE_DATA.tags
+    @viewing_own_profile = [true,false].sample
+  end
+
+  def show_followers
+    @invert_header = true
+    @is_user_logged_in = true
+    @followers_tab_active = true
+    @popular_albums = StaticPagesHelper::SAMPLE_DATA.popular_albums
+    @album_feeds = StaticPagesHelper::SAMPLE_DATA.album_feeds
+    @top_writers = StaticPagesHelper::SAMPLE_DATA.top_writers
+    @users = StaticPagesHelper::SAMPLE_DATA.top_writers(10)
+    @tags = StaticPagesHelper::SAMPLE_DATA.tags
+    @viewing_own_profile = [true,false].sample
+  end
+
+  def show_top_reviews
+    @invert_header = true
+    @is_user_logged_in = true
+    @reviews_tab_active = true
+    @reviews_top_rated_tab_active = true
+    @popular_albums = StaticPagesHelper::SAMPLE_DATA.popular_albums
+    @album_feeds = StaticPagesHelper::SAMPLE_DATA.album_feeds
+    @top_writers = StaticPagesHelper::SAMPLE_DATA.top_writers
+    @tags = StaticPagesHelper::SAMPLE_DATA.tags
+    @viewing_own_profile = [true,false].sample
+  end
+
+  def show_newest_reviews
+    @invert_header = true
+    @is_user_logged_in = true
+    @reviews_tab_active = true
+    @reviews_newest_tab_active = true
+    @popular_albums = StaticPagesHelper::SAMPLE_DATA.popular_albums
+    @album_feeds = StaticPagesHelper::SAMPLE_DATA.album_feeds
+    @top_writers = StaticPagesHelper::SAMPLE_DATA.top_writers
+    @tags = StaticPagesHelper::SAMPLE_DATA.tags
+    @viewing_own_profile = [true,false].sample
+  end
+
   def new
     if signed_in?
       flash[:error] = "Sign out to create a new account"

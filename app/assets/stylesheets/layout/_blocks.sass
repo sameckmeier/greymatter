@@ -28,6 +28,21 @@
       padding-left: 0
       font-weight: normal
 
+    &__sub
+      &__tabs
+        ul
+          margin: 0
+          padding: 0
+          li
+            display: inline-block
+            padding-right: 1.25rem
+            a
+              &:hover
+                text-decoration: underline
+            &.active
+              a
+                text-decoration: underline
+
     &__tabs
       &.tabs
         li
@@ -53,6 +68,9 @@
           &.three
             li
               width: 32%
+      &--profile
+        li
+          padding-bottom: 18px !important
     &--none
       border: none
       @include block-header-common

@@ -21,6 +21,11 @@ Rails.application.routes.draw do
 
   #User profile
   get 'u/:profile_id' => 'users#show', as: :user_profile
+  get 'u/:profile_id/reviews' => 'users#show_reviews', as: :user_profile_reviews
+  get 'u/:profile_id/reviews/top-rated' => 'users#show_top_reviews', as: :user_profile_top_reviews
+  get 'u/:profile_id/reviews/newest' => 'users#show_newest_reviews', as: :user_profile_newest_reviews
+  get 'u/:profile_id/following' => 'users#show_following', as: :user_profile_following
+  get 'u/:profile_id/followers' => 'users#show_followers', as: :user_profile_followers
 
   #ALBUMS
   #get "/artist/:artist_name/album/:album_name" , to: "albums#show", constraints: {artist_name: /[.]+/, album_name: /[.]+/}

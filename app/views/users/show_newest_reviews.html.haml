@@ -59,6 +59,8 @@
 
     %div.small-12.medium-6.columns
       = render 'shared/user/profile_header'
+      %div.block
+        %div.block__header.block__header--none
       %div.albums__feed.albums__feed--light-bg
         - @album_feeds.each do |feed|
           = render 'shared/album_feed_item', feed: feed

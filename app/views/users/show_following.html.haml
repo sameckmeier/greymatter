@@ -59,9 +59,12 @@
 
     %div.small-12.medium-6.columns
       = render 'shared/user/profile_header'
+      %div.block
+        %div.block__header.block__header--none
       %div.albums__feed.albums__feed--light-bg
-        - @album_feeds.each do |feed|
-          = render 'shared/album_feed_item', feed: feed
+        - @users.each do |top_writer|
+        - temp_rand = Faker::Number.number(6)
+          = render 'shared/user_list_item', locals:{user: top_writer, temp_rand: temp_rand}
     %div.small-12.medium-3.columns
       %div.block
         %div.block__header.block__header--dark-border

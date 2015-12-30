@@ -19,20 +19,23 @@
         %div.rating__block__info
           %div.row
             %div.small-4.columns
-              %label
-                Reviews
-              %span
-                24
+              = link_to user_profile_reviews_path do
+                %label
+                  Reviews
+                %span
+                  24
             %div.small-4.columns
-              %label
-                Following
-              %span
-                124
+              = link_to user_profile_following_path do
+                %label
+                  Following
+                %span
+                  124
             %div.small-4.columns
-              %label
-                Followers
-              %span
-                143
+              = link_to user_profile_followers_path do
+                %label
+                  Followers
+                %span
+                  143
     %div.users__title__slider
       %div.row
         %div.small-6.columns.text-left
