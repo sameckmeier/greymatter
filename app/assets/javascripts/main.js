@@ -1,6 +1,24 @@
 $(function(){
     $(document).foundation();
-
+    /*** check if element is in view with this method ***/
+    $.fn.inView = function(inViewType){
+        var viewport = {};
+        viewport.top = $(window).scrollTop();
+        viewport.bottom = viewport.top + $(window).height();
+        var bounds = {};
+        bounds.top = this.offset().top;
+        bounds.bottom = bounds.top + this.outerHeight();
+        switch(inViewType){
+            case 'bottomOnly':
+                return ((bounds.bottom <= viewport.bottom) && (bounds.bottom >= viewport.top));
+            case 'topOnly':
+                return ((bounds.top <= viewport.bottom) && (bounds.top >= viewport.top));
+            case 'both':
+                return ((bounds.top >= viewport.top) && (bounds.bottom <= viewport.bottom));
+            default:
+                return ((bounds.top >= viewport.top) && (bounds.bottom <= viewport.bottom));
+        }
+    };
     /**** tabs *****/
     $('.tabs li').on('touchstart click', function(){
         var async_load = $(this).data('async-load');
@@ -206,6 +224,27 @@ $(function(){
         $(this).toggleClass('active', '');
     });
 
+    /*** infinite scrolling ***/
+    $(window).on('scroll', function(){
+        if ($('#infinite-album-feeds').inView('topOnly') && $(window).scrollTop() > $(document).height() - $(window).height() - 60){
+            //get current page
+            var current_page_feed = $('#current_page_feed');
+            //make ajax call to get next set records
+            $.ajax({
+                url: 'load-more-album-feeds',
+                method: 'get',
+                data: {page: parseInt(current_page_feed.val())}
+            }).done(function(data) {
+                if(data.status == 'OK'){
+                    $('#load-more-feeds').prepend(data.content);
+                }
+            });
+
+            //increment next page
+            current_page_feed.val(parseInt(current_page_feed.val()) + 1);
+        }
+    });
+
     //discard comment
     $('.discard-comment').on('touchstart click', function(){
         $('input[name="comment"]').val('');
@@ -236,4 +275,5 @@ $(function(){
         $('.modal__custom--reveal-bg').fadeOut();
         return true;
     }
+
 });

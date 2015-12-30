@@ -40,6 +40,8 @@ Rails.application.routes.draw do
   get '/current-user-notifications' => 'async#current_user_notifications'
   get '/edit-current-user-profile-info' => 'async#edit_current_user_info'
   get '/load-content/:content_to_load' => 'async#load_content'
+  get '/load-more-album-feeds' => 'async#fetch_more_album_feeds'
+
   post '/save-current-user-profile-info' => 'async#save_current_user_info'
   post '/albums/feed/comment' => 'async#album_feed_new_comment', as: :post_new_album_comment
   post '/new-album/review' => 'async#new_album_review', as: :new_album_review

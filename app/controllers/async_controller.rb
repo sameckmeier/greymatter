@@ -95,4 +95,16 @@ class AsyncController < ApplicationController
         request_type: 'post-new-album-review'
     }
   end
+
+  def fetch_more_album_feeds
+    #get current page param
+    #fetch next set of records
+    #push results to partial
+    @album_feeds = StaticPagesHelper::SAMPLE_DATA.album_feeds.paginate(per_page: 3)
+    @rendered_content = view_context.render 'shared/album_feeds'
+    render json: {
+        content: @rendered_content,
+        status: 'OK'
+    }
+  end
 end

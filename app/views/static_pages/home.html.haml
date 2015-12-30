@@ -37,6 +37,10 @@
       %div.albums__feed.albums__feed--light-bg
         - @album_feeds.each do |feed|
           = render 'shared/album_feed_item', feed: feed
+        %div#load-more-feeds
+        %div#infinite-album-feeds.hide
+          = will_paginate @album_feeds
+          %input{type: 'hidden', id: 'current_page_feed', value: 2}
     %div.small-12.medium-3.columns
       %div.block
         %div.block__header.block__header--dark-border
