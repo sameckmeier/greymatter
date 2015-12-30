@@ -226,22 +226,25 @@ $(function(){
 
     /*** infinite scrolling ***/
     $(window).on('scroll', function(){
-        if ($('#infinite-album-feeds').inView('topOnly') && $(window).scrollTop() > $(document).height() - $(window).height() - 60){
-            //get current page
-            var current_page_feed = $('#current_page_feed');
-            //make ajax call to get next set records
-            $.ajax({
-                url: 'load-more-album-feeds',
-                method: 'get',
-                data: {page: parseInt(current_page_feed.val())}
-            }).done(function(data) {
-                if(data.status == 'OK'){
-                    $('#load-more-feeds').prepend(data.content);
-                }
-            });
+        //check if this element is on page
+        if($('#infinite-album-feeds').length > 0){
+            if ($('#infinite-album-feeds').inView('topOnly') && $(window).scrollTop() > $(document).height() - $(window).height() - 60){
+                //get current page
+                var current_page_feed = $('#current_page_feed');
+                //make ajax call to get next set records
+                $.ajax({
+                    url: 'load-more-album-feeds',
+                    method: 'get',
+                    data: {page: parseInt(current_page_feed.val())}
+                }).done(function(data) {
+                    if(data.status == 'OK'){
+                        $('#load-more-feeds').prepend(data.content);
+                    }
+                });
 
-            //increment next page
-            current_page_feed.val(parseInt(current_page_feed.val()) + 1);
+                //increment next page
+                current_page_feed.val(parseInt(current_page_feed.val()) + 1);
+            }
         }
     });
 
