@@ -11,72 +11,34 @@ class UsersController < ApplicationController
   def show
   	#@user = User.find(params[:id])
     #@microposts = @user.microposts.paginate(page: params[:params])
-    @invert_header = true
-    @is_user_logged_in = true
-    @popular_albums = StaticPagesHelper::SAMPLE_DATA.popular_albums
-    @album_feeds = StaticPagesHelper::SAMPLE_DATA.album_feeds
-    @top_writers = StaticPagesHelper::SAMPLE_DATA.top_writers
-    @tags = StaticPagesHelper::SAMPLE_DATA.tags
-    @viewing_own_profile = [true,false].sample
+    default_data
   end
 
   def show_reviews
-    @invert_header = true
-    @is_user_logged_in = true
     @reviews_tab_active = true
-    @popular_albums = StaticPagesHelper::SAMPLE_DATA.popular_albums
-    @album_feeds = StaticPagesHelper::SAMPLE_DATA.album_feeds
-    @top_writers = StaticPagesHelper::SAMPLE_DATA.top_writers
-    @tags = StaticPagesHelper::SAMPLE_DATA.tags
-    @viewing_own_profile = [true,false].sample
+    default_data
   end
 
   def show_following
-    @invert_header = true
-    @is_user_logged_in = true
     @following_tab_active = true
-    @popular_albums = StaticPagesHelper::SAMPLE_DATA.popular_albums
-    @album_feeds = StaticPagesHelper::SAMPLE_DATA.album_feeds
-    @top_writers = StaticPagesHelper::SAMPLE_DATA.top_writers
-    @users = StaticPagesHelper::SAMPLE_DATA.top_writers(10)
-    @tags = StaticPagesHelper::SAMPLE_DATA.tags
-    @viewing_own_profile = [true,false].sample
+    default_data
   end
 
   def show_followers
-    @invert_header = true
-    @is_user_logged_in = true
     @followers_tab_active = true
-    @popular_albums = StaticPagesHelper::SAMPLE_DATA.popular_albums
-    @album_feeds = StaticPagesHelper::SAMPLE_DATA.album_feeds
-    @top_writers = StaticPagesHelper::SAMPLE_DATA.top_writers
-    @users = StaticPagesHelper::SAMPLE_DATA.top_writers(10)
-    @tags = StaticPagesHelper::SAMPLE_DATA.tags
-    @viewing_own_profile = [true,false].sample
+    default_data
   end
 
   def show_top_reviews
-    @invert_header = true
-    @is_user_logged_in = true
     @reviews_tab_active = true
     @reviews_top_rated_tab_active = true
-    @popular_albums = StaticPagesHelper::SAMPLE_DATA.popular_albums
-    @album_feeds = StaticPagesHelper::SAMPLE_DATA.album_feeds
-    @top_writers = StaticPagesHelper::SAMPLE_DATA.top_writers
-    @tags = StaticPagesHelper::SAMPLE_DATA.tags
-    @viewing_own_profile = [true,false].sample
+    default_data
   end
 
   def show_newest_reviews
-    @invert_header = true
-    @is_user_logged_in = true
     @reviews_tab_active = true
     @reviews_newest_tab_active = true
-    @popular_albums = StaticPagesHelper::SAMPLE_DATA.popular_albums
-    @album_feeds = StaticPagesHelper::SAMPLE_DATA.album_feeds
-    @top_writers = StaticPagesHelper::SAMPLE_DATA.top_writers
-    @tags = StaticPagesHelper::SAMPLE_DATA.tags
-    @viewing_own_profile = [true,false].sample
+    default_data
   end
 
   def new
@@ -154,5 +116,17 @@ class UsersController < ApplicationController
 
     def admin_user
       redirect_to(root_url) unless current_user.admin?
+    end
+
+    def default_data
+      @invert_header = true
+      @is_user_logged_in = true
+      @popular_albums = StaticPagesHelper::SAMPLE_DATA.popular_albums
+      @album_feeds = StaticPagesHelper::SAMPLE_DATA.album_feeds
+      @top_writers = StaticPagesHelper::SAMPLE_DATA.top_writers
+      @users = StaticPagesHelper::SAMPLE_DATA.top_writers(10)
+      @tags = StaticPagesHelper::SAMPLE_DATA.tags
+      @viewing_own_profile = [true,false].sample
+      @profile_id = params[:profile_id] ? params[:profile_id] : 'Jess Smith'
     end
 end

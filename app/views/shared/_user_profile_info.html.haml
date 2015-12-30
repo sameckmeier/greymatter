@@ -6,7 +6,7 @@
       %div.small-12.medium-8.columns
         %div.apply-padding-left
           %h2
-            = params[:profile_id] ? params[:profile_id] : 'Jess Smith'
+            = @profile_id
           %div.users__block__info
             %div.users__block__info__title.bold
               Guru
@@ -19,19 +19,19 @@
         %div.rating__block__info
           %div.row
             %div.small-4.columns
-              = link_to user_profile_reviews_path do
+              = link_to user_profile_reviews_path(profile_id: @profile_id) do
                 %label
                   Reviews
                 %span
                   24
             %div.small-4.columns
-              = link_to user_profile_following_path do
+              = link_to user_profile_following_path(profile_id: @profile_id) do
                 %label
                   Following
                 %span
                   124
             %div.small-4.columns
-              = link_to user_profile_followers_path do
+              = link_to user_profile_followers_path(profile_id: @profile_id) do
                 %label
                   Followers
                 %span

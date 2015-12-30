@@ -21,6 +21,7 @@ class StaticPagesController < ApplicationController
     @top_writers = StaticPagesHelper::SAMPLE_DATA.top_writers
     @tags = StaticPagesHelper::SAMPLE_DATA.tags
     @viewing_own_profile = [true,false].sample
+    @profile_id = params[:profile_id] ? params[:profile_id] : 'Jess Smith'
   end
 
   def help
