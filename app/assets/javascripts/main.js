@@ -203,6 +203,7 @@ $(function(){
                 if(data.request_type == 'post-new-album-review') {
                     //discard modal
                     $('a.close-reveal-modal').trigger('click');
+                    remove_dim();
                     //update user
                     //or redirect user
                 }
