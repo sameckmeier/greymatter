@@ -11,6 +11,18 @@ class AlbumsController < ActionController::Base
       Rails.cache.fetch(cache_key) { @album_spotify  }
     end
     '''
+    default_data
+    @reviews_tab_active = true
+  end
+
+  def search
+    queries_album_name = params[:name]
+    @tags = StaticPagesHelper::SAMPLE_DATA.tags
+    @albums = AsyncHelper::SAMPLE_DATA.albums(5)
+  end
+
+  private
+  def default_data
     @popular_albums = StaticPagesHelper::SAMPLE_DATA.popular_albums
     @reviews = StaticPagesHelper::SAMPLE_DATA.album_feeds
     @top_writers = StaticPagesHelper::SAMPLE_DATA.top_writers
@@ -19,12 +31,6 @@ class AlbumsController < ActionController::Base
     @is_on_album_page = true
     @invert_header = true
     @is_user_logged_in = true
-  end
-
-  def search
-    queries_album_name = params[:name]
-    @tags = StaticPagesHelper::SAMPLE_DATA.tags
-    @albums = AsyncHelper::SAMPLE_DATA.albums(5)
   end
 
 end

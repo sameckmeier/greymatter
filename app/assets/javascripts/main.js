@@ -20,10 +20,12 @@ $(function(){
         }
     };
     /**** tabs *****/
-    $('.tabs li').on('touchstart click', function(){
+    $('body').on('touchstart click','.tabs li', function(){
         var async_load = $(this).data('async-load');
         var content_to_show = $(this).data('content');
         var dom_to_update = $(this).data('dom');
+        var dom_to_hide = $(this).data('dom-hide');
+        var dom_to_show = $(this).data('dom-show');
 
         //get ID from wrapping block
         var current_context = $(this).closest('.block').attr('id');
@@ -34,6 +36,15 @@ $(function(){
         //add active class to current tab
         $(this).addClass('active');
 
+        //hide DOM if set
+        if(dom_to_hide){
+            $(dom_to_hide).hide();
+        }
+
+        //show DOM if set
+        if(dom_to_show){
+            $(dom_to_show).show();
+        }
         //if async-load, make ajax call to load content
         if(async_load == true){
             $.ajax({
