@@ -26,6 +26,7 @@ $(function(){
         var dom_to_update = $(this).data('dom');
         var dom_to_hide = $(this).data('dom-hide');
         var dom_to_show = $(this).data('dom-show');
+        var menu_to_reset = $(this).data('reset-menu');
 
         //get ID from wrapping block
         var current_context = $(this).closest('.block').attr('id');
@@ -45,6 +46,12 @@ $(function(){
         if(dom_to_show){
             $(dom_to_show).show();
         }
+
+        //clear sub menu active states
+        if(menu_to_reset){
+            $(menu_to_reset+ ' li').removeClass('active');
+        }
+
         //if async-load, make ajax call to load content
         if(async_load == true){
             $.ajax({

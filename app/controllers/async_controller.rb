@@ -80,6 +80,15 @@ class AsyncController < ApplicationController
       when 'album-newest-reviews'
         @reviews = StaticPagesHelper::SAMPLE_DATA.album_feeds
         @rendered_content = view_context.render 'shared/album/newest_reviews'
+
+      when 'artist-newest-reviews'
+        @reviews = StaticPagesHelper::SAMPLE_DATA.album_feeds
+        @rendered_content = view_context.render 'shared/artist/newest_reviews'
+
+      when 'artist-top-rated-reviews'
+        @reviews = StaticPagesHelper::SAMPLE_DATA.album_feeds
+        @rendered_content = view_context.render 'shared/artist/top_rated_reviews'
+
     end
     render json: {content: @rendered_content, status: 'OK'}
   end
