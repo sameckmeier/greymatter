@@ -93,6 +93,14 @@ class AsyncController < ApplicationController
         @users = StaticPagesHelper::SAMPLE_DATA.users(10)
         @rendered_content = view_context.render 'shared/artist/following'
 
+      when 'top-rated-tags'
+        @reviews = StaticPagesHelper::SAMPLE_DATA.album_feeds
+        @rendered_content = view_context.render 'shared/tags/top_rated'
+
+      when 'newest-tags'
+        @reviews = StaticPagesHelper::SAMPLE_DATA.album_feeds
+        @rendered_content = view_context.render 'shared/tags/newest'
+
     end
     render json: {content: @rendered_content, status: 'OK'}
   end

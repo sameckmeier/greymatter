@@ -1,0 +1,27 @@
+%section.hero.hero--dark-grey.hero--tags
+  %div.row
+    %div.small-12.medium-6.columns.medium-centered.end
+      %div.text-center
+        %h1
+          = params[:phrase]
+%div.content.content--light-grey
+  %div.row
+    %div.small-12.medium-8.columns.end.medium-centered
+      %div.row
+        %div.small-12.medium-4.columns
+          = render 'shared/recommended_writers'
+          = render 'layouts/footer'
+        %div.small-12.medium-8.columns
+          %div.block#albums_tab_opts
+            %div.block__header
+              %div.block__header__tabs.tabs
+                %ul.split
+                  %li.async_load.active{'data-content': 'top-rated-tags', 'data-dom' => 'feed-wrapper'}
+                    %h3
+                      Top Rated
+                  %li.async_load{'data-content': 'newest-tags', 'data-dom' => 'feed-wrapper'}
+                    %h3
+                      Newest
+          %div.albums__feed#feed-wrapper
+            - @reviews.each do |feed|
+              = render 'shared/album_feed_item', feed: feed

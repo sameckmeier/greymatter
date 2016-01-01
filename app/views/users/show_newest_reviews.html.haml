@@ -69,13 +69,8 @@
         %div.block__header.block__header--dark-border
           %h2
             User Trends
-        %div.block__content
-          %div.tags
-            %ul
-              - @tags.each do |tag|
-                %li
-                  = link_to '#' do
-                    = tag
+        = render 'shared/tags/wrapper'
+
       %div.block
         %div.block__header.block__header--dark-border
           %h2

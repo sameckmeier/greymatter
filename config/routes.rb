@@ -39,6 +39,9 @@ Rails.application.routes.draw do
   #HELP PAGE
   get '/help' => 'static_pages#help'
 
+  #TAGS
+  get 'tags/:phrase' => 'tags#show', as: :filter_by_tag
+
   #ASYNC REQUESTS
   get '/typeahead-search/:q' => 'async#typeahead_search'
   get '/current-user-dropdown' => 'async#current_user_menu'

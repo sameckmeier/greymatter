@@ -46,21 +46,7 @@
         %div.block__header.block__header--dark-border
           %h2
             Featured Tags
-        %div.block__content
-          %div.tags
-            %ul
-              - @tags.each do |tag|
-                %li
-                  = link_to '#' do
-                    = tag
-      %div.block
-        %div.block__header.block__header--dark-border
-          %h2
-            Recommended Writers
-        %div.block__content
-          %div.users
-            - @top_writers.each do |top_writer|
-            - temp_rand = Faker::Number.number(6)
-              = render 'shared/user_list_item', locals:{user: top_writer, temp_rand: temp_rand}
+        = render 'shared/tags/wrapper'
 
-        = render 'layouts/footer'
+      = render 'shared/recommended_writers'
+      = render 'layouts/footer'
