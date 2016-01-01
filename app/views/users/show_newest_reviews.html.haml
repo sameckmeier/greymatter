@@ -97,6 +97,6 @@
           %div.users
             - @top_writers.each do |top_writer|
             - temp_rand = Faker::Number.number(6)
-              = render 'shared/user_list_item', locals:{user: top_writer, temp_rand: temp_rand}
+              = render 'shared/user_list_item', locals:{user: top_writer, temp_rand: temp_rand, is_artist: true}
 
         = render 'layouts/footer'

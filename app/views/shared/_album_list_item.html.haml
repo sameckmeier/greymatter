@@ -1,6 +1,7 @@
 %div.row.collapse
   %div.small-2.columns
-    = image_tag 'http://lorempixel.com/90/90/'
+    = link_to album_path(artist_name: album[:artist], album_name: album[:name]) do
+      = image_tag 'http://lorempixel.com/90/90/'
   %div.small-9.columns
     %div.block__content__lists__item
       %h4
