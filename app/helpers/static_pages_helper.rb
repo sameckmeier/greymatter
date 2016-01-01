@@ -43,6 +43,15 @@ module StaticPagesHelper
       return top_writers
     end
 
+    def self.users(amt=3)
+      users = []
+      for n in 0...amt
+        #top writers dummy content
+        users.push({name: Faker::Name.name})
+      end
+      return users
+    end
+
     def self.songs
       songs = []
       for n in 0...5

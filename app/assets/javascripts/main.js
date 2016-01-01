@@ -20,7 +20,7 @@ $(function(){
         }
     };
     /**** tabs *****/
-    $('body').on('touchstart click','.tabs li', function(){
+    $('body').on('touchstart click','.async_load', function(){
         var async_load = $(this).data('async-load');
         var content_to_show = $(this).data('content');
         var dom_to_update = $(this).data('dom');
@@ -39,12 +39,12 @@ $(function(){
 
         //hide DOM if set
         if(dom_to_hide){
-            $(dom_to_hide).hide();
+            $(dom_to_hide).addClass('hide');
         }
 
         //show DOM if set
         if(dom_to_show){
-            $(dom_to_show).show();
+            $(dom_to_show).removeClass('hide');
         }
 
         //clear sub menu active states
@@ -53,7 +53,7 @@ $(function(){
         }
 
         //if async-load, make ajax call to load content
-        if(async_load == true){
+        if($(this).hasClass('async_load')){
             $.ajax({
                 url: '/load-content/'+content_to_show,
                 method: 'get'
@@ -175,7 +175,7 @@ $(function(){
     });
 
     /*** follow/unfollow user ***/
-    $('.follow-unfollow').on('touchstart click', function(){
+    $('body').on('touchstart click','.follow-unfollow', function(){
         //get user id
         var uid = $(this).data('uid');
         //make ajax call to run checks and update user
@@ -191,7 +191,7 @@ $(function(){
     });
 
     /*** remove user item ***/
-    $('.remove-user-list').on('touchstart click', function(){
+    $('body').on('touchstart click','.remove-user-list', function(){
         //get user id
         var uid = $(this).data('uid');
         //make ajax call to update DB so as to mark the user do not want to see this feed again
@@ -271,6 +271,19 @@ $(function(){
     $('body').on('touchstart click','.scroll-to-dom', function(){
         var dom_to_scroll_to = $(this).data('scroll-to');
         var dom_to_click = $(this).data('click-dom');
+        var dom_to_hide = $(this).data('dom-hide');
+        var dom_to_show = $(this).data('dom-show');
+
+
+        //hide DOM if set
+        if(dom_to_hide){
+            $(dom_to_hide).addClass('hide');
+        }
+
+        //show DOM if set
+        if(dom_to_show){
+            $(dom_to_show).removeClass('hide');
+        }
 
         if(dom_to_click){
             $(dom_to_click).trigger('click');

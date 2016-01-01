@@ -1,0 +1,7 @@
+%div.block
+  %div.block__header.block__header--dark-border
+    %h2
+      Following
+  - @users.each do |user|
+    - temp_rand = Faker::Number.number(6)
+    = render 'shared/user_list_item', locals:{user: user, temp_rand: temp_rand}

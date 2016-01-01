@@ -15,17 +15,18 @@
                     %div.row
                       %div.small-12.medium-4.columns
                         %div.artist__header__meta
-                          = link_to 'javascript:;',{class: 'scroll-to-dom', 'data-scroll-to': '#artist_tab_opts', 'data-click-dom' => '#artist_reviews_link'} do
+                          = link_to 'javascript:;',{class: 'scroll-to-dom', 'data-scroll-to': '#artist_tab_opts', 'data-click-dom' => '#artist_reviews_link', 'data-dom-show' => '#artist_tab_opts'} do
                             %label
                               Reviews
                             %span
                               24
                       %div.small-12.medium-4.columns
                         %div.artist__header__meta
-                          %label
-                            Following
-                          %span
-                            124
+                          = link_to 'javascript:;',{class: 'async_load', 'data-content': 'artist-following','data-dom' => 'artist-feed-wrapper', 'data-dom-hide' => '#artist_tab_opts'} do
+                            %label
+                              Following
+                            %span
+                              124
                       %div.small-12.medium-4.columns
                         %div.artist__header__meta
                           %label
@@ -62,16 +63,16 @@
             %div.block__header
               %div.block__header__tabs.tabs
                 %ul.split.three
-                  %li#artist_reviews_link.active{'data-content': 'trending-reviews', 'data-reset-menu' => '#artist__reviews__menu', 'data-async-load' => 'true', 'data-dom' => 'artist-feed-wrapper', 'data-dom-show' => '#artist__reviews__menu'}
+                  %li.async_load#artist_reviews_link.active{'data-content': 'trending-reviews', 'data-reset-menu' => '#artist__reviews__menu', 'data-dom' => 'artist-feed-wrapper', 'data-dom-show' => '#artist__reviews__menu'}
                     %h3
                       Reviews
-                  %li{'data-content': 'biography', 'data-async-load' => 'true', 'data-dom' => 'artist-feed-wrapper', 'data-dom-hide' => '#artist__reviews__menu'}
+                  %li.async_load{'data-content': 'biography', 'data-dom' => 'artist-feed-wrapper', 'data-dom-hide' => '#artist__reviews__menu'}
                     %h3
                       Biography
-                  %li{'data-content': 'ymal-map', 'data-async-load' => 'true', 'data-dom' => 'artist-feed-wrapper', 'data-dom-hide' => '#artist__reviews__menu'}
+                  %li.async_load{'data-content': 'ymal-map', 'data-dom' => 'artist-feed-wrapper', 'data-dom-hide' => '#artist__reviews__menu'}
                     %h3
                       YMAL Map
-          = render 'shared/artist/reviews_menu'
+            = render 'shared/artist/reviews_menu'
           %div.albums__feed#artist-feed-wrapper
             - @reviews.each do |feed|
               = render 'shared/album_feed_item', feed: feed
