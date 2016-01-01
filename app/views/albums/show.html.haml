@@ -17,10 +17,11 @@
                     %div.row
                       %div.small-12.medium-4.columns
                         %div.album__header__meta
-                          %label
-                            Reviews
-                          %span
-                            24
+                          = link_to 'javascript:;',{class: 'scroll-to-dom', 'data-scroll-to': '#albums_tab_opts', 'data-click-dom' => '#album_reviews_link'} do
+                            %label
+                              Reviews
+                            %span
+                              24
                       %div.small-12.medium-6.columns.end
                         %div.album__header__meta
                           %label
@@ -56,7 +57,7 @@
             %div.block__header
               %div.block__header__tabs.tabs
                 %ul.split
-                  %li.active{'data-content': 'album-trending-reviews','data-reset-menu' => '#album__reviews__menu', 'data-async-load' => 'true', 'data-dom' => 'albums-feed-wrapper', 'data-dom-show' => '#album__reviews__menu'}
+                  %li#album_reviews_link.active{'data-content': 'album-trending-reviews','data-reset-menu' => '#album__reviews__menu', 'data-async-load' => 'true', 'data-dom' => 'albums-feed-wrapper', 'data-dom-show' => '#album__reviews__menu'}
                     %h3
                       Reviews
                   %li{'data-content': 'album-ymal-map', 'data-async-load' => 'true', 'data-dom' => 'albums-feed-wrapper', 'data-dom-hide' => '#album__reviews__menu'}

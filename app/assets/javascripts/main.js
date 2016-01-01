@@ -267,6 +267,19 @@ $(function(){
         }
     });
 
+    /*** scroll to ***/
+    $('body').on('touchstart click','.scroll-to-dom', function(){
+        var dom_to_scroll_to = $(this).data('scroll-to');
+        var dom_to_click = $(this).data('click-dom');
+
+        if(dom_to_click){
+            $(dom_to_click).trigger('click');
+        }
+        $('html, body').animate({
+            scrollTop: $(dom_to_scroll_to).offset().top
+        }, 500);
+    });
+
     //discard comment
     $('.discard-comment').on('touchstart click', function(){
         $('input[name="comment"]').val('');
