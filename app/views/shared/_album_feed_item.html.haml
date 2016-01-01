@@ -3,7 +3,8 @@
     %div.row.collapse
       %div.small-12.medium-1.columns
         %div.albums__feed__item__user-image-holder
-          = image_tag 'http://lorempixel.com/people/45/45'
+          = link_to user_profile_path(profile_id: feed[:user]) do
+            = image_tag 'http://lorempixel.com/people/45/45'
       %div.small-12.medium-8.columns
         %div.albums__feed__item__content__inner
           %h4
