@@ -101,6 +101,12 @@ class AsyncController < ApplicationController
         @reviews = StaticPagesHelper::SAMPLE_DATA.album_feeds
         @rendered_content = view_context.render 'shared/tags/newest'
 
+      when 'login-form'
+        @rendered_content = view_context.render 'shared/forms/login'
+
+      when 'registration-form'
+        @rendered_content = view_context.render 'shared/forms/registration'
+
     end
     render json: {content: @rendered_content, status: 'OK'}
   end
