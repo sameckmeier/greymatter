@@ -1,0 +1,8 @@
+%div.row.collapse
+  %div.small-7.columns
+    %div.block__content__lists__item
+      %h4
+        = song[:name]
+  %div.small-4.columns.text-right
+    %p
+      = number_with_delimiter(song[:downloads], delimeter: ',')

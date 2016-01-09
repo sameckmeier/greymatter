@@ -1,0 +1,38 @@
+%section.hero.hero--dark-grey.hero--help
+  %div.row
+    %div.small-12.medium-6.columns.medium-centered.end
+      %div.text-center
+        %h1
+          Fresh Pressed Answers Coming in Hot
+        %div.row
+          %div.small-12.medium-6.columns.end.medium-centered
+            %div.search.search--white-bg
+              %div.search__input_group.search__input_group--right
+                %input{ type: :text, class: 'search__input_group--small', placeholder: 'SEARCH FAQ'}
+                %button.btn--neutral
+                  %i.icon.search
+              %div.clearfix
+
+%div.content.content--light-grey
+  %div.row
+    %div.small-12.medium-8.columns.end.medium-centered
+      %div.row
+        %div.small-12.medium-4.columns
+          %div.block
+            %div.block__header.block__header--dark-border
+              %h2
+                Help Topics
+            = render 'shared/tags/wrapper'
+
+          = render 'layouts/footer'
+        %div.small-12.medium-8.columns
+          %div.block
+            %div.block__header.block__header--dark-border
+              %h2
+                Faq
+          %div.help__qa
+            - @qas.each do |qa|
+              %h2
+                = "#{qa[:question]}?"
+              %p
+                = qa[:answer]

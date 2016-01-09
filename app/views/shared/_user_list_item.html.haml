@@ -1,0 +1,18 @@
+- if locals[:is_artist]
+  - linked_path = artist_path(name: locals[:user][:name])
+- else
+  - linked_path =  user_profile_path(profile_id: locals[:user][:name])
+
+%div.users__item{id: locals[:temp_rand]}
+  %div.row.collapse
+    %div.small-2.columns
+      = link_to linked_path do
+        = image_tag 'http://lorempixel.com/people/90/90/'
+    %div.small-9.columns
+      %div.users__item__info
+        %h3
+          = link_to locals[:user][:name], linked_path
+        = link_to 'follow', 'javascript:;', class: 'follow-unfollow btn btn--rounded btn__outline btn__outline--grey', 'data-uid': locals[:temp_rand]
+    %div.small-1.column
+      = link_to 'javascript:;', 'data-uid': locals[:temp_rand], class: 'remove-user-list' do
+        %i.icon.tall-close

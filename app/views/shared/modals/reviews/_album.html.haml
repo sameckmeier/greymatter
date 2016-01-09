@@ -1,0 +1,59 @@
+%div.reveal-modal.compose__modal{'data-reveal'=> true, id: "compose_modal-#{locals[:album_id]}"}
+  = form_tag new_album_review_path, {class: 'async-form-request'} do
+    %div.row.collapse.compose__row
+      %div.small-1.columns
+        = image_tag 'http://lorempixel.com/abstract/90/90'
+      %div.small-11.columns
+        %div.apply-padding-left
+          = locals[:album_name]
+    %div.row.collapse.compose__row
+      %div.small-1.columns
+        = image_tag 'http://lorempixel.com/abstract/90/90'
+      %div.small-11.columns
+        %div.apply-padding-left
+          = Faker::Lorem.paragraph
+    %div.row.collapse.compose__row
+      %div.small-1.columns
+        %div.genbox
+          %div.genbox__item
+            YMAL
+      %div.small-11.columns
+        %div.apply-padding-left
+          = link_to 'add tags', 'javascript:;',{class: 'btn btn--add-tags btn--rounded add_tags'}
+          %div
+            %input.tags__input{type: 'text', name: 'ymal_tags'}
+    %div.row.collapse.compose__row
+      %div.small-1.columns
+        %div.rating
+          %div.rating__item
+            ?
+      %div.small-11.columns
+        %div.apply-padding-left
+          %div.rating__lists
+            %ul
+              - for n in 1...11
+                %li
+                  %div.rating
+                    %div.rating__item.can-rate{'data-rating': n}
+                      = n < 10 ? number_with_precision(n, precision: 1) : n
+    %div.row.collapse
+      %div.small-1.columns
+      %div.small-11.columns
+        %div.row
+          %div.small-12.medium-6.columns
+            %div.icon--social-list
+              = link_to 'javascript:;' do
+                %i.icon.facebook
+              = link_to 'javascript:;' do
+                %i.icon.twitter
+              = link_to 'javascript:;' do
+                %i.icon.tumblr.inactive
+          %div.small-12.medium-6.columns.text-right
+            %div.row.collapse
+              %div.small-12.medium-6.columns.text-left
+                = link_to 'Discard', 'javascript:;', {class: 'close-modal close-reveal-modal discard--link'}
+              %div.small-12.medium-6.columns
+                %button.btn.btn--dark_red.btn--rounded
+                  Post
+          %input{type: 'hidden', value: 0, name: 'rated_val'}
+          %input{type: 'hidden', value: locals[:album_id], name: 'album_id'}

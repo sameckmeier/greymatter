@@ -1,0 +1,30 @@
+%div.block
+  %div.block__header
+    %div.block__header__tabs.block__header__tabs--profile
+      %ul.split.three
+        %li{class: @reviews_tab_active ? 'active' : ''}
+          = link_to user_profile_reviews_path do
+            %h3
+              Reviews
+              %div
+                = Faker::Number.number(2)
+        %li{class: @following_tab_active ? 'active' : ''}
+          = link_to user_profile_following_path do
+            %h3
+              Following
+              %div
+                = Faker::Number.number(3)
+        %li{class: @followers_tab_active ? 'active' : ''}
+          = link_to user_profile_followers_path do
+            %h3
+              Followers
+              %div
+                = Faker::Number.number(3)
+- if @reviews_tab_active
+  %div.block
+    %div.block__header__sub__tabs
+      %ul
+        %li{class: @reviews_top_rated_tab_active ? 'active' : ''}
+          = link_to 'Top Rated',  user_profile_top_reviews_path
+        %li{class: @reviews_newest_tab_active ? 'active' : ''}
+          = link_to 'Newest', user_profile_newest_reviews_path

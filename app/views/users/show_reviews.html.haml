@@ -1,0 +1,97 @@
+%div.content.content--light-grey
+  %div.row
+    %div.small-12.medium-3.columns
+      %div.users__profile__info__wrapper
+        = render 'shared/user_profile_info'
+      - if @viewing_own_profile
+        %div.users__profile__edit
+          %div.row
+            %div.small-6.small-centered.columns.text-center
+              = link_to 'Edit Profile', 'javascript:;', {class: 'btn btn--dark_red btn--rounded trigger-modal-bg', id: 'edit-user-profile'}
+      %div.block
+        %div.block__header.block__header--dark-border
+          %h2
+            Users Top Albums
+        %div.block__content
+          %div.filters
+            %div.row
+              %div.small-4.columns
+                = link_to 'javascript:;',
+                          class: 'filters__selection',
+                          'data-dropdown'=> 'scope-filter-opts',
+                          'data-options'=> 'align:bottom' do
+                  %span
+                    Scope
+                %label
+                  Month
+                %ul#scope-filter-opts.f-dropdown{'aria-hidden'=> 'true', 'data-dropdown-content'=> '', tabindex: '-1'}
+                  %li
+                    = link_to 'Day', 'javascript:;'
+                  %li
+                    = link_to 'Week', 'javascript:;'
+                  %li
+                    = link_to 'Month', 'javascript:;'
+                  %li
+                    = link_to 'Year', 'javascript:;'
+              %div.small-4.columns.end
+                = link_to 'javascript:;',
+                          class: 'filters__selection',
+                          'data-dropdown'=> 'genre-filter-opts',
+                          'data-options'=> 'align:bottom' do
+                  %span
+                    Genre
+                %label
+                  Any
+                  %ul#genre-filter-opts.f-dropdown{'aria-hidden'=> 'true', 'data-dropdown-content'=> '', tabindex: '-1'}
+                    %li
+                      = link_to 'Any', 'javascript:;'
+                    %li
+                      = link_to 'Male', 'javascript:;'
+                    %li
+                      = link_to 'Female', 'javascript:;'
+                    %li
+                      = link_to 'Non Binary', 'javascript:;'
+          %ol.block__content__lists
+            - @popular_albums.each do |album|
+              %li
+                = render 'shared/album_list_item', album: album
+
+
+    %div.small-12.medium-6.columns
+      = render 'shared/user/profile_header'
+      %div.block
+        %div.block__header.block__header--none
+      %div.albums__feed.albums__feed--light-bg
+        - @album_feeds.each do |feed|
+          = render 'shared/album_feed_item', feed: feed
+    %div.small-12.medium-3.columns
+      %div.block
+        %div.block__header.block__header--dark-border
+          %h2
+            User Trends
+        = render 'shared/tags/wrapper'
+
+      %div.block
+        %div.block__header.block__header--dark-border
+          %h2
+            Writers Followed -
+            %span.bold
+              = rand(0...4999)
+        %div.block__content
+          %div.users
+            - @top_writers.each do |top_writer|
+            - temp_rand = Faker::Number.number(6)
+              = render 'shared/user_list_item', locals:{user: top_writer, temp_rand: temp_rand}
+      %div.block
+        %div.block__header.block__header--dark-border
+          %h2
+            Artists Followed -
+            %span.bold
+              = rand(0...4999)
+        %div.block__content
+          %div.users
+            - @top_writers.each do |top_writer|
+            - temp_rand = Faker::Number.number(6)
+              = render 'shared/user_list_item', locals:{user: top_writer, temp_rand: temp_rand, is_artist: true}
+
+        = render 'layouts/footer'

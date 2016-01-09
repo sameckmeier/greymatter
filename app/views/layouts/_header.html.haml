@@ -1,0 +1,33 @@
+%header.header{class: !@invert_header ? 'header--inverted': '' }
+  %div.row
+    %div.small-12.medium-4.columns
+      %div.logo
+        = link_to root_path do
+          = image_tag 'gm_logo.png'
+    %div.small-12.medium-4.columns.text-center
+      %div.search.search--bordered
+        %div.search__input_group
+          %input{type: :text, name:'search', class: 'search__typeahead search__input_group--small typeahead', placeholder: 'SEARCH GREY MATTER'}
+          %button.btn--neutral
+            %i.icon.search
+          %div.clearfix
+        %div.search__typeahead__results#search__typeahead__results
+          fd
+    %div.small-12.medium-4.columns.text-right
+      %div.header__menu
+        - if @is_user_logged_in
+          %ul.right
+            %li
+              - if @is_on_album_page
+                = link_to 'Compose Review', 'javascript:;', {'data-reveal-id'=> 'compose_modal-1234'}
+                = render 'shared/modals/reviews/album', locals: {album_id: 1234, album_name: params[:album_name] }
+              - else
+                = link_to 'Compose Review', 'javascript:;', {'data-reveal-id'=> 'search_albums_modal'}
+            %li
+              = link_to 'User name', 'javascript:;',{class: 'trigger-modal-bg', id: 'current-user-dropdown'}
+            %div.users__dropdown
+            %li.has-notifications
+              = link_to '3', 'javascript:;',{class: 'trigger-modal-bg', id: 'current-user-notifications'}
+            %div.users__notification
+        - else
+          = link_to 'Login / Register', 'javascript:;', {class: 'trigger-modal-bg', 'data-reveal-id'=> 'login_register_modal'}

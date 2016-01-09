@@ -1,0 +1,50 @@
+%div.block
+  %div.block__header.block__header--none
+    %div.row.collapse
+      %div.small-12.medium-4.columns
+        = link_to user_profile_path(profile_id: @profile_id) do
+          = image_tag 'sample_artist_img_med.jpg'
+      %div.small-12.medium-8.columns
+        %div.apply-padding-left
+          %h2.block__header--link
+            = link_to @profile_id, user_profile_path(profile_id: @profile_id)
+          %div.users__block__info
+            %div.users__block__info__title.bold
+              Guru
+            %div.users__block__info__handle
+              @jessthemusicfriend
+            %div.users__block__info__location
+              Boston,MA
+    %div.row
+      %div.small-12.columns
+        %div.rating__block__info
+          %div.row
+            %div.small-4.columns
+              = link_to user_profile_reviews_path(profile_id: @profile_id) do
+                %label
+                  Reviews
+                %span
+                  24
+            %div.small-4.columns
+              = link_to user_profile_following_path(profile_id: @profile_id) do
+                %label
+                  Following
+                %span
+                  124
+            %div.small-4.columns
+              = link_to user_profile_followers_path(profile_id: @profile_id) do
+                %label
+                  Followers
+                %span
+                  143
+    %div.users__title__slider
+      %div.row
+        %div.small-6.columns.text-left
+          Novice
+        %div.small-6.columns.text-right
+          Guru
+      %div.row
+        %div.small-12.columns
+          %div.progress
+            %span.meter{:style => 'width: 70%'}
+            %span.meter-end

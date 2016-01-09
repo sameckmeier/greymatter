@@ -1,0 +1,100 @@
+@mixin user_drop_down_common()
+  position: absolute
+  right: 1rem
+  padding: 2rem
+  top: 2.5rem
+  background: #F5F5F5
+  z-index: 999999
+  display: none
+  width: 25rem
+  hr
+    margin: 1.5rem 0 !important
+    border: solid 1px #F1F1F1 !important
+  h2
+    margin-top: -5px !important
+
+.users
+  &__item
+    margin-top: 1rem
+    margin-bottom: 1.5rem
+    &__info
+      padding-left: 0.75rem
+      .btn
+        padding-left: 30px
+        padding-right: 30px
+        text-transform: uppercase
+        font-weight: 400
+      h3
+        font-size: 18px
+        font-weight: bold
+        margin-bottom: 0.825rem
+  &__block
+    &__info
+      font-size: 11px
+      color: #72726F
+  &__title
+    &__slider
+      margin-top: 1rem
+      font-weight: bold
+      text-transform: uppercase
+  &__dropdown
+    @include user_drop_down_common()
+    .users__block__info
+      height: 2rem
+      font-weight: normal
+    .block__header
+      padding-top: 0
+    &__profile
+      &__stats
+        text-transform: uppercase
+        color: #E0E0E0
+        margin-bottom: 0.25rem
+  &__notification
+    @include user_drop_down_common()
+    &__header
+      h2,h3
+        font-size: $default-font-size
+    &__item
+      text-align: left
+      text-transform: uppercase
+      font-size: 12px
+  &__profile
+    &__info
+      &__wrapper
+        position: relative
+        background-color: #F4F4F4
+        .block
+          .block__header
+            h2, h3
+              a
+                font-size: 22px
+      &__linked_accounts
+        label
+          font-weight: bold
+          text-align: center
+          text-transform: uppercase
+          margin-bottom: 1.25rem
+        .btn
+          font-size: 11px
+    &__edit
+      margin-top: 1.25rem
+      position: relative
+      &__mode
+        &--image
+          position: relative
+          span
+            position: absolute
+            width: 90%
+            text-align: center
+            top: 45%
+            font-weight: bold
+        &--inputs
+          label
+            font-weight: bold
+            margin-top: 8px
+            font-size: 10px
+    &__linked_accounts
+      label
+        font-weight: bold
+        text-align: center
+        text-transform: uppercase

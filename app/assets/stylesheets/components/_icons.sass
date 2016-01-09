@@ -1,0 +1,36 @@
+@mixin icon-sprite($w, $h, $x, $y)
+  background-image: url(sprite.png)
+  background-repeat: no-repeat
+  background-position: $x $y
+  width: $w
+  height: $h
+  display: inline-block
+
+.icon
+  border: none !important
+  outline: none
+  &.search
+    @include icon-sprite(16px, 16px,-23px, -376px)
+  &.heart
+    @include icon-sprite(18px, 16px,-203px, -116px)
+  &.play
+    @include icon-sprite(18px, 16px,-203px, -150px)
+  &.ellipsis
+    @include icon-sprite(25px, 13px,-203px, -183px)
+  &.tall-close
+    @include icon-sprite(16px, 16px,-203px, -48px)
+  &.facebook
+    @include icon-sprite(40px, 40px,-352px, -14px)
+    &.inactive
+      @include icon-sprite(40px, 40px,-292px, -14px)
+  &.tumblr
+    @include icon-sprite(40px, 40px,-352px, -122px)
+    &.inactive
+      @include icon-sprite(40px, 40px,-292px, -122px)
+  &.twitter
+    @include icon-sprite(40px, 40px,-352px, -72px)
+    &.inactive
+      @include icon-sprite(40px, 40px,-292px, -72px)
+  &--social-list
+    i
+      margin-right: 0.25rem

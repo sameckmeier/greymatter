@@ -1,0 +1,22 @@
+%div.tab__content#registration-form
+  %form
+    %input{type: 'text', name: 'full_name', class: 'form__input form__input--transparent', placeholder: 'Full Name'}
+    %input{type: 'password', name: 'password', class: 'form__input form__input--transparent', placeholder: 'Password'}
+    %input{type: 'password', name: 'confirm_password', class: 'form__input form__input--transparent', placeholder: 'Retype Password'}
+    %input{type: 'email', name: 'email', class: 'form__input form__input--transparent', placeholder: 'Email'}
+    %input{type: 'text', name: 'location', class: 'form__input form__input--transparent', placeholder: 'Location'}
+    %select{name: 'location', class: 'form__input__select'}
+      %option{val: ''}
+        BIRTH YEAR
+      - for n in (1900...Time.now.year+1 - 13).reverse_each do #13yo as temporary age limit
+        %option{val: n}
+          = n
+    %button.btn.btn--dark_red.btn--rounded
+      register
+    %hr
+    %h3.text-center.upcase
+      Register With
+    %button.btn.btn--fb.btn--rounded
+      Facebook
+    %button.btn.btn--gplus.btn--rounded
+      Google

@@ -1,0 +1,69 @@
+%section.hero.hero--dark-grey.hero--album
+  %div.row
+    %div.small-12.medium-8.columns.medium-centered.end
+      %div.album__header
+        %div.row{'data-equalizer': true}
+          %div.small-12.medium-3.columns{'data-equalizer-watch': true}
+            = image_tag 'http://lorempixel.com/abstract/200/200'
+          %div.small-12.medium-9.columns{'data-equalizer-watch': true}
+            %div.block{'data-equalizer-watch': true}
+              %div.block__footer
+                %h1
+                  = params[:album_name] ? params[:album_name] : 'Run the jewels 2'
+                  %p
+                    = link_to params[:artist_name], artist_path(name: params[:artist_name])
+                %div.row
+                  %div.small-8.columns
+                    %div.row
+                      %div.small-12.medium-4.columns
+                        %div.album__header__meta
+                          = link_to 'javascript:;',{class: 'scroll-to-dom', 'data-scroll-to': '#albums_tab_opts', 'data-click-dom' => '#album_reviews_link'} do
+                            %label
+                              Reviews
+                            %span
+                              24
+                      %div.small-12.medium-6.columns.end
+                        %div.album__header__meta
+                          %label
+                            Average rating
+                          %span
+                            8.6
+%div.content.content--light-grey
+  %div.row
+    %div.small-12.medium-8.columns.end.medium-centered
+      %div.row
+        %div.small-12.medium-4.columns
+          %div.block
+            %div.block__header
+              %h2
+                Top Songs
+            %div.block__content
+              %ol.block__content__lists.block__content__lists--songs
+                - @songs.each do |song|
+                  %li
+                    = render 'shared/song_list_item', song: song
+          %div.block
+            %div.block__header
+              %h2
+                Artist's Top Albums
+            %div.block__content
+              %ol.block__content__lists
+                - @popular_albums.each do |album|
+                  %li
+                    = render 'shared/album_list_item', album: album
+            = render 'layouts/footer'
+        %div.small-12.medium-8.columns
+          %div.block#albums_tab_opts
+            %div.block__header
+              %div.block__header__tabs.tabs
+                %ul.split
+                  %li.async_load#album_reviews_link.active{'data-content': 'album-trending-reviews','data-reset-menu' => '#album__reviews__menu', 'data-dom' => 'albums-feed-wrapper', 'data-dom-show' => '#album__reviews__menu'}
+                    %h3
+                      Reviews
+                  %li.async_load{'data-content': 'album-ymal-map', 'data-dom' => 'albums-feed-wrapper', 'data-dom-hide' => '#album__reviews__menu'}
+                    %h3
+                      YMAL Map
+          = render 'shared/album/reviews_menu'
+          %div.albums__feed#albums-feed-wrapper
+            - @reviews.each do |feed|
+              = render 'shared/album_feed_item', feed: feed

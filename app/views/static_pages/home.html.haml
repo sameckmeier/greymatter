@@ -1,0 +1,52 @@
+%div.content.content--light-grey
+  %div.row
+    %div.small-12.medium-3.columns
+      %div.users__profile__info__wrapper
+        = render 'shared/user_profile_info'
+      - if @viewing_own_profile
+        %div.users__profile__edit
+          %div.row
+            %div.small-6.small-centered.columns.text-center
+              = link_to 'Edit Profile', 'javascript:;', {class: 'btn btn--dark_red btn-rounded trigger-modal-bg', id: 'edit-user-profile'}
+      %div.block#pop-niche-opts
+        %div.block__header
+          %div.block__header__tabs.tabs
+            %ul.split
+              %li.async_load.active{'data-content'=> 'popular-albums', 'data-dom' => 'pop-niche-content'}
+                %h3
+                  Popular
+                  %sup *
+              %li.async_load{'data-content'=> 'niche-albums', 'data-dom' => 'pop-niche-content'}
+                %h3
+                  Niche
+                  %sup *
+        %div.block__content#pop-niche-content
+          = render 'shared/popular_albums'
+
+    %div.small-12.medium-6.columns
+      %div.block
+        %div.block__header.block__header--none
+          %div.compose.compose__review--linked-area{'data-reveal-id'=> 'search_albums_modal'}
+            %div.row.collapse
+              %div.small-12.medium-1.columns
+                = image_tag 'sample_artist_img_sm.jpg'
+              %div.small-12.medium-11.columns
+                %div.apply-padding-left
+                  %label.apply-padding-top
+                    Compose Review
+      %div.albums__feed.albums__feed--light-bg
+        - @album_feeds.each do |feed|
+          = render 'shared/album_feed_item', feed: feed
+        %div#load-more-feeds
+        %div#infinite-album-feeds.hide
+          = will_paginate @album_feeds
+          %input{type: 'hidden', id: 'current_page_feed', value: 2}
+    %div.small-12.medium-3.columns
+      %div.block
+        %div.block__header.block__header--dark-border
+          %h2
+            Featured Tags
+        = render 'shared/tags/wrapper'
+
+      = render 'shared/recommended_writers'
+      = render 'layouts/footer'

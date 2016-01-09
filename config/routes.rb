@@ -1,5 +1,11 @@
 Rails.application.routes.draw do
 
+  #DEFAULT
+  root 'static_pages#home'
+
+  #landing page
+  get 'landing' => 'static_pages#landing'
+
   #SESSIONS
   get "login" => "sessions#new"
   post "login" => "sessions#create"
@@ -10,10 +16,44 @@ Rails.application.routes.draw do
   get "/:q" , to: "searches#show", constraints: {q: /[.]+/}
 
   #ARTISTS
-  get "/artist/:name" , to: "artists#show", constraints: {name: /[.]+/}
+  #get "/artist/:name" , to: "artists#show", constraints: {name: /[.]+/}
+  get 'artist/:name' => 'artists#show', as: :artist
+
+  #User profile
+  get 'u/:profile_id' => 'users#show', as: :user_profile
+  get 'u/:profile_id/reviews' => 'users#show_reviews', as: :user_profile_reviews
+  get 'u/:profile_id/reviews/top-rated' => 'users#show_top_reviews', as: :user_profile_top_reviews
+  get 'u/:profile_id/reviews/newest' => 'users#show_newest_reviews', as: :user_profile_newest_reviews
+  get 'u/:profile_id/following' => 'users#show_following', as: :user_profile_following
+  get 'u/:profile_id/followers' => 'users#show_followers', as: :user_profile_followers
 
   #ALBUMS
-  get "/artist/:artist_name/album/:album_name" , to: "albums#show", constraints: {artist_name: /[.]+/, album_name: /[.]+/}
+  #get "/artist/:artist_name/album/:album_name" , to: "albums#show", constraints: {artist_name: /[.]+/, album_name: /[.]+/}
+  get 'artist/:artist_name/album/:album_name' => 'albums#show', as: :album
+  get 'search/albums/' => 'albums#search', as: :album_search
+
+
+  #HOME PAGE
+  get '/home' => 'static_pages#home'
+
+  #HELP PAGE
+  get '/help' => 'static_pages#help'
+
+  #TAGS
+  get 'tags/:phrase' => 'tags#show', as: :filter_by_tag
+
+  #ASYNC REQUESTS
+  get '/typeahead-search/:q' => 'async#typeahead_search'
+  get '/current-user-dropdown' => 'async#current_user_menu'
+  get '/current-user-notifications' => 'async#current_user_notifications'
+  get '/edit-current-user-profile-info' => 'async#edit_current_user_info'
+  get '/load-content/:content_to_load' => 'async#load_content'
+  get '/load-more-album-feeds' => 'async#fetch_more_album_feeds'
+
+  post '/save-current-user-profile-info' => 'async#save_current_user_info'
+  post '/albums/feed/comment' => 'async#album_feed_new_comment', as: :post_new_album_comment
+  post '/new-album/review' => 'async#new_album_review', as: :new_album_review
+
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

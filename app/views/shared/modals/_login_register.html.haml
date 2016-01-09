@@ -1,0 +1,13 @@
+%div.reveal-modal.modal__login-reg#login_register_modal{'data-reveal'=> true}
+  %div.block#login-reg-block
+    %div.block__header
+      %div.block__header__tabs.tabs
+        %ul.split.tab-opts
+          %li.async_load.active.text-left{'data-content'=> 'login-form', 'data-dom' => 'login-reg-wrapper'}
+            %h3
+              Login
+          %li.async_load.text-right{'data-content'=> 'registration-form', 'data-dom' => 'login-reg-wrapper'}
+            %h3
+              Register
+    %div.block__content#login-reg-wrapper
+      = render 'shared/forms/login'

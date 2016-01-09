@@ -1,0 +1,12 @@
+%div.users__notification__header.text-left
+  %h2
+    Notifications
+%hr
+- if @notifications.count > 0
+  - @notifications.each do |notification|
+    %div.users__notification__item
+      = notification
+- else
+  %div.no-data-message
+    %p.text-center
+      No notifications found.

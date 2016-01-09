@@ -1,0 +1,91 @@
+.search
+  position: relative
+  &::after
+  content: ''
+  display: table
+  width: 100%
+  clear: both
+  &__typeahead
+    &__results
+      position: absolute
+      top: 52px
+      background-color: #ffffff
+      padding: 1.25rem
+      width: 40rem
+      max-width: 40rem
+      left: -6rem
+      display: none
+      text-align: left
+      z-index: 1
+      .block__header
+        margin-bottom: 0 !important
+  &--white-bg
+    background-color: #ffffff
+  &--bordered
+    border: 1px solid #dddddd
+  &__input
+    &_group
+      padding: 0.75rem 0.5rem
+      height: 42px
+      input[type=text]
+        width: 94%
+        float: left
+        padding: 0 0 0 0.5rem !important
+        background: none
+        border: none
+        box-shadow: none
+        -moz-box-shadow: none
+        -webkit-box-shadow: none
+      ::-webkit-input-placeholder
+        color: $very-light-grey
+      ::-webkit-input-placeholder
+        color: $very-light-grey
+      :-moz-placeholder
+        color: $very-light-grey
+      ::-moz-placeholder
+        color: $very-light-grey
+      :-ms-input-placeholder
+        color: $very-light-grey
+      &--right
+        input[type=text]
+          float: right
+        button
+          float: left
+      button
+        margin-top: 0.25rem
+        padding: 0
+        margin-bottom: 0
+        float: left
+      &--light-grey
+        background-color: #EFEFEF
+        margin-top: 0.3rem
+      &--small
+        margin: 0 !important
+        padding: 0 0 0 1rem !important
+        height: 1.725rem !important
+  &__results
+    &__item
+      border-bottom: solid 1px #ebebeb
+      padding: 20px 0
+      text-transform: capitalize
+      h3
+        font-size: 24px
+        margin: 0
+        font-weight: bold
+        line-height: 100%
+      h4
+        font-size: 18px
+        font-style: italic
+        margin: 0
+        line-height: 100%
+
+      &__title
+        font-weight: bold
+        font-size: 12px
+        color: #72726f
+      &__meta
+        color: #72726f
+        font-size: 12px
+
+
+

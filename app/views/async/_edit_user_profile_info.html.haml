@@ -1,0 +1,38 @@
+%div.block
+  %div.block__header.block__header--none
+    %div.row.collapse
+      %div.small-12.medium-4.columns
+        %div.users__profile__edit__mode--image
+          %span.edit-current-user-profile-image
+            = link_to 'Edit', 'javascript:;'
+          = image_tag 'sample_artist_img_med.jpg'
+      %div.small-12.medium-8.columns.users__profile__edit__mode--inputs
+        %div.apply-padding-left
+          %div.row.collapse
+            %div.small-3.columns
+              %label
+                Name
+            %div.small-9.columns
+              %input.form__input.form__input--transparent{type: 'text', name: 'current_user_full_name', value: 'Jess Smith'}
+          %div.row.collapse
+            %div.small-3.columns
+              %label
+                Twitter
+            %div.small-9.columns
+              %input.form__input.form__input--transparent{type: 'text', name: 'current_user_full_name', value: '@jessthemusicfriend'}
+          %div.row.collapse
+            %div.small-3.columns
+              %label
+                Location
+            %div.small-9.columns
+              %input.form__input.form__input--transparent{type: 'text', name: 'current_user_full_name', value: 'Boston,MA'}
+%div.users__profile__info__linked_accounts
+  %label
+    Link your accounts
+  %ul.small-block-grid-2
+    %li
+      = link_to 'Unlink Facebook', 'javascript:;',{class: 'btn btn--fb btn__outline btn--rounded link-unlink', 'data-social-link': 'facebook'}
+    %li
+      = link_to 'Tumblr', 'javascript:;',{class: 'btn btn--tumblr btn--rounded link-unlink', 'data-social-link': 'tumblr'}
+    %li
+      = link_to 'Twitter', 'javascript:;',{class: 'btn btn--twitter btn--rounded link-unlink', 'data-social-link': 'twitter'}

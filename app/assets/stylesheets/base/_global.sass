@@ -1,0 +1,173 @@
+@font-face
+  font-family: "Avenir Next"
+  src: url(AvenirNext-Regular.ttf) format("truetype"), url(AvenirNext-Italic.ttf) format("truetype")
+  font-weight: normal
+
+@font-face
+  font-family: "Avenir Next"
+  src: url(AvenirNext-Bold.ttf) format("truetype"), url(AvenirNext-BoldItalic.ttf) format("truetype")
+  font-weight: bold
+
+@font-face
+  font-family: "Avenir Next"
+  src: url(AvenirNext-UltraLight.ttf) format("truetype"), url(AvenirNext-UltraLightItalic.ttf) format("truetype")
+  font-weight: 300
+
+@font-face
+  font-family: "Adobe Caslon Pro"
+  src: url(ACaslonPro-Regular.otf) format("truetype"), url(ACaslonPro-Italic.otf) format("truetype")
+  font-weight: normal
+
+@font-face
+  font-family: "Adobe Caslon Pro"
+  src: url(ACaslonPro-Bold.otf) format("truetype"), url(ACaslonPro-BoldItalic.otf) format("truetype")
+  font-weight: bold
+
+
+@function calc_rem($size-in-px)
+  $px_to_rem: $size-in-px / 16px
+  @return $px_to_rem+rem
+
+@mixin dark_header_rules()
+  color: #ffffff
+  h1,h2,h3,p,label,span
+    color: #ffffff
+  h1
+    font-size: 42px
+    font-weight: 300
+    margin: 0
+    a
+      color: #ffffff
+    p
+      margin: 0
+      font-size: 27px
+      font-style: italic
+  &__meta
+    label
+      text-transform: uppercase
+      font-size: 12px !important
+    span
+      font-size: 36px !important
+      font-weight: bold
+
+@mixin box-shadow($value)
+  box-shadow: $value
+  -moz-box-shadow: $value
+  -webkit-box-shadow: $value
+  -o-box-shadow: $value
+
+@mixin border-radius($value)
+  border-radius: $value
+  -moz-border-radius: $value
+  -webkit-border-radius: $value
+
+html, body
+  font-size: $default-font-size
+  color: $default-font-color
+  font-family: "Avenir Next"
+
+h1,h2,h3,h4,h5,h6,p,a
+  font-family: "Avenir Next"
+
+h1,h2
+  font-size: 24px
+  text-transform: uppercase
+  font-weight: bold
+
+p
+  font-size: $default-font-size
+
+a
+  text-transform: uppercase
+  color: $default-font-color
+
+ol
+  margin: 0
+  padding: 0
+  list-style-type: none
+  li
+    counter-increment: step-counter
+    margin-bottom: 10px
+    &::before
+      content: counter(step-counter)
+      margin-right: 5px
+      color: #000
+      font-weight: bold
+      padding: 3px 8px 3px 0
+      border-radius: 3px
+.row
+  max-width: 90rem
+
+.content
+  &--light-grey
+    background-color: #f4f4f4
+
+.upcase
+  text-transform: uppercase
+.bold
+  font-weight: bold
+.italize
+  font-style: italic
+.f-dropdown
+  outline: none
+.apply
+  &-padding
+    &-left
+      padding-left: 0.75rem
+    &-right
+      padding-right: 0.75rem
+    &-top
+      padding-top: 0.75rem
+    &-bottom
+      padding-bottom: 0.75rem
+
+.progress
+  border: none
+  height: 4px
+  background-color: #E0E0E0
+  padding: 0
+  .meter
+    background-color: #72726F
+    &-end
+      float: left
+      width: 8px
+      height: 9px
+      background-color: #72726F
+      display: block
+      margin-top: -3px
+
+hr
+  border: solid 1px #676767 !important
+  margin: 4px 0 !important
+a
+  &:hover
+    color: $default-font-color
+
+.dark-red-texts
+  color: #700000
+
+.dotter
+  display: inline-block
+  width: 5px
+  height: 5px
+  margin: 1px 3px
+  background: #72726f
+  @include border-radius(100%)
+
+.no-data-message
+  padding: 1.75rem 0
+  p
+    color: #AFAFAF
+
+.remove-borders
+  border: none !important
+
+.discard--link
+  line-height: 38px !important
+  text-transform: capitalize !important
+  font-size: 12px !important
+  font-style: italic !important
+  position: relative !important
+  top: 0 !important
+  right: 0 !important
+  font-weight: normal !important

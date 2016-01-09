@@ -1,0 +1,39 @@
+.rating
+  display: inline-block
+  width: 100%
+  border: 1px solid #dddddd
+  &__item
+    text-align: center
+    font-weight: bold
+    color: #000000
+    padding: 0.5rem 0
+    font-size: 15px
+    height: 36px
+    min-width: 40px
+    &.can-rate
+      background: #F6F6F6
+      color: #dddddd
+      cursor: pointer
+      &:hover
+        background: #ffffff
+        color: #000000
+      &.active
+        background: #ffffff
+        color: #000000
+  &__block
+    &__info
+      margin-top: 1.75rem
+      label
+        text-transform: uppercase
+        font-size: 13px
+        line-height: 50%
+      span
+        font-size: 24px
+        font-weight: bold
+  &__lists
+    ul
+      margin: 0
+      padding: 0
+      li
+        list-style: none
+        display: inline-block

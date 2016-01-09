@@ -1,0 +1,58 @@
+@import "../base/colors"
+header
+  &.header
+    padding: 1.85rem 0
+    border-bottom: 1px solid $global-grey-bg
+    border-top: 1px solid $global-grey-bg
+    .logo
+      margin-top: 0
+    .search
+      input[type=text]
+        float: right
+      button
+        float: left
+    &--inverted
+      background-color: $global-grey-bg
+      .logo
+        margin-top: -9px
+      .search
+        input[type=text]
+          float: left
+        button
+          float: left
+        .search__input_group
+          background: #EFEFEF
+          padding: 0
+          height: 25px
+      .header__menu
+        margin-top: 0
+  .header__menu
+    font-weight: bold
+    margin-top: 0.5rem
+    ul
+      margin: 0
+      padding: 0
+    li
+      list-style: none
+      display: inline-block
+      font-size: 12px
+      padding: 0 0.5rem
+      a
+        color: #5B5B5B
+      &.has-notifications
+        background-color: #5B5B5B
+        color: #ffffff
+        a
+          color: #ffffff
+          &:hover
+            color: #ffffff !important
+    a
+      font-size: 12px
+      &:hover
+        color: #333333 !important
+
+#logo
+  background-image: url("sprite.png")
+  height: 35px
+  background-position: -23px -15px
+  width: 86px

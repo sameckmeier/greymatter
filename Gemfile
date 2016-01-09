@@ -34,6 +34,9 @@ gem 'coffee-rails'
 gem 'jquery-rails'
 gem 'turbolinks'
 gem 'jbuilder'
+gem 'haml-rails'
+gem 'foundation-rails'
+gem 'faker'
 
 group :doc do
   gem 'sdoc', require: false

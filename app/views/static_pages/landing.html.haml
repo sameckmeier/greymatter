@@ -1,0 +1,56 @@
+%section.hero.hero--grey
+  %div.row
+    %div.small-12.medium-4.columns.medium-centered.end
+      %div.hero__content.text-center
+        %h1
+          What is Grey Matter
+        %p
+          Grey Matter is this sick site that does the most awesome stuff ever.
+          %div.row
+            %div.small-12.medium-7.medium-centered.columns
+              = link_to '#', {class: 'btn btn--rounded btn__outline btn__outline--white'} do
+                Learn Yourself Up
+%div.content.content--light-grey
+  %div.row
+    %div.small-12.medium-3.columns
+      %div.block#pop-niche-opts
+        %div.block__header
+          %div.block__header__tabs.tabs
+            %ul.split
+              %li.async_load.active{'data-content'=> 'popular-albums', 'data-dom' => 'pop-niche-content'}
+                %h3
+                  Popular
+                  %sup *
+              %li.async_load{'data-content'=> 'niche-albums', 'data-dom' => 'pop-niche-content'}
+                %h3
+                  Niche
+                  %sup *
+        %div.block__content#pop-niche-content
+          = render 'shared/popular_albums'
+
+    %div.small-12.medium-6.columns
+      %div.block
+        %div.block__header.block__header--dark-border
+          %h2
+            Trending Reviews
+      %div.albums__feed
+        - @album_feeds.each do |feed|
+          = render 'shared/album_feed_item', feed: feed
+    %div.small-12.medium-3.columns
+      %div.block
+        %div.block__header.block__header--dark-border
+          %h2
+            Featured Tags
+        = render 'shared/tags/wrapper'
+
+      %div.block
+        %div.block__header.block__header--dark-border
+          %h2
+            Top Writers
+        %div.block__content
+          %div.users
+            - @top_writers.each do |top_writer|
+            - temp_rand = Faker::Number.number(6)
+              = render 'shared/user_list_item', locals:{user: top_writer, temp_rand: temp_rand}
+
+        = render 'layouts/footer'

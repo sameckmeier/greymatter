@@ -8,7 +8,6 @@ class ArtistRelationshipsController < ApplicationController
         artist_spotify = Rails.cache.fetch(cache_key)
 				@artist = Artist.build(artist_spotify)
 			end
-		end
 
 		current_user.follow_artist!(:artist, @artist)
 		respond_to do |format|

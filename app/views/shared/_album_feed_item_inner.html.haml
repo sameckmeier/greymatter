@@ -1,0 +1,38 @@
+%div.albums__feed__item
+  %div.row
+    %div.small-12.medium-7.columns
+      = link_to album_path(artist_name: feed[:artist], album_name: feed[:album]) do
+        = image_tag 'http://lorempixel.com/401/121'
+    %div.small-12.medium-5.columns
+      %div.albums__feed__item__content__meta
+        %div.row.collapse
+          %div.small-3.columns
+            = link_to user_profile_path(profile_id: feed[:user]) do
+              = image_tag 'http://lorempixel.com/people/45/45'
+          %div.small-9.columns
+            %div.albums__feed__item__content__inner
+              %h4
+                = link_to feed[:user], user_profile_path(profile_id: feed[:user])
+                %span (Guru)
+              %div.albums__feed__item__content__inner__time_ago
+                = "#{time_ago_in_words(feed[:time_ago])} ago"
+  %div.albums__feed__item__content__main
+    %div.row
+      %div.small-12.medium-8.medium-centered.columns.end
+        %div.albums__feed__item__content__inner
+          %h2.upcase
+            = link_to feed[:album], album_path(artist_name: feed[:artist], album_name: feed[:album])
+            %span
+            = link_to feed[:artist], artist_path(name: feed[:artist])
+          %p
+            = feed[:content]
+        %div.row
+          %div.small-12.columns
+            %div.albums__feed__item__content__inner
+              %div.albums__feed__item__content__meta
+                = link_to 'javascript:;',{'data-reveal-id'=> 'standard_modal'} do
+                  %i.icon.heart
+                = link_to 'javascript:;',{'data-reveal-id'=> 'standard_modal'} do
+                  %i.icon.play
+                = link_to 'javascript:;', 'data-dropdown'=> "album__feed__actions-#{feed[:token]}",'data-options'=> 'align:bottom' do
+                  %i.icon.ellipsis

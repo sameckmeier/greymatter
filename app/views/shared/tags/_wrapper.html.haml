@@ -1,0 +1,5 @@
+%div.block__content
+  %div.tags
+    %ul
+      - @tags.each do |tag|
+        = render 'shared/tags/item', tag:  tag

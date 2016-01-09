@@ -1,0 +1,51 @@
+.btn
+  padding: 10px 20px
+  width: 100%
+  text-transform: uppercase
+  font-weight: normal
+  font-size: 12px
+  display: inline-block
+  text-align: center
+  &:focus
+    outline: none
+  &--fb, &--fb:hover
+    background: #3B5998
+    color: #ffffff
+  &--gplus, &--gplus:hover
+    background: #D50F25
+  &--tumblr, &--tumblr:hover
+    background: #35465D
+    color: #ffffff
+  &--twitter, &--twitter:hover
+    background: #55ACEE
+    color: #ffffff
+  &--add-tags, &--add-tags:hover
+    background: #F3F3F3
+    color: #4d4d4d
+    width: 110px
+    margin-bottom: 1rem
+  h3
+    font-size: 12px
+    text-transform: uppercase
+    margin-bottom: 15px
+    display: inline-block
+  &--rounded
+    @include border-radius(3px)
+  &--neutral, &--neutral:hover, &--neutral:focus, &--neutral:active
+    background-color: transparent
+    border: none
+    outline: none
+  &__outline, &__outline:hover, &__outline:active, &__outline:focus
+    background-color: transparent !important
+    border: 1px solid #E0E0E0
+    color: #222222 !important
+    &--white
+      border: 1px solid #E0E0E0
+    &--grey
+      border: 1px solid #E0E0E0
+  &--dark_red, &--dark_red:hover
+    background-color: #700000
+    color: #ffffff !important
+  &--dark, &--dark:hover
+    background-color: #676767
+    color: #ffffff

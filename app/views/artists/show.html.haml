@@ -1,0 +1,78 @@
+%section.hero.hero--dark-grey.hero--artist
+  %div.row
+    %div.small-12.medium-8.columns.medium-centered.end
+      %div.artist__header
+        %div.row{'data-equalizer': true}
+          %div.small-12.medium-3.columns{'data-equalizer-watch': true}
+            = image_tag 'sample_artist_img_xl.jpg'
+          %div.small-12.medium-9.columns{'data-equalizer-watch': true}
+            %div.block{'data-equalizer-watch': true}
+              %div.block__footer
+                %h1
+                  = params[:name] ? params[:name] : 'Run the jewels'
+                %div.row
+                  %div.small-8.columns
+                    %div.row
+                      %div.small-12.medium-4.columns
+                        %div.artist__header__meta
+                          = link_to 'javascript:;',{class: 'scroll-to-dom', 'data-scroll-to': '#artist_tab_opts', 'data-click-dom' => '#artist_reviews_link', 'data-dom-show' => '#artist_tab_opts'} do
+                            %label
+                              Reviews
+                            %span
+                              24
+                      %div.small-12.medium-4.columns
+                        %div.artist__header__meta
+                          = link_to 'javascript:;',{class: 'async_load', 'data-content': 'artist-following','data-dom' => 'artist-feed-wrapper', 'data-dom-hide' => '#artist_tab_opts'} do
+                            %label
+                              Following
+                            %span
+                              124
+                      %div.small-12.medium-4.columns
+                        %div.artist__header__meta
+                          %label
+                            Rating
+                          %span
+                            7.6
+%div.content.content--light-grey
+  %div.row
+    %div.small-12.medium-8.columns.end.medium-centered
+      %div.row
+        %div.small-12.medium-4.columns
+          %div.block
+            %div.block__header
+              %h2
+                Artist's Top Albums
+            %div.block__content
+              %ol.block__content__lists
+                - @popular_albums.each do |album|
+                  %li
+                    = render 'shared/album_list_item', album: album
+          %div.block
+            %div.block__header.block__header--dark-border
+              %h2
+                Similar Artists
+            %div.block__content
+              %div.users
+                - @top_writers.each do |top_writer|
+                - temp_rand = Faker::Number.number(6)
+                  = render 'shared/user_list_item', locals:{user: top_writer, temp_rand: temp_rand, is_artist: true}
+
+            = render 'layouts/footer'
+        %div.small-12.medium-8.columns
+          %div.block#artist_tab_opts
+            %div.block__header
+              %div.block__header__tabs.tabs
+                %ul.split.three
+                  %li.async_load#artist_reviews_link.active{'data-content': 'trending-reviews', 'data-reset-menu' => '#artist__reviews__menu', 'data-dom' => 'artist-feed-wrapper', 'data-dom-show' => '#artist__reviews__menu'}
+                    %h3
+                      Reviews
+                  %li.async_load{'data-content': 'biography', 'data-dom' => 'artist-feed-wrapper', 'data-dom-hide' => '#artist__reviews__menu'}
+                    %h3
+                      Biography
+                  %li.async_load{'data-content': 'ymal-map', 'data-dom' => 'artist-feed-wrapper', 'data-dom-hide' => '#artist__reviews__menu'}
+                    %h3
+                      YMAL Map
+            = render 'shared/artist/reviews_menu'
+          %div.albums__feed#artist-feed-wrapper
+            - @reviews.each do |feed|
+              = render 'shared/album_feed_item', feed: feed

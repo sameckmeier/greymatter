@@ -1,0 +1,41 @@
+%div.content.content--light-grey
+  %div.row
+    %div.small-12.medium-8.columns.end.medium-centered
+      %div.row
+        %div.small-12.medium-4.columns
+          %div.block
+            %div.block__header.block__header--dark-border
+              %h2
+                Featured Tags
+            = render 'shared/tags/wrapper'
+
+          = render 'layouts/footer'
+        %div.small-12.medium-8.columns
+          %div.block
+            %div.block__header.block__header--dark-border
+              %h2
+                Search results for
+                %span.bold
+                  = "\"#{params[:name]}\""
+          - if @albums
+            %div.block__content
+              - @albums.each do |album|
+              - temp_rand = Faker::Number.number(6)
+                %div.search__results__item
+                  %div.row
+                    %div.small-12.medium-2.columns
+                      = image_tag 'http://lorempixel.com/abstract/90/90'
+                    %div.small-12.medium-7.columns
+                      %h3
+                        = link_to album[:name], album_path(artist_name: album[:artist], album_name: album[:name])
+                      %h4
+                        = album[:artist]
+                      %div.search__results__item__meta
+                        = album[:year]
+                        %span.dotter
+                        = "#{album[:songs]} songs"
+                        %span.dotter
+                        = "#{Time.at(album[:duration]).strftime('%M')} min"
+                    %div.small-12.medium-3.columns.text-right
+                      = link_to 'Review', 'javascript:;', class: 'btn btn--rounded btn__outline btn__outline--grey review-album', 'data-reveal-id'=> "compose_modal-#{temp_rand}"
+                  = render 'shared/modals/reviews/album', locals: {album_id: temp_rand, album_name: album[:name] }
