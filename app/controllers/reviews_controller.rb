@@ -16,14 +16,10 @@ class ReviewsController < ApplicationController
 	end
 
 	def destroy
-		@review.destroy
+		review = current_user.reviews.find_by(id: params[:review_id])
+		if review
+			Review.find(review.id).destroy!
+		end
 		redirect_to root_url
-	end
-
-	private
-
-	def correct_user
-		@review = current_user.reviews.find_by(id: params[:review_id]) #does find work?
-		redirect_to root_url if @review.nil?
 	end
 end

@@ -4,7 +4,7 @@ module Api
     ARTIST_FIELDS = [:name, :id, :model, :images, :source]
     ALBUM_FIELDS = [:name, :id, :model, :images, :release_date, :tracks, :genres, :source]
     TRACKS_FIELDS = [:id, :name, :preview_url, :track_number]
-    SEARCH_FIELDS = [:name, :id, :model, :images, :source]
+    MIN_FIELDS = [:name, :id, :model, :images, :source]
     BASE_URL = "https://api.spotify.com/v1"
 
     class << self
@@ -60,7 +60,7 @@ module Api
       def translate_search_json(json)
         res = {}
 
-        SEARCH_FIELDS.each { |f| res[f] = json[f] }
+        MIN_FIELDS.each { |f| res[f] = json[f] }
         res[:source] = :spotify
 
         if json[:type] == "artist"

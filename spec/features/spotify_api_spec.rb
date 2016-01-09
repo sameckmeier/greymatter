@@ -8,7 +8,7 @@ feature "Spotify Api" do
 
     response = Api::Spotify.search("david bowie")
     response.each do |r|
-      Api::Spotify::SEARCH_FIELDS.each do |f|
+      Api::Spotify::MIN_FIELDS.each do |f|
         success = false unless r[f]
       end
     end
@@ -50,7 +50,7 @@ feature "Spotify Api" do
     response = Api::Spotify.artists_albums(david_bowie_id)
     puts response
     response.each do |r|
-      Api::Spotify::SEARCH_FIELDS.each do |f|
+      Api::Spotify::MIN_FIELDS.each do |f|
         success = false unless r[f]
       end
     end
