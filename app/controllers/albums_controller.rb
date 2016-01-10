@@ -18,7 +18,7 @@ class AlbumsController < ActionController::Base
   def search
     queries_album_name = params[:name]
     @tags = StaticPagesHelper::SAMPLE_DATA.tags
-    @albums = AsyncHelper::SAMPLE_DATA.albums(5)
+    @albums = Api::Spotify.albums_search(queries_album_name)
   end
 
   private
