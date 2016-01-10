@@ -4,5 +4,5 @@
       %h4
         = song[:name]
   %div.small-4.columns.text-right
-    %p
-      = number_with_delimiter(song[:downloads], delimeter: ',')
+    %a
+      = link_to "Listen", song[:preview_url]

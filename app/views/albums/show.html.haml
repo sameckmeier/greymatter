@@ -4,12 +4,12 @@
       %div.album__header
         %div.row{'data-equalizer': true}
           %div.small-12.medium-3.columns{'data-equalizer-watch': true}
-            = image_tag 'http://lorempixel.com/abstract/200/200'
+            = image_tag @album_spotify[:images][0][:url]
           %div.small-12.medium-9.columns{'data-equalizer-watch': true}
             %div.block{'data-equalizer-watch': true}
               %div.block__footer
                 %h1
-                  = params[:album_name] ? params[:album_name] : 'Run the jewels 2'
+                  = @album_spotify[:name]
                   %p
                     = link_to params[:artist_name], artist_path(name: params[:artist_name])
                 %div.row
@@ -50,7 +50,7 @@
               %ol.block__content__lists
                 - @popular_albums.each do |album|
                   %li
-                    = render 'shared/album_list_item', album: album
+                    = render 'shared/album_list_item', album: album, artist_name: params[:artist_name]
             = render 'layouts/footer'
         %div.small-12.medium-8.columns
           %div.block#albums_tab_opts

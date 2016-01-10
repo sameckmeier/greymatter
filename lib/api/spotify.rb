@@ -32,8 +32,15 @@ module Api
         ids = JSON.parse(response.body, symbolize_names: true)[:albums][:items].map { |album| album[:id] }
         albums_response = HTTParty.get("#{BASE_URL}/albums?ids=#{ids.join(",")}")
 
-        res = JSON.parse(albums_response.body, symbolize_names: true)[:albums].map do |json|
-          translate_album_json(json)
+        JSON.parse(albums_response.body, symbolize_names: true)[:albums].each do |json|
+          album = translate_album_json(json)
+
+          ck = cache_key(album[:id], album[:model])
+          unless Rails.cache.exist?(ck)
+            Rails.cache.fetch(ck) { album }
+          end
+
+          res << album
         end
 
         res
@@ -42,9 +49,15 @@ module Api
       def artist(id)
         res = nil
 
-        response = HTTParty.get("#{BASE_URL}/artists/#{id}")
-        json = JSON.parse(response.body, symbolize_names: true)
-        res = translate_artist_json(json)
+        ck = cache_key(id, "artist")
+        if Rails.cache.exist?(ck)
+          res = Rails.cache.fetch(ck)
+        else
+          response = HTTParty.get("#{BASE_URL}/artists/#{id}")
+          json = JSON.parse(response.body, symbolize_names: true)
+          res = translate_artist_json(json)
+          Rails.cache.fetch(ck) {res}
+        end
 
         res
       end
@@ -52,9 +65,15 @@ module Api
       def album(id)
         res = nil
 
-        response = HTTParty.get("#{BASE_URL}/albums/#{id}")
-        json = JSON.parse(response.body, symbolize_names: true)
-        res = translate_album_json(json)
+        ck = cache_key(id, "album")
+        if Rails.cache.exist?(ck)
+          res = Rails.cache.fetch(ck)
+        else
+          response = HTTParty.get("#{BASE_URL}/albums/#{id}")
+          json = JSON.parse(response.body, symbolize_names: true)
+          res = translate_album_json(json)
+          Rails.cache.fetch(ck) {res}
+        end
 
         res
       end
@@ -62,9 +81,15 @@ module Api
       def artists_albums(id)
         res = nil
 
-        response = HTTParty.get("#{BASE_URL}/artists/#{id}/albums")
-        json = JSON.parse(response.body, symbolize_names: true)
-        res = json[:items].map { |j| translate_album_json(j) }
+        ck = cache_key(id, "albums")
+        if Rails.cache.exist?(ck)
+          res = Rails.cache.fetch(ck)
+        else
+          response = HTTParty.get("#{BASE_URL}/artists/#{id}/albums")
+          json = JSON.parse(response.body, symbolize_names: true)
+          res = json[:items].map { |j| translate_album_json(j) }
+          Rails.cache.fetch(ck) {res}
+        end
 
         res
       end
@@ -78,12 +103,7 @@ module Api
 
         MIN_FIELDS.each { |f| res[f] = json[f] }
         res[:source] = :spotify
-
-        if json[:type] == "artist"
-          res[:model] = :artist
-        elsif json[:type] == "album"
-          res[:model] = :album
-        end
+        res[:model] = json[:type]
 
         res
       end
@@ -96,7 +116,7 @@ module Api
         res = {}
 
         ARTIST_FIELDS.each { |f| res[f] = json[f] }
-        res[:model] = :artist
+        res[:model] = "artist"
         res[:source] = :spotify
 
         res
@@ -107,15 +127,17 @@ module Api
 
         ALBUM_FIELDS.each { |f| res[f] = json[f] }
 
-        res[:artist] = translate_artist_json(res[:artists][0])
-        res[:tracks] = translate_tracks_json(res[:tracks])
+        res[:artist] = translate_artist_json(res[:artists][0]) if res[:artists]
 
-        res[:duration] = 0
-        res[:tracks].each { |track| res[:duration] += ((track[:duration_ms]/1000)/60) }
+        if res[:tracks]
+          res[:tracks] = translate_tracks_json(res[:tracks])
+          res[:duration] = 0
+          res[:tracks].each { |track| res[:duration] += ((track[:duration_ms]/1000)/60) }
+        end
 
-        res[:model] = :album
+        res[:model] = "album"
         res[:source] = :spotify
-        
+
         res
       end
 
