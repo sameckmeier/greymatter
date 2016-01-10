@@ -40,4 +40,4 @@
                         = "#{album[:duration]} min"
                     %div.small-12.medium-3.columns.text-right
                       = link_to 'Review', 'javascript:;', class: 'btn btn--rounded btn__outline btn__outline--grey review-album', 'data-reveal-id'=> "compose_modal-#{album[:id]}"
-                  = render 'shared/modals/reviews/album', locals: {album_id: album[:id], album_name: album[:name] }
+                  = render 'shared/modals/reviews/album', locals: { album_id: album[:id], album_name: album[:name] }

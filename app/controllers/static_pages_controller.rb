@@ -6,7 +6,7 @@ class StaticPagesController < ApplicationController
   		@feed_items = current_user.feed.paginate(page: params[:page])
     end
     @album_feeds = StaticPagesHelper::SAMPLE_DATA.album_feeds.paginate(page: params[:page], per_page: 2)
-    @popular_albums = StaticPagesHelper::SAMPLE_DATA.popular_albums
+    @popular_albums = [] #StaticPagesHelper::SAMPLE_DATA.popular_albums
     @reviews = StaticPagesHelper::SAMPLE_DATA.album_feeds
     @top_writers = StaticPagesHelper::SAMPLE_DATA.top_writers
     @tags = StaticPagesHelper::SAMPLE_DATA.tags
@@ -16,7 +16,7 @@ class StaticPagesController < ApplicationController
   def home
     @invert_header = true
     @is_user_logged_in = [true,false].sample
-    @popular_albums = StaticPagesHelper::SAMPLE_DATA.popular_albums
+    @popular_albums = [] #StaticPagesHelper::SAMPLE_DATA.popular_albums
     @album_feeds = StaticPagesHelper::SAMPLE_DATA.album_feeds.paginate(page: params[:page], per_page: 2)
     @top_writers = StaticPagesHelper::SAMPLE_DATA.top_writers
     @tags = StaticPagesHelper::SAMPLE_DATA.tags

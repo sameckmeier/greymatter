@@ -5,7 +5,7 @@ class AlbumsController < ActionController::Base
     # @album = Album.where(spotify_id: params[:spotify_id])
     @songs = @album_spotify[:tracks]
     @popular_albums = Api::Spotify.artists_albums(@album_spotify[:artist][:id])
-    pp @popular_albums
+    
     default_data
     @reviews_tab_active = true
   end
