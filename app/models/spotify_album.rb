@@ -1,67 +1,69 @@
-class SpotifyAlbum < ActiveRecord::Base
+class SpotifyAlbum < Spotifyable
 
-  has_many :reviews
+  FIELDS = [
+    :name, :id, :images,
+    :release_date, :genres,
+    :duration
+  ]
+  RELATIONSHIPS = {
+    artists: SpotifyArtist,
+    tracks: SpotifyTracks
+  }
+  FUZZY_SEARCH_SLUG = "search?type=album&q="
+  IDS_SEARCH_SLUG = "albums?ids="
 
-  def self.build(spotify_json)
-    res = Album.new
+  has_one :album
+  has_many :followed_artists, through: :artist_relationships, source: :artist
+  has_many :spotify_artists, through: :spotify_attachment 
+  has_many :spotify_tracks, through: :spotify_attachment
 
-    res.name = spotify_json[:name]
-    res.spotify_id = spotify_json[:id]
+  def self.build(json)
+    res = self.where(s_id: json[:id], name: json[:name])[0]
 
-    res.save!
-  end
+    unless res
+      res = self.new
 
-  def albums_search(query)
-    res = []
-
-    search_query = "#{BASE_URL}/search?type=album&q=#{format_query(query)}"
-    response = HTTParty.get(search_query)
-
-    ids = JSON.parse(response.body, symbolize_names: true)[:albums][:items].map { |album| album[:id] }
-    albums_response = HTTParty.get("#{BASE_URL}/albums?ids=#{ids.join(",")}")
-
-    JSON.parse(albums_response.body, symbolize_names: true)[:albums].each do |json|
-      album = translate_album_json(json)
-
-      ck = cache_key(album[:id], album[:model])
-      unless Rails.cache.exist?(ck)
-        Rails.cache.fetch(ck) { album }
+      FIELDS.each do |f|
+        if f == :id
+          res.s_id = json(f)
+        else
+          res.send(f, json(f))
+        end
       end
 
+      res.save!
+
+      RELATIONSHIPS.each do |k,v|
+        json(k).each { |j| res.build_relationship(v, k, j) }
+        build_duration(active_record_objs) if k == :tracks
+      end
+    end
+
+    res
+  end
+
+  def self.search(query)
+    res = []
+
+    response = get(FUZZY_SEARCH_SLUG, query)
+    ids = (response[:albums][:items].map { |album| album[:id] }).join(",")
+    response = get(IDS_SEARCH_SLUG, ids)
+
+    response[:albums].each do |json|
+      album = build(json)
       res << album
     end
 
     res
   end
 
-  def album(id)
-    res = nil
+  private
+  def build_duration
+    res = 0
 
-    ck = cache_key(id, "album")
-    if Rails.cache.exist?(ck)
-      res = Rails.cache.fetch(ck)
-    else
-      response = HTTParty.get("#{BASE_URL}/albums/#{id}")
-      json = JSON.parse(response.body, symbolize_names: true)
-      res = translate_album_json(json)
-      Rails.cache.fetch(ck) {res}
-    end
-
-    res
-  end
-
-  def artists_albums(id)
-    res = nil
-
-    ck = cache_key(id, "albums")
-    if Rails.cache.exist?(ck)
-      res = Rails.cache.fetch(ck)
-    else
-      response = HTTParty.get("#{BASE_URL}/artists/#{id}/albums")
-      json = JSON.parse(response.body, symbolize_names: true)
-      res = json[:items].map { |j| translate_album_json(j) }
-      Rails.cache.fetch(ck) {res}
-    end
+    tracks.each { |track| duration += ((track.duration_ms/1000)/60) }
+    self.duration = res
+    self.save!
 
     res
   end
