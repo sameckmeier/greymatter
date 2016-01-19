@@ -1,5 +1,7 @@
 class SpotifyTrack < ActiveRecord::Base
 
+  belongs_to :spotify_album
+
   def self.build(spotify_json)
     res = Artist.new
 

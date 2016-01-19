@@ -4,7 +4,7 @@ class SpotifyArtist < ActiveRecord::Base
   RELATIONSHIPS = { albums: SpotifyArtist }
 
   has_one :artist
-  has_many :spotify_albums
+  has_many :spotify_albums, through: :spotify_artist_relationships, source: :spotify_album
 
   def self.build(json, spotify_album=nil)
     res = self.where(s_id: json[:id], name: json[:name])[0]

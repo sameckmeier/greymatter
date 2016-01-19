@@ -13,9 +13,8 @@ class SpotifyAlbum < Spotifyable
   IDS_SEARCH_SLUG = "albums?ids="
 
   has_one :album
-  has_many :followed_artists, through: :artist_relationships, source: :artist
-  has_many :spotify_artists, through: :spotify_attachment 
-  has_many :spotify_tracks, through: :spotify_attachment
+  has_many :spotify_artists, through: :spotify_artist_relationships, source: :spotify_artist
+  has_many :spotify_tracks
 
   def self.build(json)
     res = self.where(s_id: json[:id], name: json[:name])[0]

@@ -4,6 +4,8 @@ module Api
     MIN_FIELDS = [:name, :id, :model, :images, :source]
     BASE_URL = "https://api.spotify.com/v1"
 
+    belongs_to :spotify_album
+
     class << self
 
       def get(slug, query)
