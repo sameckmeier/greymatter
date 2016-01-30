@@ -1,3 +1,4 @@
+
 class Artist < ActiveRecord::Base
 
   has_many :artist_relationships, dependent: :destroy

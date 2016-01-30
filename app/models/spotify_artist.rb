@@ -1,12 +1,11 @@
 class SpotifyArtist < ActiveRecord::Base
 
   FIELDS = [:name, :id, :images]
-  RELATIONSHIPS = { albums: SpotifyArtist }
 
   has_one :artist
   has_many :spotify_albums, through: :spotify_artist_relationships, source: :spotify_album
 
-  def self.build(json, spotify_album=nil)
+  def self.build(json)
     res = self.where(s_id: json[:id], name: json[:name])[0]
 
     unless res
@@ -21,30 +20,28 @@ class SpotifyArtist < ActiveRecord::Base
       end
 
       res.save!
-
-      RELATIONSHIPS.each do |k,v| { json(k).map { |j| res.build_relationship(v, k, j) } }
+      build_albums
     end
 
     res
   end
 
-  def self.search(id)
-    res = nil
+  def self.search(spotify_id)
+    res = self.where(s_id: spotify_id)[0]
 
-    response = HTTParty.get("#{BASE_URL}/artists/#{id}")
-    json = JSON.parse(response.body, symbolize_names: true)
-    res = translate_artist_json(json)
-    Rails.cache.fetch(ck) {res}
+    unless res
+      response = get("artists/#{id}")
+      res = build(response)
+    end
 
     res
   end
 
-  def self.albums(id)
+  def build_albums
     res = nil
 
-    response = HTTParty.get("#{BASE_URL}/artists/#{id}/albums")
-    json = JSON.parse(response.body, symbolize_names: true)
-    res = json[:items].map { |j| translate(j) }
+    response = get("artists/#{s_id}/albums", query)
+    res = json[:items].map { |j| SpotifyAlbum.build(j, self.id) }
 
     res
   end

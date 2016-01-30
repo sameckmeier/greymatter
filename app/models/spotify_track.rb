@@ -1,24 +1,23 @@
 class SpotifyTrack < ActiveRecord::Base
 
+  FIELDS = [:id, :name, :preview_url, :track_number, :duration_ms]
+
   belongs_to :spotify_album
 
-  def self.build(spotify_json)
-    res = Artist.new
+  def self.build(spotify_json, spotify_album_id)
+    res = self.new
 
-    res.name = spotify_json[:name]
-    res.spotify_id = spotify_json[:id]
-
-    res.save!
-  end
-
-  def translate_tracks_json(tracks)
-    res = []
-
-    res = tracks[:items].map do |track|
-      t = {}; TRACKS_FIELDS.each { |f| t[f] = track[f] }; t
+    FIELDS.each do |f|
+      v = spotify_json[f]
+      if f == :id
+        res.s_id = v
+      else
+        res.send(f, v)
+      end
     end
 
-    res
+    res.spotify_album_id = spotify_album_id
+    res.save!
   end
 
 end
