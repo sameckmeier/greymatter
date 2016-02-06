@@ -5,25 +5,20 @@ class SpotifyAlbum < Spotifyable
   FUZZY_SEARCH_SLUG = "search?type=album&q="
   IDS_SEARCH_SLUG = "albums?ids="
 
-  has_one :album
+  belongs_to :album
   has_many :spotify_artists, through: :spotify_album_relationships, source: :spotify_artist
   has_many :spotify_tracks
 
-  def self.build(json, spotify_artist_id = nil)
+  validates :album_id, presence: true
+
+  def self.build(album_id, json, spotify_artist_id = nil)
     res = self.where(s_id: json[:id], name: json[:name])[0]
 
     unless res
       res = self.new
 
-      FIELDS.each do |f|
-        v = json[f]
-        if f == :id
-          res.s_id = v
-        else
-          res.send(f, v)
-        end
-      end
-
+      res.set_fields(FIELDS, json)
+      res.album_id = album_id
       res.save!
 
       RELATIONSHIPS.each do |type,model|
@@ -32,12 +27,12 @@ class SpotifyAlbum < Spotifyable
           when :tracks
             j[:items].each do |track|
               model.build(track, res.id)
-              build_duration
+              res.build_duration
             end
           when :artists
             SpotifyAlbumRelationship.create!(
-              spotify_album_id: self.id,
-              spotify_artist_id: spotify_artist_id || (SpotifyArtist.build(j)).id
+              spotify_album_id: res.id,
+              spotify_artist_id: spotify_artist_id || (model.build(j)).id
             )
           end
         end
@@ -62,11 +57,10 @@ class SpotifyAlbum < Spotifyable
     res
   end
 
-  private
   def build_duration
     res = 0
 
-    tracks.each { |track| duration += ((track.duration_ms/1000)/60) }
+    spotify_tracks.each { |st| duration += ((st.duration_ms/1000)/60) }
     self.duration = res
     self.save!
 

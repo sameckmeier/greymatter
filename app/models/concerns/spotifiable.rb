@@ -11,4 +11,15 @@ class Spotifyable < ActiveRecord::Base
     res
   end
 
+  def set_fields(fields, json)
+    fields.each do |f|
+      v = json[f]
+      if f == :id
+        res.s_id = v
+      else
+        res.send(f, v)
+      end
+    end
+  end
+
 end

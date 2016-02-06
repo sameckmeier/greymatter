@@ -1,26 +1,23 @@
-class SpotifyArtist < ActiveRecord::Base
+class SpotifyArtist < Spotifyable
 
   FIELDS = [:name, :id, :images]
 
-  has_one :artist
+  belongs_to :artist
   has_many :spotify_albums, through: :spotify_artist_relationships, source: :spotify_album
 
-  def self.build(json)
+  validates :artist_id, presence: true
+
+  def self.build(artist_id, json)
     res = self.where(s_id: json[:id], name: json[:name])[0]
 
     unless res
       res = self.new
 
-      FIELDS.each do |f|
-        if f == :id
-          res.s_id = json(f)
-        else
-          res.send(f, json(f))
-        end
-      end
-
+      res.set_fields(FIELDS, json)
+      res.artist_id = artist_id
       res.save!
-      build_albums
+
+      res.build_albums
     end
 
     res
@@ -40,7 +37,7 @@ class SpotifyArtist < ActiveRecord::Base
   def build_albums
     res = nil
 
-    response = get("artists/#{s_id}/albums", query)
+    response = get("artists/#{s_id}/albums")
     res = json[:items].map { |j| SpotifyAlbum.build(j, self.id) }
 
     res
