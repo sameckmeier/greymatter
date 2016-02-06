@@ -11,7 +11,7 @@ class SpotifyAlbum < Spotifyable
 
   validates :album_id, presence: true
 
-  def self.build(album_id, json, spotify_artist_id = nil)
+  def self.build(album_id, json)
     res = self.where(s_id: json[:id], name: json[:name])[0]
 
     unless res
@@ -32,7 +32,7 @@ class SpotifyAlbum < Spotifyable
           when :artists
             SpotifyAlbumRelationship.create!(
               spotify_album_id: res.id,
-              spotify_artist_id: spotify_artist_id || (model.build(j)).id
+              spotify_artist_id: json[:spotify_artist_id] || (model.build(j)).id
             )
           end
         end

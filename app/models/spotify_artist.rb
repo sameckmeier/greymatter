@@ -38,7 +38,11 @@ class SpotifyArtist < Spotifyable
     res = nil
 
     response = get("artists/#{s_id}/albums")
-    res = json[:items].map { |j| SpotifyAlbum.build(j, self.id) }
+    res = json[:items].map do |j|
+      j[:spotify_artist_id] = self.id
+      j[:spotify_id] = j.delete(:id)
+      Album.build(j)
+    end
 
     res
   end

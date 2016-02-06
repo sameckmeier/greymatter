@@ -12,7 +12,7 @@ class Album < ActiveRecord::Base
 
       res.name = args[:name]
       res.spotify_id = args[:spotify_id]
-      sa = SpotifyAlbum.build(res, args)
+      sa = SpotifyAlbum.build(res.id, args)
 
       res.save!
     end
