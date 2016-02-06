@@ -30,9 +30,17 @@ class SpotifyAlbum < Spotifyable
               res.build_duration
             end
           when :artists
+            sai = json[:spotify_artist_id]
+
+            unless sai
+              j[:spotify_id] = j.delete(:id)
+              artist = Artist.build(j)
+              sai = artist.spotify_artist.id
+            end
+
             SpotifyAlbumRelationship.create!(
               spotify_album_id: res.id,
-              spotify_artist_id: json[:spotify_artist_id] || (model.build(j)).id
+              spotify_artist_id: sai
             )
           end
         end
