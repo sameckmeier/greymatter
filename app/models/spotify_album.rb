@@ -12,7 +12,7 @@ class SpotifyAlbum < Spotifyable
   validates :album_id, presence: true
 
   def self.build(album_id, json)
-    res = self.where(s_id: json[:id], name: json[:name])[0]
+    res = self.where(s_id: json[:spotify_id], name: json[:name])[0]
 
     unless res
       res = self.new

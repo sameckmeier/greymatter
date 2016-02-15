@@ -2,19 +2,25 @@ class Album < ActiveRecord::Base
 
   has_many :reviews
   has_many :artists, through: :album_relationships, source: :artist
-  has_one :spotify_album
+
+  attr_accessor :spotify_data
 
   def self.build(args)
-    res = Album.where(name: args[:name], spotify_id: args[:spotify_id])[0]
+    res = nil
 
-    unless res
-      res = Album.new
+    if args[:spotify_id]
+      res = Album.where(name: args[:name], spotify_id: args[:spotify_id])[0]
 
-      res.name = args[:name]
-      res.spotify_id = args[:spotify_id]
-      sa = SpotifyAlbum.build(res.id, args)
+      unless res
+        res = Album.new
 
-      res.save!
+        res.name = args[:name]
+        res.spotify_id = args[:spotify_id]
+
+        res.save!
+      end
+
+      res.spotify_data = args[:spotify_album_json]
     end
 
     res
