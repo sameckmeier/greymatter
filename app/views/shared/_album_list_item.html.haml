@@ -5,6 +5,6 @@
   %div.small-9.columns
     %div.block__content__lists__item
       %h4
-        = link_to album[:name], album_path(artist_name: artist_name, album_name: album[:name], id: album[:id])
+        = link_to album[:name], album_path(artist_name: artist_name, album_name: album[:name], spotify_id: album[:id])
       %div.italize
-        = link_to artist_name, artist_path(name: artist_name)
+        = link_to artist_name, artist_path(artist_name: artist_name)

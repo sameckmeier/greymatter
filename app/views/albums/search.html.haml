@@ -26,7 +26,7 @@
                       = image_tag album[:images][0][:url]
                     %div.small-12.medium-7.columns
                       %h3
-                        = link_to album[:name], album_path(artist_name: album[:artist][:name], album_name: album[:name], id: album[:id])
+                        = link_to album[:name], album_path(artist_name: album[:artist][:name], album_name: album[:name], spotify_id: album[:id])
                       %h4
                         = album[:artist][:name]
                       %div.search__results__item__meta

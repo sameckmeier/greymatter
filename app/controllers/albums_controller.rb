@@ -1,11 +1,11 @@
 class AlbumsController < ActionController::Base
   layout 'application'
   def show
-    @album_spotify = Api::Spotify.album(params[:id])
-    # @album = Album.where(spotify_id: params[:spotify_id])
+    @album_spotify = Api::Spotify.album(params[:spotify_id])
+    @album = Album.where(spotify_id: params[:spotify_id])
     @songs = @album_spotify[:tracks]
     @popular_albums = Api::Spotify.artists_albums(@album_spotify[:artist][:id])
-    
+
     default_data
     @reviews_tab_active = true
   end

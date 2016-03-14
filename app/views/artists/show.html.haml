@@ -4,12 +4,12 @@
       %div.artist__header
         %div.row{'data-equalizer': true}
           %div.small-12.medium-3.columns{'data-equalizer-watch': true}
-            = image_tag 'sample_artist_img_xl.jpg'
+            = image_tag @artist_spotify[:images][0][:url]
           %div.small-12.medium-9.columns{'data-equalizer-watch': true}
             %div.block{'data-equalizer-watch': true}
               %div.block__footer
                 %h1
-                  = params[:name] ? params[:name] : 'Run the jewels'
+                  = @artist_spotify[:name]
                 %div.row
                   %div.small-8.columns
                     %div.row
@@ -46,7 +46,7 @@
               %ol.block__content__lists
                 - @popular_albums.each do |album|
                   %li
-                    = render 'shared/album_list_item', album: album
+                    = render 'shared/album_list_item', album: album, artist_name: @artist_spotify[:name]
           %div.block
             %div.block__header.block__header--dark-border
               %h2

@@ -23,7 +23,7 @@
           %h2.upcase
             = link_to feed[:album], album_path(artist_name: feed[:artist], album_name: feed[:album])
             %span
-            = link_to feed[:artist], artist_path(name: feed[:artist])
+            = link_to feed[:artist], artist_path(artist_name: feed[:artist])
           %p
             = feed[:content]
         %div.row

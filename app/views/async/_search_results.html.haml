@@ -30,14 +30,10 @@
         %div.search__results__item
           %div.row
             %div.small-12.medium-2.columns
-              = image_tag 'http://lorempixel.com/people/90/90'
+              = image_tag artist[:images][0][:url]
             %div.small-12.medium-7.columns
               %h3
-                = link_to artist[:name], artist_path(name: artist[:name])
-              %div.search__results__item__meta
-                = artist[:handler]
-                %span.dotter
-                = artist[:location]
+                = link_to artist[:name], artist_path(artist_name: artist[:name], spotify_id: artist[:id])
             %div.small-12.medium-3.columns.text-right
               = link_to 'follow', 'javascript:;', class: 'btn btn--rounded btn__outline btn__outline--grey'
 
@@ -51,17 +47,17 @@
         %div.search__results__item
           %div.row
             %div.small-12.medium-2.columns
-              = image_tag 'http://lorempixel.com/abstract/90/90'
+              = image_tag album[:images][0][:url]
             %div.small-12.medium-7.columns
               %h3
-                = link_to album[:name], album_path(artist_name: album[:artist], album_name: album[:name])
+                = link_to album[:name], album_path(artist_name: album[:artist][:name], album_name: album[:name], spotify_id: album[:id])
               %h4
-                = album[:artist]
+                = album[:artist][:name]
               %div.search__results__item__meta
-                = album[:year]
+                = album[:release_date]
                 %span.dotter
-                = "#{album[:songs]} songs"
+                = "#{album[:tracks].count} songs"
                 %span.dotter
-                = "#{Time.at(album[:duration]).strftime('%M')} min"
+                = "#{album[:duration]} min"
             %div.small-12.medium-3.columns.text-right
               = link_to 'Listen', 'javascript:;', class: 'btn btn--rounded btn__outline btn__outline--grey'

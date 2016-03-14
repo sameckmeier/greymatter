@@ -1,8 +1,10 @@
 class AsyncController < ApplicationController
   def typeahead_search
+    spotify_json = Api::Spotify.fuzzy_search(params["q"])
+
     @writers = AsyncHelper::SAMPLE_DATA.writers
-    @artists = AsyncHelper::SAMPLE_DATA.artists
-    @albums = AsyncHelper::SAMPLE_DATA.albums
+    @artists = spotify_json[:artists]
+    @albums = spotify_json[:albums]
     @results = {
         writers: @writers,
         artists: @artists,

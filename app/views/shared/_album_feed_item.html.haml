@@ -43,7 +43,7 @@
           %h2.upcase
             = link_to feed[:album], album_path(artist_name: feed[:artist], album_name: feed[:album])
             %span
-              = link_to feed[:artist], artist_path(name: feed[:artist])
+              = link_to feed[:artist], artist_path(artist_name: feed[:artist])
           %p
             = feed[:content]
     %div.albums__feed__comments{id: "comments-for-album-#{feed[:token]}", class: @is_user_logged_in ? 'active': ''}
@@ -71,5 +71,3 @@
 
 - if feed[:has_comment]
   = render 'shared/album_feed_item_inner', feed: feed
-
-
